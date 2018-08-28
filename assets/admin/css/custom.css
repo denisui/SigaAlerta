@@ -1,0 +1,53 @@
+object {
+    display: none;
+}
+
+/* GAPS */
+.no-padding {padding:0 !important;}
+.no-margin {margin:0 !important;}
+.gap-10 {padding-top: 10px;}
+.gap-20 {padding-top: 20px;}
+.gap-30 {padding-top: 30px;}
+.gap-40 {padding-top: 40px;}
+.gap-50 {padding-top: 50px;}
+.gap-60 {padding-top: 60px;}
+.gap-70 {padding-top: 70px;}
+.gap-80 {padding-top: 80px;}
+.gap-90 {padding-top: 90px;}
+.gap-100 {padding-top: 100px;}
+.gap-120 {padding-top: 120px;}
+.gap-150 {padding-top: 150px;}
+.gap-600 {padding-top: 600px;}
+.gap-r-l-300 { padding: 0 300px 0 300px;}
+.gap-r-l-200 { padding: 0 200px 0 200px;}
+.gap-r-l-20 {padding: 0 20px 0 0;}
+
+.f-text {
+    padding-top: 10px;
+    color: #fff;
+}
+
+#btn-submit-login {
+    padding: 8px 25px 8px 25px;
+}
+
+.navbar-nav>.user-menu>.dropdown-menu>li.user-header {
+    height: 65px;
+}
+
+
+.btn-red {
+    background: #DE0000;
+    color: #fff;
+    border: 1px solid #DE0000;    
+}
+
+.btn-red:hover,
+.btn-red:focus {
+    color: #fff;
+}
+
+
+.login-logo {
+    margin-bottom: 5px;
+}
