@@ -47,21 +47,33 @@
 
 		<div class="container">
 			<div class="row">
-				<div class="col-sm-12">
-					<!-- Slideshow -->
-					<div id="home-slider">
-						<?php
-                    	if (empty($sliNews)):
+				<?php
+                        if (empty($sliNews)):
                             //
                         else :
                             $n = new ArrayIterator($sliNews);
                             while ($n->valid()):
                         ?>
+				<div class="col-sm-6 box-title-news">
+					<h2 class="entry-title">
+						<a href="<?php echo base_url(); ?>news/local/details/<?php echo $n->current()->id; ?>/<?php echo $this->general->normalizeURL($n->current()->new_title); ?>"
+						 style="font-size: 40px;">
+							<p class="title-news">
+								<?php echo $n->current()->new_title; ?>
+							</p>
+							<p class="subtitle-news"><?php echo $n->current()->new_subtitle; ?></p>
+						</a>
+					</h2>
+				</div>
+				<div class="col-sm-6">
+					<!-- Slideshow -->
+					<div id="home-slider">
 						<div class="post feature-post">
 							<div class="entry-header">
 								<div class="entry-thumbnail">
 									<a href="<?php echo base_url(); ?>news/local/details/<?php echo $n->current()->id; ?>/<?php echo $this->general->normalizeURL($n->current()->new_title); ?>">
-										<img src="<?php echo base_url(); ?>assets/public/images/news/<?php echo $n->current()->new_img ?>" class="h-350" alt="<?php echo $n->current()->new_title; ?>" style=""
+										<img src="<?php echo base_url(); ?>assets/public/images/news/<?php echo $n->current()->new_img ?>"
+										 class="h-350" alt="<?php echo $n->current()->new_title; ?>" style=""
 										/>
 									</a>
 								</div>
@@ -81,25 +93,28 @@
 										</li>
 									</ul>
 								</div>
-								<h2 class="entry-title">
-									<a href="<?php echo base_url(); ?>news/local/details/<?php echo $n->current()->id; ?>/<?php echo $this->general->normalizeURL($n->current()->new_title); ?>">
-										<?php echo $n->current()->new_title; ?>
-									</a>
-								</h2>
+
 							</div>
 						</div>
 						<!--/post-->
-						<?php
+					</div>
+					<!-- Slideshow -->
+				</div>
+				<?php
                                         $n->next();
                                         endwhile;
                                     endif
                                        ?>
-					</div>
-					<!-- Slideshow -->
-				</div>
-
 			</div>
 		</div>
+		<div class="container">
+			<div class="row">
+				<div class="col-md-12">
+					<div class="section-title"></div>
+				</div>
+			</div>
+		</div>
+
 		<div class="container">
 			<!--<div id="breaking-news">
 				<span>Alertas</span>
@@ -127,53 +142,53 @@
 							</div>
 						</div>
 					</div>-->
-					
+
 					<div class="site-content col-md-9">
 						<div class="row">
-						<?php 
+							<?php 
                         if (empty($newsEua)) :
                             //
                         else :
                           $n = new ArrayIterator($newsEua);
                           while ($n->valid()):
                     ?>
-					<div class="col-sm-8">
-						<div class="post feature-post">
-							<div class="entry-header">
-								<div class="entry-thumbnail">
-									<a href="<?php echo base_url(); ?>news/eua/details/<?php echo $n->current()->id; ?>/<?php echo $this->general->normalizeURL($n->current()->new_title); ?>">
-										<img class="h-347" src="<?php echo base_url(); ?>assets/public/images/news/<?php echo $n->current()->new_img ?>"
-										 alt="<?php echo $n->current()->new_title; ?>" />
-									</a>
-								</div>
-								<div class="catagory technology">
-									<span>
-										<a href="<?php echo base_url(); ?>news/eua/details/<?php echo $n->current()->id; ?>/<?php echo $this->general->normalizeURL($n->current()->new_title); ?>">Estados Unidos</a>
-									</span>
-								</div>
-							</div>
-							<div class="post-content">
-								<div class="entry-meta">
-									<ul class="list-inline">
-										<li class="publish-date">
-											<i class="fa fa-calendar"></i>
-											<?php 
+							<div class="col-sm-8">
+								<div class="post feature-post">
+									<div class="entry-header">
+										<div class="entry-thumbnail">
+											<a href="<?php echo base_url(); ?>news/eua/details/<?php echo $n->current()->id; ?>/<?php echo $this->general->normalizeURL($n->current()->new_title); ?>">
+												<img class="h-347" src="<?php echo base_url(); ?>assets/public/images/news/<?php echo $n->current()->new_img ?>"
+												 alt="<?php echo $n->current()->new_title; ?>" />
+											</a>
+										</div>
+										<div class="catagory technology">
+											<span>
+												<a href="<?php echo base_url(); ?>news/eua/details/<?php echo $n->current()->id; ?>/<?php echo $this->general->normalizeURL($n->current()->new_title); ?>">Estados Unidos</a>
+											</span>
+										</div>
+									</div>
+									<div class="post-content">
+										<div class="entry-meta">
+											<ul class="list-inline">
+												<li class="publish-date">
+													<i class="fa fa-calendar"></i>
+													<?php 
                                                 $date = explode('-', $n->current()->new_date_time);
                                                 echo $date[1]. ' / '. $date[2] .' / '.$date[0];
                                             ?>
-										</li>
-									</ul>
+												</li>
+											</ul>
+										</div>
+										<h2 class="entry-title">
+											<a href="<?php echo base_url(); ?>news/eua/details/<?php echo $n->current()->id; ?>/<?php echo $this->general->normalizeURL($n->current()->new_title); ?>">
+												<?php echo $n->current()->new_title; ?>
+											</a>
+										</h2>
+									</div>
 								</div>
-								<h2 class="entry-title">
-									<a href="<?php echo base_url(); ?>news/eua/details/<?php echo $n->current()->id; ?>/<?php echo $this->general->normalizeURL($n->current()->new_title); ?>">
-										<?php echo $n->current()->new_title; ?>
-									</a>
-								</h2>
+								<!--/post-->
 							</div>
-						</div>
-						<!--/post-->
-					</div>
-					<?php
+							<?php
                       $n->next();
                     endwhile;
                   endif
@@ -568,7 +583,8 @@
 															<div class="entry-thumbnail">
 																<a href="<?php echo base_url(); ?>news/technology/details/<?php echo $n->current()->id; ?>/<?php echo $this->general->normalizeURL($n->current()->new_title); ?>">
 																	<img class="img-responsive" src="<?php echo base_url(); ?>assets/public/images/news/<?php echo $n->current()->new_img; ?>"
-																	 alt="<?php echo $n->current()->new_title; ?>" style="width: 360px; height: 202px;"/>
+																	 alt="<?php echo $n->current()->new_title; ?>" style="width: 360px; height: 202px;"
+																	/>
 																</a>
 															</div>
 														</div>
@@ -661,7 +677,7 @@
 
 										<div class="section photo-gallery">
 											<h1 class="section-title title">Serviços</h1>
-											<img src="https://via.placeholder.com/550x350" alt="">											
+											<img src="https://via.placeholder.com/550x350" alt="">
 										</div>
 										<!--/photo-gallery-->
 

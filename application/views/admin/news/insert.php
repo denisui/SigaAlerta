@@ -51,6 +51,12 @@
                                             </div>
                                             <div class="col-md-6">
                                                 <div class="form-group">
+                                                    <label>Subtítulo</label>
+                                                    <input type="text" name="edtSubtitle" class="form-control" maxlength="100" required>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-6">
+                                                <div class="form-group">
                                                     <label>Categoria</label>
                                                     <select name="cmbCategory" class="form-control select2" style="width: 100%;" required>
                                                         <?php 

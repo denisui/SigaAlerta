@@ -219,3 +219,23 @@
     height: 347px;
     object-fit: cover;
 }
+
+.box-title-news {
+    margin-top: 30px;
+    padding: 20px 0 60px 0;
+}
+
+.box-title-news a .title-news {
+    font-size: 58px;
+    font-weight: 700;
+}
+
+.box-title-news a .subtitle-news {
+    font-size: 20px;
+}
+
+.colorbar-red {
+    margin-top: 20px;
+    padding: 5px;
+    background: #c40000;
+}

@@ -7,6 +7,7 @@ class News extends CI_Controller {
 
     public $id;
     public $title;
+    public $subtitle;
     public $category;
     public $featured;
     public $post;
@@ -62,6 +63,7 @@ class News extends CI_Controller {
      */
     public function setInsert() {  
         $this->title = $this->input->post("edtTitle");
+        $this->subtitle = $this->input->post("edtSubtitle");
         $this->category = $this->input->post("cmbCategory");
         /*$this->featured = $this->input->post("cmbFeatured");*/
         $this->post = $this->input->post("txtDesc");
@@ -73,8 +75,8 @@ class News extends CI_Controller {
         if (!empty($_FILES['image']['name'])) {
 
             // Pasta onde o arquivo vai ser salvo
-            //$_UP['pasta'] = $_SERVER['DOCUMENT_ROOT'] . '/assets/public/images/news/';
-            $_UP['pasta'] = $_SERVER['DOCUMENT_ROOT'] . '/sigalerta/assets/public/images/news/';
+            $_UP['pasta'] = $_SERVER['DOCUMENT_ROOT'] . '/assets/public/images/news/';
+            //$_UP['pasta'] = $_SERVER['DOCUMENT_ROOT'] . '/sigalerta/assets/public/images/news/';
             //$_UP['pasta'] = $_SERVER['DOCUMENT_ROOT'] . '/homologation/sigalerta/assets/public/images/news/';
 
             // Renomeia o arquivo? (Se true, o arquivo será salvo como .jpg e um nome único)
@@ -104,6 +106,7 @@ class News extends CI_Controller {
 
             $this->_arrData = array(
                 "new_title" => $this->title,
+                "new_subtitle" => $this->subtitle,
                 "new_category" => $this->category,
                 "new_description" => $this->post,
                 "new_date_time" => date("Y-m-d"),
@@ -123,6 +126,7 @@ class News extends CI_Controller {
         } else {
             $this->_arrData = array(
                 "new_title" => $this->title,
+                "new_subtitle" => $this->subtitle,
                 "new_category" => $this->category,
                 "new_description" => $this->post,
                 "new_date_time" => date("Y-m-d"),
@@ -148,6 +152,7 @@ class News extends CI_Controller {
     public function setUpdate() {        
         $this->id = $this->input->post('edtID');
         $this->title = $this->input->post("edtTitle");
+        $this->subtitle = $this->input->post("edtSubtitle");
         $this->category = $this->input->post("cmbCategory");
         $this->post = $this->input->post("txtDesc");
         $this->img = $this->input->post("image");
@@ -158,8 +163,8 @@ class News extends CI_Controller {
         if (!empty($_FILES['image']['name'])) {
 
              // Pasta onde o arquivo vai ser salvo
-            //$_UP['pasta'] = $_SERVER['DOCUMENT_ROOT'] . '/assets/public/images/news/';
-            $_UP['pasta'] = $_SERVER['DOCUMENT_ROOT'] . '/sigalerta/assets/public/images/news/';
+            $_UP['pasta'] = $_SERVER['DOCUMENT_ROOT'] . '/assets/public/images/news/';
+            //$_UP['pasta'] = $_SERVER['DOCUMENT_ROOT'] . '/sigalerta/assets/public/images/news/';
             //$_UP['pasta'] = $_SERVER['DOCUMENT_ROOT'] . '/homologation/sigalerta/assets/public/images/news/';
 
             // Renomeia o arquivo? (Se true, o arquivo será salvo como .jpg e um nome único)
@@ -189,6 +194,7 @@ class News extends CI_Controller {
 
             $this->_arrData = array(
                 "new_title" => $this->title,
+                "new_subtitle" => $this->subtitle,
                 "new_category" => $this->category,
                 "new_description" => $this->post,                
                 "new_img" => $this->img
@@ -203,6 +209,7 @@ class News extends CI_Controller {
         } else {
             $this->_arrData = array(
                 "new_title" => $this->title,
+                "new_subtitle" => $this->subtitle,
                 "new_category" => $this->category,
                 "new_description" => $this->post
             );

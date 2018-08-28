@@ -17,14 +17,14 @@ class Home extends CI_Controller
         /* MENU */
         $data['worldNewsMenu'] = $this->Model_Home->getNewsCategory('Mundo', 'id', 'desc', '3', '0');
         $data['techNewsMenu'] = $this->Model_Home->getNewsCategory('Tecnologia', 'id', 'desc', '3', '0');
-        /* Slideshow and Others */
-        $data['sliNews'] = $this->Model_Home->getNewsSli('id', 'desc', '5', '0');
+        /* SECTION 1 */
+        $data['sliNews'] = $this->Model_Home->getNewsSli('id', 'desc', '1', '0');
         $data['newHealth'] = $this->Model_Home->getNewsCategory('Saúde', 'id', 'desc', '1', '0');
         $data['newHealth2'] = $this->Model_Home->getNewsCategory('Saúde', 'id', 'desc', '1', '1');        
         $data['newsTec'] = $this->Model_Home->getNewsCategory('Tecnologia', 'id', 'desc', '1', '0');
         $data['newsEua'] = $this->Model_Home->getNewsCategory('Estados Unidos', 'id', 'desc', '1', '1');
         $data['newsEnter'] = $this->Model_Home->getNewsCategory('Entretenimento', 'id', 'desc', '1', '0');
-        $data['newsPolitics'] = $this->Model_Home->getNewsCategory('Política', 'id', 'desc', '1', '0');
+        $data['newsPolitics'] = $this->Model_Home->getNewsCategory('Política', 'id', 'desc', '1', '1');
         $data['newsClime'] = $this->Model_Home->getNewsCategory('Clima', 'id', 'desc', '1', '0');
         $data['classifiedRandon'] = $this->Model_Home->getClassifiedRandon('11', '0');
 
