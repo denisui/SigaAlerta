@@ -61,7 +61,9 @@
 							<p class="title-news">
 								<?php echo $n->current()->new_title; ?>
 							</p>
-							<p class="subtitle-news"><?php echo $n->current()->new_subtitle; ?></p>
+							<p class="subtitle-news">
+								<?php echo $n->current()->new_subtitle; ?>
+							</p>
 						</a>
 					</h2>
 				</div>
@@ -101,10 +103,10 @@
 					<!-- Slideshow -->
 				</div>
 				<?php
-                                        $n->next();
-                                        endwhile;
-                                    endif
-                                       ?>
+                    $n->next();
+                	endwhile;
+                endif
+                ?>
 			</div>
 		</div>
 		<div class="container">
@@ -146,12 +148,12 @@
 					<div class="site-content col-md-9">
 						<div class="row">
 							<?php 
-                        if (empty($newsEua)) :
-                            //
-                        else :
-                          $n = new ArrayIterator($newsEua);
-                          while ($n->valid()):
-                    ?>
+								if (empty($newsEua)) :
+									//
+								else :
+								$n = new ArrayIterator($newsEua);
+								while ($n->valid()):
+							?>
 							<div class="col-sm-8">
 								<div class="post feature-post">
 									<div class="entry-header">
@@ -675,107 +677,7 @@
 										</div>
 										<!--/.section add-->
 
-										<div class="section photo-gallery">
-											<h1 class="section-title title">Serviços</h1>
-											<img src="https://via.placeholder.com/550x350" alt="">
-										</div>
-										<!--/photo-gallery-->
 
-										<div class="section health-section">
-											<h1 class="section-title">Saúde</h1>
-											<div class="cat-menu">
-												<a href="<?php echo base_url(); ?>news/health">Ver Todas</a>
-											</div>
-											<div class="health-feature">
-												<?php 
-                                                  if (empty($lastHealt)) :
-                                                    //
-                                                  else :
-                                                    $n = new ArrayIterator($lastHealt);
-                                                    while ($n->valid()) :
-                                                ?>
-												<div class="post">
-													<div class="entry-header">
-														<div class="entry-thumbnail">
-															<a href="<?php echo base_url(); ?>news/health/details/<?php echo $n->current()->id; ?>/<?php echo $this->general->normalizeURL($n->current()->new_title); ?>">
-																<img class="img-responsive h-159" src="<?php echo base_url(); ?>assets/public/images/news/<?php echo $n->current()->new_img; ?>"
-																 alt="<?php echo $n->current()->new_title; ?>" />
-															</a>
-														</div>
-													</div>
-													<div class="post-content">
-														<div class="entry-meta">
-															<ul class="list-inline">
-																<li class="publish-date">
-																	<i class="fa fa-calendar"></i>
-																	<?php
-                                                                        $date = explode('-', $n->current()->new_date_time);
-                                                                        echo $date[1]. ' / '. $date[2] .' / '.$date[0];
-                                                                    ?>
-																</li>
-															</ul>
-														</div>
-														<h2 class="entry-title">
-															<a href="<?php echo base_url(); ?>news/health/details/<?php echo $n->current()->id; ?>/<?php echo $this->general->normalizeURL($n->current()->new_title); ?>">
-																<?php echo $n->current()->new_title; ?>
-															</a>
-														</h2>
-													</div>
-												</div>
-												<!--/post-->
-												<?php 
-                                                 $n->next();
-                                                    endwhile;
-                                                endif;
-                                                ?>
-											</div>
-											<div class="row">
-												<?php 
-                                                  if (empty($lastHealt2)) :
-                                                    //
-                                                  else :
-                                                    $n = new ArrayIterator($lastHealt2);
-                                                    while ($n->valid()) :
-                                                ?>
-												<div class="col-sm-12 col-md-6">
-													<div class="post small-post">
-														<div class="entry-header">
-															<div class="entry-thumbnail">
-																<a href="<?php echo base_url(); ?>news/health/details/<?php echo $n->current()->id; ?>/<?php echo $this->general->normalizeURL($n->current()->new_title); ?>">
-																	<img class="img-responsive h-95" src="<?php echo base_url(); ?>assets/public/images/news/<?php echo $n->current()->new_img; ?>"
-																	 alt="<?php echo $n->current()->new_title; ?>" />
-																</a>
-															</div>
-														</div>
-														<div class="post-content">
-															<div class="entry-meta">
-																<ul class="list-inline">
-																	<li class="publish-date">
-																		<i class="fa fa-calendar"></i>
-																		<?php
-                                                                            $date = explode('-', $n->current()->new_date_time);
-                                                                            echo $date[1]. ' / '. $date[2] .' / '.$date[0];
-                                                                        ?>
-																	</li>
-																</ul>
-															</div>
-															<h2 class="entry-title">
-																<a href="<?php echo base_url(); ?>news/health/details/<?php echo $n->current()->id; ?>/<?php echo $this->general->normalizeURL($n->current()->new_title); ?>">
-																	<?php echo $n->current()->new_title; ?>
-																</a>
-															</h2>
-														</div>
-													</div>
-													<!--/post-->
-												</div>
-												<?php 
-                                                    $n->next();
-                                                    endwhile;
-                                                endif;
-                                                ?>
-											</div>
-										</div>
-										<!--/.health-section -->
 									</div>
 									<!--/.left-content-->
 								</div>
@@ -949,7 +851,6 @@
 						<div id="weather-widget"></div>
 					</div>
 					<!--/#widget-->
-
 					<div class="widget">
 						<div class="add">
 							<a href="#">
@@ -959,10 +860,189 @@
 						</div>
 					</div>
 					<!--/#widget-->
-
 				</div>
 				<!--/#sitebar-->
 			</div>
+
+			<div class="col-sm-6">
+				<div class="section lifestyle-section">
+					<h1 class="section-title">Serviços</h1>
+					<div class="cat-menu">
+						<a href="#">Ver Todos</a>
+					</div>
+					<div class="row">
+						<div class="col-md-12">
+							<div class="post medium-post">
+								<div class="entry-header">
+									<div class="entry-thumbnail">
+										<img class="img-responsive" src="https://via.placeholder.com/555x350" alt="" />
+									</div>
+								</div>
+							</div>
+						</div>
+						<div class="col-md-6">
+							<div class="post medium-post">
+								<div class="entry-header">
+									<div class="entry-thumbnail">
+										<a href="#">
+											<img class="img-responsive" src="<?php echo base_url(); ?>assets/public/images/post/lifestyle/3.jpg"
+											 alt="" />
+										</a>
+									</div>
+								</div>
+								<div class="post-content">
+									<div class="entry-meta">
+										<ul class="list-inline">
+											<li class="publish-date">
+												<a href="#">
+													<i class="fa fa-calendar"></i> 08 / 16 / 2018 </a>
+											</li>
+										</ul>
+									</div>
+									<h2 class="entry-title">
+										<a href="#">How the stars celebrated Christmas on Instagram</a>
+									</h2>
+								</div>
+							</div>
+							<!--/post-->
+						</div>
+						<div class="col-md-6">
+							<div class="post medium-post">
+								<div class="entry-header">
+									<div class="entry-thumbnail">
+										<a href="#">
+											<img class="img-responsive" src="<?php echo base_url(); ?>assets/public/images/post/lifestyle/3.jpg"
+											 alt="" />
+										</a>
+									</div>
+								</div>
+								<div class="post-content">
+									<div class="entry-meta">
+										<ul class="list-inline">
+											<li class="publish-date">
+												<a href="#">
+													<i class="fa fa-calendar"></i> 08 / 16 / 2018 </a>
+											</li>
+										</ul>
+									</div>
+									<h2 class="entry-title">
+										<a href="#">How the stars celebrated Christmas on Instagram</a>
+									</h2>
+								</div>
+							</div>
+							<!--/post-->
+						</div>
+					</div>
+					<!--/.lifestyle -->
+				</div>
+			</div>
+
+			<div class="col-sm-6">
+				<!--/photo-gallery-->
+				<div class="section health-section">
+					<h1 class="section-title">Saúde</h1>
+					<div class="cat-menu">
+						<a href="<?php echo base_url(); ?>news/health">Ver Todas</a>
+					</div>
+					<div class="health-feature">
+						<?php 
+                            if (empty($lastHealt)) :
+                                //
+                            else :
+                                $n = new ArrayIterator($lastHealt);
+                                while ($n->valid()) :
+                        ?>
+						<div class="post">
+							<div class="entry-header">
+								<div class="entry-thumbnail">
+									<a href="<?php echo base_url(); ?>news/health/details/<?php echo $n->current()->id; ?>/<?php echo $this->general->normalizeURL($n->current()->new_title); ?>">
+										<img class="img-responsive h-159" src="<?php echo base_url(); ?>assets/public/images/news/<?php echo $n->current()->new_img; ?>"
+										 alt="<?php echo $n->current()->new_title; ?>" />
+									</a>
+								</div>
+							</div>
+							<div class="post-content">
+								<div class="entry-meta">
+									<ul class="list-inline">
+										<li class="publish-date">
+											<i class="fa fa-calendar"></i>
+											<?php
+                                                $date = explode('-', $n->current()->new_date_time);
+                                                echo $date[1]. ' / '. $date[2] .' / '.$date[0];
+                                            ?>
+										</li>
+									</ul>
+								</div>
+								<h2 class="entry-title">
+									<a href="<?php echo base_url(); ?>news/health/details/<?php echo $n->current()->id; ?>/<?php echo $this->general->normalizeURL($n->current()->new_title); ?>">
+										<?php echo $n->current()->new_title; ?>
+									</a>
+								</h2>
+							</div>
+						</div>
+						<!--/post-->
+						<?php 
+                            $n->next();
+                            endwhile;
+                        endif;
+                        ?>
+					</div>
+					<div class="row">
+						<?php 
+                            if (empty($lastHealt2)) :
+                                //
+                            else :
+                                $n = new ArrayIterator($lastHealt2);
+                            while ($n->valid()) :
+                        ?>
+						<div class="col-sm-12 col-md-6">
+							<div class="post small-post">
+								<div class="entry-header">
+									<div class="entry-thumbnail">
+										<a href="<?php echo base_url(); ?>news/health/details/<?php echo $n->current()->id; ?>/<?php echo $this->general->normalizeURL($n->current()->new_title); ?>">
+											<img class="img-responsive h-95" src="<?php echo base_url(); ?>assets/public/images/news/<?php echo $n->current()->new_img; ?>"
+											 alt="<?php echo $n->current()->new_title; ?>" />
+										</a>
+									</div>
+								</div>
+								<div class="post-content">
+									<div class="entry-meta">
+										<ul class="list-inline">
+											<li class="publish-date">
+												<i class="fa fa-calendar"></i>
+												<?php
+                                                    $date = explode('-', $n->current()->new_date_time);
+                                                    echo $date[1]. ' / '. $date[2] .' / '.$date[0];
+                                                ?>
+											</li>
+										</ul>
+									</div>
+									<h2 class="entry-title">
+										<a href="<?php echo base_url(); ?>news/health/details/<?php echo $n->current()->id; ?>/<?php echo $this->general->normalizeURL($n->current()->new_title); ?>">
+											<?php echo $n->current()->new_title; ?>
+										</a>
+									</h2>
+								</div>
+							</div>
+							<!--/post-->
+						</div>
+						<?php 
+                            $n->next();
+                            endwhile;
+                        endif;
+                        ?>
+					</div>
+				</div>
+				<!--/.health-section -->
+			</div>
+
+
+
+
+
+
+
+
 		</div>
 	</div>
 	<!--/.section-->
@@ -997,15 +1077,15 @@
 
 	<!--/#scripts-->
 	<?php $this->load->view('public/include/scripts'); ?>
-	
-	<script src="https://maps.google.com/maps/api/js?sensor=false&libraries=geometry&v=3.22&key=AIzaSyCERAeMD9Tbn2bIoEka47cYSN4k_-mLrXY"></script>
-	<!--<script src="<?php echo base_url(); ?>assets/public/js/util.js"></script>-->
+
+	<!--<script src="https://maps.google.com/maps/api/js?sensor=false&libraries=geometry&v=3.22&key=AIzaSyCERAeMD9Tbn2bIoEka47cYSN4k_-mLrXY"></script>
+	<script src="<?php echo base_url(); ?>assets/public/js/util.js"></script>--
 	<script>
 		$(document).ready(function() {
-			/*setTimeout(function() {
-			    $(location).attr('href', '');
-			}, 300000);*/
-			/* Google Maps -------------------------*/
+					/*setTimeout(function() {
+					    $(location).attr('href', '');
+					}, 300000);*/
+					/* Google Maps -------------------------*
 			var locations = [
 				<?php
                     foreach ($result as $key => $v) {
@@ -1044,7 +1124,7 @@
 			var trafficLayer = new google.maps.TrafficLayer();
 			trafficLayer.setMap(map);
 		});
-	</script>
+	</script>-->
 </body>
 
 </html>

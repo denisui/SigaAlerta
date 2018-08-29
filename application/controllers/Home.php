@@ -35,7 +35,7 @@ class Home extends CI_Controller
         $data['service2'] = $this->Model_Services->getService('id', 'desc', '8', '1');
         $data['service_link'] = $this->Model_Services->getService('id', 'desc', '9', '0');
 		$data['lastHealt'] = $this->Model_Home->getNewsCategory('Saúde', 'id', 'desc', '1', '2');
-        $data['lastHealt2'] = $this->Model_Home->getNewsCategory('Saúde', 'id', 'desc', '4', '3');
+        $data['lastHealt2'] = $this->Model_Home->getNewsCategory('Saúde', 'id', 'desc', '8', '3');
 		$data['lastNewsTec'] = $this->Model_Home->getNewsCategory('Tecnologia', 'id', 'desc', '1', '0');
         $data['lastNewsTec2'] = $this->Model_Home->getNewsCategory('Tecnologia', 'id', 'desc', '2', '1');
         $data['lastSport'] = $this->Model_Home->getNewsCategory('Esporte', 'id', 'desc', '4', '0');
