@@ -7,7 +7,7 @@ class Advertising extends CI_Controller {
     public $id;
     public $title;
     public $page;
-    public $type;
+    public $size;
     public $img;
     public $_return;
     public $_arrData;
@@ -58,7 +58,7 @@ class Advertising extends CI_Controller {
     public function setInsert() {  
         $this->title = $this->input->post("edtTitle");
         $this->page = $this->input->post("cmbPage");
-        $this->type = $this->input->post("cmbType");
+        $this->size = $this->input->post("cmbSize");
         $this->img = $this->input->post("image");
                 
         /**
@@ -68,7 +68,7 @@ class Advertising extends CI_Controller {
 
             // Pasta onde o arquivo vai ser salvo
             //$_UP['pasta'] = $_SERVER['DOCUMENT_ROOT'] . '/assets/public/images/advertising/';
-            $_UP['pasta'] = $_SERVER['DOCUMENT_ROOT'] . '/sigalerta/assets/public/images/advertising/';
+            $_UP['pasta'] = $_SERVER['DOCUMENT_ROOT'] . '/SigaAlerta/assets/public/images/advertising/';
             //$_UP['pasta'] = $_SERVER['DOCUMENT_ROOT'] . '/homologation/sigalerta/assets/public/images/advertising/';
 
             // Renomeia o arquivo? (Se true, o arquivo será salvo como .jpg e um nome único)
@@ -99,7 +99,7 @@ class Advertising extends CI_Controller {
             $this->_arrData = array(
                 "ads_title" => $this->title,
                 "ads_page" => $this->page,
-                "ads_type" => $this->type,
+                "ads_size" => $this->size,
                 "ads_img" => $this->img
             );
 
@@ -117,7 +117,7 @@ class Advertising extends CI_Controller {
             $this->_arrData = array(
                 "ads_title" => $this->title,
                 "ads_page" => $this->page,
-                "ads_type" => $this->type
+                "ads_size" => $this->size
             );
 
             /*echo "<pre>";
@@ -141,7 +141,7 @@ class Advertising extends CI_Controller {
         $this->id = $this->input->post('edtID');
         $this->title = $this->input->post("edtTitle");
         $this->page = $this->input->post("cmbPage");
-        $this->type = $this->input->post("cmbType");  
+        $this->size = $this->input->post("cmbSize");  
         $this->img = $this->input->post("image");
 
         /**
@@ -151,7 +151,7 @@ class Advertising extends CI_Controller {
 
             // Pasta onde o arquivo vai ser salvo
             //$_UP['pasta'] = $_SERVER['DOCUMENT_ROOT'] . '/assets/public/images/advertising/';
-            $_UP['pasta'] = $_SERVER['DOCUMENT_ROOT'] . '/sigalerta/assets/public/images/advertising/';
+            $_UP['pasta'] = $_SERVER['DOCUMENT_ROOT'] . '/SigaAlerta/assets/public/images/advertising/';
             //$_UP['pasta'] = $_SERVER['DOCUMENT_ROOT'] . '/homologation/sigalerta/assets/public/images/advertising/';
 
             // Renomeia o arquivo? (Se true, o arquivo será salvo como .jpg e um nome único)
@@ -182,7 +182,7 @@ class Advertising extends CI_Controller {
             $this->_arrData = array(
                 "ads_title" => $this->title,
                 "ads_page" => $this->page,
-                "ads_type" => $this->type,
+                "ads_size" => $this->size,
                 "ads_img" => $this->img 
             );
 
@@ -196,7 +196,7 @@ class Advertising extends CI_Controller {
             $this->_arrData = array(
                 "ads_title" => $this->title,
                 "ads_page" => $this->page,
-                "ads_type" => $this->type
+                "ads_size" => $this->size,
             );
 
             $this->_return = $this->Model_Advertising->_update($this->id, $this->_arrData);

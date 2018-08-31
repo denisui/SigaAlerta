@@ -47,66 +47,67 @@
 
 		<div class="container">
 			<div class="row">
-				<?php
-                        if (empty($sliNews)):
-                            //
-                        else :
-                            $n = new ArrayIterator($sliNews);
-                            while ($n->valid()):
-                        ?>
-				<div class="col-sm-6 box-title-news">
-					<h2 class="entry-title">
-						<a href="<?php echo base_url(); ?>news/local/details/<?php echo $n->current()->id; ?>/<?php echo $this->general->normalizeURL($n->current()->new_title); ?>"
-						 style="font-size: 40px;">
-							<p class="title-news">
-								<?php echo $n->current()->new_title; ?>
-							</p>
-							<p class="subtitle-news">
-								<?php echo $n->current()->new_subtitle; ?>
-							</p>
-						</a>
-					</h2>
-				</div>
-				<div class="col-sm-6">
-					<!-- Slideshow -->
-					<div id="home-slider">
-						<div class="post feature-post">
-							<div class="entry-header">
-								<div class="entry-thumbnail">
-									<a href="<?php echo base_url(); ?>news/local/details/<?php echo $n->current()->id; ?>/<?php echo $this->general->normalizeURL($n->current()->new_title); ?>">
-										<img src="<?php echo base_url(); ?>assets/public/images/news/<?php echo $n->current()->new_img ?>"
-										 class="h-350" alt="<?php echo $n->current()->new_title; ?>" style=""
-										/>
-									</a>
-								</div>
-								<!--<div class="catagory politics">
+				<!-- Slideshow -->
+				<div id="home-slider">
+					<?php
+					if (empty($sliNews)):
+						//
+					else :
+						$n = new ArrayIterator($sliNews);
+						while ($n->valid()):
+					?>
+					<div class="col-sm-12">
+						<div class="col-sm-6 box-title-news">
+							<h2 class="entry-title">
+								<a href="<?php echo base_url(); ?>news/local/details/<?php echo $n->current()->id; ?>/<?php echo $this->general->normalizeURL($n->current()->new_title); ?>"
+								 style="font-size: 40px;">
+									<p class="title-news">
+										<?php echo $n->current()->new_title; ?>
+									</p>
+									<p class="subtitle-news">
+										<?php echo $n->current()->new_subtitle; ?>
+									</p>
+								</a>
+							</h2>
+						</div>
+						<div class="col-sm-6">
+							<div class="post feature-post">
+								<div class="entry-header">
+									<div class="entry-thumbnail">
+										<a href="<?php echo base_url(); ?>news/local/details/<?php echo $n->current()->id; ?>/<?php echo $this->general->normalizeURL($n->current()->new_title); ?>">
+											<img src="<?php echo base_url(); ?>assets/public/images/news/<?php echo $n->current()->new_img ?>"
+											 class="h-350" alt="<?php echo $n->current()->new_title; ?>" />
+										</a>
+									</div>
+									<!--<div class="catagory politics">
 									<a href="#">Local</a>
 								</div>-->
-							</div>
-							<div class="post-content">
-								<div class="entry-meta">
-									<ul class="list-inline">
-										<li class="publish-date">
-											<i class="fa fa-calendar"></i>
-											<?php 
-                                                                $date = explode('-', $n->current()->new_date_time);
-                                                                echo $date[1]. ' / '. $date[2] .' / '.$date[0];
-                                                            ?>
-										</li>
-									</ul>
 								</div>
+								<div class="post-content">
+									<div class="entry-meta">
+										<ul class="list-inline">
+											<li class="publish-date">
+												<i class="fa fa-calendar"></i>
+												<?php 
+                                                $date = explode('-', $n->current()->new_date_time);
+                                                echo $date[1]. ' / '. $date[2] .' / '.$date[0];
+                                            ?>
+											</li>
+										</ul>
+									</div>
 
+								</div>
 							</div>
-						</div>
-						<!--/post-->
+							<!--/post-->
+						</div>						
 					</div>
-					<!-- Slideshow -->
-				</div>
-				<?php
+					<?php
                     $n->next();
-                	endwhile;
-                endif
-                ?>
+						endwhile;
+					endif
+					?>
+				</div>
+				<!-- Slideshow -->
 			</div>
 		</div>
 		<div class="container">
@@ -118,18 +119,6 @@
 		</div>
 
 		<div class="container">
-			<!--<div id="breaking-news">
-				<span>Alertas</span>
-				<div class="breaking-news-scroll">
-					<ul>
-						<li>
-							<i class="fa fa-angle-double-right"></i>
-							<a href="#" title=""></a>
-						</li>
-					</ul>
-				</div>
-			</div>-->
-			<!--#breaking-news-->
 			<div class="section">
 				<div class="row">
 					<!--<div class="site-content col-sm-8">
@@ -144,16 +133,15 @@
 							</div>
 						</div>
 					</div>-->
-
 					<div class="site-content col-md-9">
 						<div class="row">
 							<?php 
-								if (empty($newsEua)) :
-									//
-								else :
-								$n = new ArrayIterator($newsEua);
-								while ($n->valid()):
-							?>
+                                if (empty($newsEua)) :
+                                    //
+                                else :
+                                $n = new ArrayIterator($newsEua);
+                                while ($n->valid()):
+                            ?>
 							<div class="col-sm-8">
 								<div class="post feature-post">
 									<div class="entry-header">
@@ -165,7 +153,8 @@
 										</div>
 										<div class="catagory technology">
 											<span>
-												<a href="<?php echo base_url(); ?>news/eua/details/<?php echo $n->current()->id; ?>/<?php echo $this->general->normalizeURL($n->current()->new_title); ?>">Estados Unidos</a>
+												<a href="<?php echo base_url(); ?>news/eua/details/<?php echo $n->current()->id; ?>/<?php echo $this->general->normalizeURL($n->current()->new_title); ?>">Estados
+													Unidos</a>
 											</span>
 										</div>
 									</div>
@@ -191,11 +180,10 @@
 								<!--/post-->
 							</div>
 							<?php
-                      $n->next();
-                    endwhile;
-                  endif
-                  ?>
-
+                                $n->next();
+                                endwhile;
+                            endif
+                            ?>
 							<div class="col-sm-4">
 								<div class="post feature-post">
 									<?php
@@ -307,8 +295,7 @@
 										<div class="entry-thumbnail">
 											<a href="<?php echo base_url(); ?>news/entertainment/details/<?php echo $n->current()->id; ?>/<?php echo $this->general->normalizeURL($n->current()->new_title); ?>">
 												<img class="img-responsive" src="<?php echo base_url(); ?>assets/public/images/news/<?php echo $n->current()->new_img ?>"
-												 alt="<?php echo $n->current()->new_title; ?>" style="width: 262px; height: 219px;"
-												/>
+												 alt="<?php echo $n->current()->new_title; ?>" style="width: 262px; height: 219px;" />
 											</a>
 										</div>
 										<div class="catagory entertainment">
@@ -354,8 +341,7 @@
 										<div class="entry-thumbnail">
 											<a href="<?php echo base_url(); ?>news/policy/details/<?php echo $n->current()->id; ?>/<?php echo $this->general->normalizeURL($n->current()->new_title); ?>">
 												<img class="img-responsive" src="<?php echo base_url(); ?>assets/public/images/news/<?php echo $n->current()->new_img ?>"
-												 alt="<?php echo $n->current()->new_title; ?>" style="width: 262px; height: 219px;"
-												/>
+												 alt="<?php echo $n->current()->new_title; ?>" style="width: 262px; height: 219px;" />
 											</a>
 										</div>
 										<div class="catagory politics">
@@ -505,8 +491,7 @@
 													<div class="entry-thumbnail">
 														<a href="<?php echo base_url(); ?>news/world/details/<?php echo $n->current()->id; ?>/<?php echo $this->general->normalizeURL($n->current()->new_title); ?>">
 															<img class="img-responsive" src="<?php echo base_url(); ?>assets/public/images/news/<?php echo $n->current()->new_img; ?>"
-															 alt="<?php echo $n->current()->new_title; ?>" style="width: 555px; height: 317px;"
-															/>
+															 alt="<?php echo $n->current()->new_title; ?>" style="width: 555px; height: 317px;" />
 														</a>
 													</div>
 												</div>
@@ -585,8 +570,7 @@
 															<div class="entry-thumbnail">
 																<a href="<?php echo base_url(); ?>news/technology/details/<?php echo $n->current()->id; ?>/<?php echo $this->general->normalizeURL($n->current()->new_title); ?>">
 																	<img class="img-responsive" src="<?php echo base_url(); ?>assets/public/images/news/<?php echo $n->current()->new_img; ?>"
-																	 alt="<?php echo $n->current()->new_title; ?>" style="width: 360px; height: 202px;"
-																	/>
+																	 alt="<?php echo $n->current()->new_title; ?>" style="width: 360px; height: 202px;" />
 																</a>
 															</div>
 														</div>
@@ -634,8 +618,7 @@
 															<div class="entry-thumbnail">
 																<a href="<?php echo base_url(); ?>news/technology/details/<?php echo $n->current()->id; ?>/<?php echo $this->general->normalizeURL($n->current()->new_title); ?>">
 																	<img class="img-responsive" src="<?php echo base_url(); ?>assets/public/images/news/<?php echo $n->current()->new_img; ?>"
-																	 alt="<?php echo $n->current()->new_title; ?>" style="width: 165px; height: 95px;"
-																	/>
+																	 alt="<?php echo $n->current()->new_title; ?>" style="width: 165px; height: 95px;" />
 																</a>
 															</div>
 														</div>
@@ -688,6 +671,9 @@
 											<div class="cat-menu">
 												<a href="<?php echo base_url(); ?>news/sport">Ver Todos</a>
 											</div>
+											<iframe frameborder="0" scrolling="no" width="270" height="548" src="https://www.fctables.com/england/premier-league/iframe/?type=table&lang_id=12&country=5&template=10&team=&timezone=America/Sao_Paulo&time=24&po=1&ma=0&wi=0&dr=0&los=0&gf=0&ga=0&gd=0&pts=1&ng=0&form=0&width=320&height=700&font=Verdana&fs=12&lh=22&bg=FFFFFF&fc=333333&logo=1&tlink=1&ths=1&thb=1&thba=FFFFFF&thc=000000&bc=dddddd&hob=f5f5f5&hobc=ebe7e7&lc=333333&sh=1&hfb=1&hbc=3bafda&hfc=FFFFFF"></iframe>
+											<div style="text-align:center;"></div>
+											<a href="https://www.fctables.com/england/premier-league/" rel="nofollow">FcTables.com</a>
 											<?php 
                                               if (empty($lastSport)) :
                                                 //
@@ -700,8 +686,7 @@
 													<div class="entry-thumbnail">
 														<a href="<?php echo base_url(); ?>news/sport/details/<?php echo $n->current()->id; ?>/<?php echo $this->general->normalizeURL($n->current()->new_title); ?>">
 															<img class="img-responsive" src="<?php echo base_url(); ?>assets/public/images/news/<?php echo $n->current()->new_img; ?>"
-															 alt="<?php echo $n->current()->new_title; ?>" style="width: 262px; height: 152px;"
-															/>
+															 alt="<?php echo $n->current()->new_title; ?>" style="width: 262px; height: 152px;" />
 														</a>
 													</div>
 												</div>
@@ -756,8 +741,7 @@
 													<div class="entry-thumbnail">
 														<a href="<?php echo base_url(); ?>forhome/garden/details/<?php echo $fh->current()->id; ?>/<?php echo $this->general->normalizeURL($fh->current()->fh_name); ?>">
 															<img class="img-responsive" src="<?php echo base_url(); ?>assets/public/images/forhome/<?php echo $fh->current()->fh_img; ?>"
-															 alt="<?php echo $fh->current()->fh_name; ?>" style="width: 262px; height: 152px;"
-															/>
+															 alt="<?php echo $fh->current()->fh_name; ?>" style="width: 262px; height: 152px;" />
 														</a>
 													</div>
 												</div>
@@ -779,7 +763,8 @@
 											<!--<div class="stock-exchange text-center">
 												<div class="stock-exchange-zone">
 													<a href="#">
-														<img class="img-responsive" src="<?php echo base_url(); ?>assets/public/images/gallery/stock.png" alt="" />
+														<img class="img-responsive" src="<?php echo base_url(); ?>assets/public/images/gallery/stock.png"
+											alt="" />
 											</a>
 										</div>
 										<div class="stock-header">
@@ -880,60 +865,39 @@
 								</div>
 							</div>
 						</div>
+						<?php 
+                            if (empty($service)) :
+                                //
+                            else :
+                                $s = new ArrayIterator($service);
+                            while ($s->valid()) :
+                        ?>
 						<div class="col-md-6">
 							<div class="post medium-post">
 								<div class="entry-header">
 									<div class="entry-thumbnail">
-										<a href="#">
-											<img class="img-responsive" src="<?php echo base_url(); ?>assets/public/images/post/lifestyle/3.jpg"
-											 alt="" />
+										<a href="<?php echo base_url(); ?>services/<?php echo $s->current()->sc_url; ?>/details/<?php echo $s->current()->id_service; ?>/<?php echo $this->general->normalizeURL($s->current()->serv_name); ?>">
+											<img class="img-responsive" src="<?php echo base_url(); ?>assets/public/images/services/<?php echo $s->current()->serv_img; ?>" alt="" />
 										</a>
 									</div>
 								</div>
-								<div class="post-content">
-									<div class="entry-meta">
-										<ul class="list-inline">
-											<li class="publish-date">
-												<a href="#">
-													<i class="fa fa-calendar"></i> 08 / 16 / 2018 </a>
-											</li>
-										</ul>
-									</div>
+								<div class="post-content">								
 									<h2 class="entry-title">
-										<a href="#">How the stars celebrated Christmas on Instagram</a>
+										<a href="<?php echo base_url(); ?>services/<?php echo $s->current()->sc_url; ?>/details/<?php echo $s->current()->id_service; ?>/<?php echo $this->general->normalizeURL($s->current()->serv_name); ?>">
+											<?php echo $s->current()->serv_name; ?>
+										</a>
 									</h2>
 								</div>
 							</div>
 							<!--/post-->
 						</div>
-						<div class="col-md-6">
-							<div class="post medium-post">
-								<div class="entry-header">
-									<div class="entry-thumbnail">
-										<a href="#">
-											<img class="img-responsive" src="<?php echo base_url(); ?>assets/public/images/post/lifestyle/3.jpg"
-											 alt="" />
-										</a>
-									</div>
-								</div>
-								<div class="post-content">
-									<div class="entry-meta">
-										<ul class="list-inline">
-											<li class="publish-date">
-												<a href="#">
-													<i class="fa fa-calendar"></i> 08 / 16 / 2018 </a>
-											</li>
-										</ul>
-									</div>
-									<h2 class="entry-title">
-										<a href="#">How the stars celebrated Christmas on Instagram</a>
-									</h2>
-								</div>
-							</div>
-							<!--/post-->
-						</div>
+						<?php
+							$s->next();
+							endwhile;
+						endif;
+						?>
 					</div>
-					<!--/.lifestyle -->
+					<!--/.services -->
 				</div>
 			</div>
 
@@ -1060,7 +1024,8 @@
 		<h1>Não perca nossas notícias</h1>
 		<h2>Se increva em nossa Newsletter</h2>
 		<a href="#close" class="sb-close-btn">
-			<img class="<img-responsive></img-responsive>" src="<?php echo base_url(); ?>assets/public/images/others/close-button.png" alt="" />
+			<img class="<img-responsive></img-responsive>" src="<?php echo base_url(); ?>assets/public/images/others/close-button.png"
+	alt="" />
 	</a>
 	<form action="#" method="post" id="popup-subscribe-form" name="subscribe-form">
 		<div class="input-group">

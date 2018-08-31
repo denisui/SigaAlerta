@@ -41,8 +41,8 @@ class Model_Services extends CI_Model {
     }
 
     /**
-     * getNewsCategory()
-     * Returns the news by categories
+     * _getCategory()
+     * Returns by categories
      * @param boolean $category
      * @param boolean $order
      * @param boolean $sort
@@ -50,7 +50,8 @@ class Model_Services extends CI_Model {
      * @param boolean $offset
      */
     public function _getCategory($category, $sort = 'id', $order = 'desc', $limit = NULL, $start = NULL) {
-        $this->db->from($this->table);        
+        $sql = "SELECT T1.id AS id_service, T1.serv_name, T1.serv_description, T1.serv_address, T1.serv_img, T1.serv_category, T2.id AS id_service_category, T2.sc_title, T2.sc_url FROM service AS T1
+        INNER JOIN service_category AS T2 WHERE T1.serv_category = '".$category."' AND T2.sc_title = '".$category."'";
         if ($limit != '' && $start != '') {
             $this->db->limit($limit, $start);
         }
@@ -58,7 +59,7 @@ class Model_Services extends CI_Model {
         if ($category != '') {
             $this->db->where('serv_category', $category);
         }
-        $this->query = $this->db->get();
+        $this->query = $this->db->query($sql);
         if ($this->query->num_rows() > 0) {
             return $this->query->result();
         } else {
@@ -66,8 +67,10 @@ class Model_Services extends CI_Model {
         }
     }
 
+  
+
     /**
-     * getNewRand()
+     * _getNewRand()
      * Returns the random news
      * @param boolean $limit
      * @param boolean $start
@@ -87,62 +90,7 @@ class Model_Services extends CI_Model {
         endif;
     }
 
-    /**
-     * getAdvocateAll()
-     * @param type $sort = Campo
-     * @param type $order
-     * @param type $limit
-     * @param type $offset
-     * @retorn todos os Registros
-     * recupera as postagens mais recentes
-     * Modo de uso:
-     * Repassar o qtd que será mostrada (limit) e o inicio (offset)
-     * $this->MODEL_EXEMPLO->getLocalAll('id', 'desc', '6', '0');
-     *
-     */
-    public function getAdvocateAll($sort = 'id', $order = 'desc', $limit = NULL, $offset = NULL) {
-        $this->db->order_by($sort, $order);
-        if ($limit) :
-            $this->db->limit($limit, $offset);
-        endif;
-
-        $query = $this->db->get($this->table);
-
-        if ($query->num_rows() > 0) {
-            return $query->result();
-        } else {
-            return null;
-        }
-    }
-
-    /**
-     * getAdvocateAll()
-     * @param type $sort = Campo
-     * @param type $order
-     * @param type $limit
-     * @param type $offset
-     * @retorn todos os Registros
-     * recupera as postagens mais recentes
-     * Modo de uso:
-     * Repassar o qtd que será mostrada (limit) e o inicio (offset)
-     * $this->MODEL_EXEMPLO->getLocalAll('id', 'desc', '6', '0');
-     *
-     */
-    public function getService($sort = 'id', $order = 'desc', $limit = NULL, $offset = NULL) {
-        $this->db->order_by($sort, $order);
-        if ($limit) :
-            $this->db->limit($limit, $offset);
-        endif;
-
-        $query = $this->db->get($this->table);
-
-        if ($query->num_rows() > 0) {
-            return $query->result();
-        } else {
-            return null;
-        }
-    }
-
+    
     /** @retorna o total de linhas da tabela */
     public function countAll($post = NULL) {
         if (empty($post)) :

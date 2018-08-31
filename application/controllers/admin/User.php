@@ -62,20 +62,22 @@ class User extends CI_Controller {
      * executa a inserção dos dados
      */
     public function setInsert() {
-        $this->name = $this->input->post('edtName');
-        $this->email = $this->input->post('edtEmail');
-        $this->login = $this->input->post('edtLogin');
-        $this->pass = base64_encode($this->input->post('edtPass'));
+        $this->name = $this->input->post("edtName");
+        $this->email = $this->input->post("edtEmail");
+        $this->login = $this->input->post("edtLogin");
+        $this->pass = $this->input->post("edtPass");
         $this->_arrData = array(
             "user_name" => $this->name,
             "user_email" => $this->email,
             "user_login" => $this->login,
             "user_pass" => $this->pass
         );
+
         $this->_return = $this->Model_User->_insert($this->_arrData);
+
         if ($this->_return) :
             echo 'TRUE';
-        else :
+        else:
             echo 'FALSE';
         endif;
     }

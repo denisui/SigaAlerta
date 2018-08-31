@@ -59,7 +59,7 @@ class Advocate extends CI_Controller {
         //$offset = ($this->uri->segment(3)) ? $this->uri->segment(3) : 0;
         $offset = $this->uri->segment(4, 0);
 
-        $data['data'] = $this->Model_Services->_getCategory('Advogado','id', 'desc', $config['per_page'], $offset);
+        $data['data'] = $this->Model_Services->_getCategory('advogado','id', 'desc', $config['per_page'], $offset);
 
         $this->load->view('public/services/advocate/view', $data);
     }

@@ -34,7 +34,7 @@
                                 </div>
                                 <div class="box-body">
                                     <div class="row">                                        
-                                        <form id="frm-user-insert">
+                                        <form id="frm-user-insert" method="post">
                                             <div class="col-md-6">
                                                 <div class="form-group">
                                                     <label>Nome</label>

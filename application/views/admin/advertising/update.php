@@ -91,10 +91,11 @@
                                                 <div class="form-group">
                                                     <label>Tipo</label>
                                                     <br>
-                                                    <select name="cmbType" class="form-control select2" id="cmd-type" style="width: 100%;" required> 
+                                                    <select name="cmbSize" class="form-control select2" id="cmd-size" style="width: 100%;" required> 
                                                         <option value="">Selecione...</option>
-                                                        <option value="Horizontal">Horizontal (848x128)</option>
-                                                        <option value="Vertical">Vertical (262x525)</option>
+                                                        <option value="1140x87">Horizontal (1140x87)</option>
+                                                        <option value="555x88">Horizontal (555x88)</option>
+                                                        <option value="263x293">Vertical (263x293)</option>
                                                     </select>
                                                 </div>
                                             </div>
@@ -148,7 +149,7 @@
                     language: 'pt-BR',
                     allowedFileExtensions: ['jpg', 'png', 'gif'],
                     initialPreview: [
-                        "<?php echo base_url() . 'assets/public/img/advertising/' . $a->current()->ads_img; ?>"
+                        "<?php echo base_url() . 'assets/public/images/advertising/' . $a->current()->ads_img; ?>"
                     ],
                     initialPreviewAsData: true,
                     overwriteInitial: true,
@@ -160,7 +161,7 @@
                     showUpload: false
                 });                            
                 $("#cmd-page").val("<?php echo $a->current()->ads_page; ?>");
-                $("#cmd-type").val("<?php echo $a->current()->ads_type; ?>");
+                $("#cmd-size").val("<?php echo $a->current()->ads_size; ?>");
                 //Initialize Select2 Elements
                 $('.select2').select2();
             });

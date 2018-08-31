@@ -129,7 +129,8 @@
                             "sNext": "Próximo",
                             "sLast": "Último"
                         }
-                    }
+                    },
+                    "aaSorting": [0,'desc']
                 });
             });
         </script>        

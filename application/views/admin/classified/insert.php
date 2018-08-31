@@ -61,7 +61,7 @@
                                                                 <?php
                                                             else :
                                                                 ?>
-                                                                <option selected disabled>Selecione...</option>
+                                                                <option value="" selected disabled>Selecione...</option>
                                                                 <?php
                                                                 $c = new ArrayIterator($category);
                                                                 while ($c->valid()) :
@@ -79,7 +79,7 @@
                                                 <div class="form-group">
                                                     <label>Tipo da Categoria</label>
                                                     <br>
-                                                    <select name="cmbTypeCategory" class="form-control select2" id="cmb-type-category" style="width: 100%;" required>
+                                                    <select name="cmbTypeCategory" class="form-control select2" id="cmb-type-category" style="width: 100%;">
                                                         <option selected disabled>Selecione...</option>
                                                         <option value="Carro">Carro</option>
                                                         <option value="Moto">Moto</option>                                                        
@@ -90,7 +90,7 @@
                                                 <div class="form-group">
                                                     <label>Subcategoria</label>
                                                     <br>
-                                                    <select name="cmbSubCategory" class="form-control select2" style="width: 100%;" required>
+                                                    <select name="cmbSubCategory" class="form-control select2" style="width: 100%;">
                                                         <option selected disabled>Selecione...</option>                                                        
                                                         <option value="Venda">Venda</option>
                                                         <option value="Locação">Locação</option>

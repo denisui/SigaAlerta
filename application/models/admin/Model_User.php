@@ -56,7 +56,7 @@ class Model_User extends CI_Model {
      */
     public function _update($id, $data) {
         $this->db->where('id', $id);
-        $this->query = $this->db->update("$this->table", $data);
+        $this->query = $this->db->update($this->table, $data);
         if ($this->query) :
             return true;
         endif;

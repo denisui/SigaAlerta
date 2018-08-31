@@ -176,4 +176,27 @@ class Model_Home extends CI_Model {
         }
     }
 
+      /**
+     * _getCategoryServiceAll()
+     * Returns by categories
+     * @param boolean $category
+     * @param boolean $order
+     * @param boolean $sort
+     * @param boolean $limit
+     * @param boolean $offset
+     */
+    public function _getService($sort = 'id', $order = 'desc', $limit = NULL, $start = NULL) {
+        $sql = "SELECT T1.id AS id_service, T1.serv_name, T1.serv_description, T1.serv_address, T1.serv_img, T1.serv_category, T2.sc_title, T2.sc_url FROM service AS T1
+        INNER JOIN service_category AS T2 WHERE T1.serv_category = T2.sc_title";
+        if ($limit != '' && $start != '') {
+            $this->db->limit($limit, $start);
+        }
+        $this->query = $this->db->query($sql);
+        if ($this->query->num_rows() > 0) {
+            return $this->query->result();
+        } else {
+            return null;
+        }
+    }
+
 }

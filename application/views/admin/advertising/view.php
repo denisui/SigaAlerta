@@ -52,7 +52,7 @@
                                                 <th>Cod.</th>
                                                 <th style="width: 25%;">Título</th>
                                                 <th style="width: 15%;">Página</th>
-                                                <th style="width: 25%;">Tipo</th>
+                                                <th style="width: 25%;">Dimensão</th>
                                                 <th>Imagem</th>
                                                 <th>Ação</th>
                                             </tr>
@@ -76,10 +76,10 @@
                                                     <?php echo $a->current()->ads_page; ?>
                                                 </td>
                                                 <td>
-                                                    <?php echo $a->current()->ads_type; ?>
+                                                    <?php echo $a->current()->ads_size; ?>
                                                 </td>
                                                 <td>
-                                                    <img src="<?php echo base_url() ?>assets/public/img/advertising/<?php echo $a->current()->ads_img; ?>" width="50" height="50">
+                                                    <img src="<?php echo base_url() ?>assets/public/images/advertising/<?php echo $a->current()->ads_img; ?>" width="50" height="50">
                                                 </td>
                                                 <td>
                                                     <a href="<?php echo base_url(); ?>admin/advertising/update/<?php echo $a->current()->id; ?>" class="btn btn-sm bg-yellow" title="Edit"><i class="fa fa-pen"></i></a>

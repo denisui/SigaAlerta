@@ -87,14 +87,14 @@
 									<div class="post medium-post">
 										<div class="entry-header">
 											<div class="entry-thumbnail">
-												<a href="<?php echo base_url(); ?>services/academy/details/<?php echo $n->current()->id; ?>/<?php echo $this->general->normalizeURL($n->current()->serv_name); ?>">
+												<a href="<?php echo base_url(); ?>services/academy/details/<?php echo $n->current()->id_service; ?>/<?php echo $this->general->normalizeURL($n->current()->serv_name); ?>">
 													<img class="img-responsive h-150" src="<?php echo base_url(); ?>assets/public/images/services/<?php echo $n->current()->serv_img ?>" alt="" />
 												</a>
 											</div>
 										</div>
 										<div class="post-content">											
 											<h2 class="entry-title">
-												<a href="<?php echo base_url(); ?>services/academy/details/<?php echo $n->current()->id; ?>/<?php echo $this->general->normalizeURL($n->current()->serv_name); ?>">
+												<a href="<?php echo base_url(); ?>services/academy/details/<?php echo $n->current()->id_service; ?>/<?php echo $this->general->normalizeURL($n->current()->serv_name); ?>">
 													<?php echo $n->current()->serv_name ?>
 												</a>
 											</h2>

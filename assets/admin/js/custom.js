@@ -5,7 +5,7 @@
  -----------------------------------------*/
 
 //BASEURL = 'https://www.sigalerta.com/';
-BASEURL = 'http://localhost:8080/sigalerta/';
+BASEURL = 'http://localhost:8080/SigaAlerta/';
 //BASEURL = 'https://simonsautobody.com/homologation/sigalerta/';
 
 /**
@@ -72,21 +72,20 @@ $('#frm-login').validator().on('submit', function(e) {
 /**
  * FORM INSERIR USUARIO
  */
-$('#frm-user-insert').validator().on('submit', function(e) {
+$("#frm-user-insert").validator().on('submit', function(e) {
     if (e.isDefaultPrevented()) {
-        //console.log('Validou!!');
+        //
     } else {
-        var dados = $("#frm-user-insert").serialize();
-        console.log(dados);
+        var dados = $(this).serialize();
+        //console.log(dados);
         $.ajax({
-            type: "GET",
+            type: "POST",
             url: BASEURL + 'admin/user/setInsert',
             data: dados,
             contentType: false,
             cache: false,
             processData: false,
-            //async: false, //blocks window close
-            beforeSend: function(dados) {
+            beforeSend: function() {
                 $.blockUI({
                     message: '<h3>processando...</h3>',
                     css: {
@@ -99,9 +98,9 @@ $('#frm-user-insert').validator().on('submit', function(e) {
                         color: '#fff'
                     }
                 });
-                console.log(dados);
             },
             success: function(data) {
+                //console.log(data);
                 if (data === 'TRUE') {
                     $.unblockUI();
                     swal("", "Registros cadastrados com sucesso!", "success");
@@ -115,7 +114,7 @@ $('#frm-user-insert').validator().on('submit', function(e) {
             },
             error: function(data) {
                 $.unblockUI();
-                //console.log(data);
+                console.error(data);
                 swal("Atenção", "Erro ao atualizar, consulte o administrador do sistema!", "warning");
             }
         });
@@ -124,7 +123,6 @@ $('#frm-user-insert').validator().on('submit', function(e) {
         e.preventDefault();
     }
 });
-
 
 /**
  * FORM EDITAR USUARIO
