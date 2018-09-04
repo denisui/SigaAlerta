@@ -9,6 +9,13 @@
 		padding:10px 12px;
 		line-height:32px;
 	}
+
+	.owl-controls .owl-pagination {
+		float: right;
+		margin-top: -40px;
+		position: relative;
+		padding-right: 40px;
+	}
 }
 
 /* md */

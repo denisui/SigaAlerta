@@ -490,8 +490,8 @@
 												<div class="entry-header">
 													<div class="entry-thumbnail">
 														<a href="<?php echo base_url(); ?>news/world/details/<?php echo $n->current()->id; ?>/<?php echo $this->general->normalizeURL($n->current()->new_title); ?>">
-															<img class="img-responsive" src="<?php echo base_url(); ?>assets/public/images/news/<?php echo $n->current()->new_img; ?>"
-															 alt="<?php echo $n->current()->new_title; ?>" style="width: 555px; height: 317px;" />
+															<img class="h-317" src="<?php echo base_url(); ?>assets/public/images/news/<?php echo $n->current()->new_img; ?>"
+															 alt="<?php echo $n->current()->new_title; ?>" />
 														</a>
 													</div>
 												</div>

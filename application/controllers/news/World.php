@@ -1,14 +1,16 @@
 <?php
 defined('BASEPATH') or exit('No direct script access allowed');
 
-class World extends CI_Controller {
-    
-    public function __construct() {
+class World extends CI_Controller
+{
+    public function __construct()
+    {
         parent::__construct();
         $this->load->model('public/Model_News');
     }
 
-    public function index() {
+    public function index()
+    {
         $data['worldNewsMenu'] = $this->Model_News->getNewsCategory('Mundo', 'id', 'desc', '3', '0');
         $data['techNewsMenu'] = $this->Model_News->getNewsCategory('Tecnologia', 'id', 'desc', '3', '0');
 
@@ -25,8 +27,8 @@ class World extends CI_Controller {
         $config["total_rows"] = $this->row;
         $config["full_tag_open"] = "<ul class='pagination text-center'>";
         $config["full_tag_close"] = "</ul>";
-        $config["first_link"] = FALSE;
-        $config["last_link"] = FALSE;
+        $config["first_link"] = false;
+        $config["last_link"] = false;
         $config["first_tag_open"] = "<li>";
         $config["first_tag_close"] = "</li>";
         $config["prev_link"] = "<i class='fa fa-angle-left' aria-hidden='true'></i>";
@@ -58,13 +60,14 @@ class World extends CI_Controller {
         //$offset = ($this->uri->segment(3)) ? $this->uri->segment(3) : 0;
         $offset = $this->uri->segment(4, 0);
 
-        $data['news'] = $this->Model_News->getNewsCategory('Mundo','id', 'asc', $config['per_page'], $offset);
+        $data['news'] = $this->Model_News->getNewsCategory('Mundo', 'id', 'desc', $config['per_page'], $offset);
 
         $this->load->view('public/news/world/view', $data);
     }
 
-    public function details($id = NULL) {
-        if (empty($id)) {            
+    public function details($id = null)
+    {
+        if (empty($id)) {
             redirect(base_url('news/world'));
         } else {
             $data['worldNewsMenu'] = $this->Model_News->getNewsCategory('Mundo', 'id', 'desc', '3', '0');
@@ -73,6 +76,5 @@ class World extends CI_Controller {
             $data['older_news'] = $this->Model_News->_getNewRand('6', '0');
             $this->load->view('public/news/world/details', $data);
         }
-        
-    }   
+    }
 }
