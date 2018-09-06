@@ -91,7 +91,7 @@
 												<?php 
                                                 $date = explode('-', $n->current()->new_date_time);
                                                 echo $date[1]. ' / '. $date[2] .' / '.$date[0];
-                                            ?>
+                                            	?>
 											</li>
 										</ul>
 									</div>
@@ -1000,13 +1000,6 @@
 				</div>
 				<!--/.health-section -->
 			</div>
-
-
-
-
-
-
-
 
 		</div>
 	</div>

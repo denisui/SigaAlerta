@@ -82,7 +82,7 @@ class Classified extends CI_Controller {
 
             // Pasta onde o arquivo vai ser salvo
             //$_UP['pasta'] = $_SERVER['DOCUMENT_ROOT'] . '/assets/public/images/classified/';
-            $_UP['pasta'] = $_SERVER['DOCUMENT_ROOT'] . '/sigalerta/assets/public/images/classified/';
+            $_UP['pasta'] = $_SERVER['DOCUMENT_ROOT'] . '/SigaAlerta/assets/public/images/classified/';
             //$_UP['pasta'] = $_SERVER['DOCUMENT_ROOT'] . '/homologation/sigalerta/assets/public/images/classified/';
 
             // Renomeia o arquivo? (Se true, o arquivo será salvo como .jpg e um nome único)
@@ -182,7 +182,7 @@ class Classified extends CI_Controller {
 
             // Pasta onde o arquivo vai ser salvo
             //$_UP['pasta'] = $_SERVER['DOCUMENT_ROOT'] . '/assets/public/images/classified/';
-            $_UP['pasta'] = $_SERVER['DOCUMENT_ROOT'] . '/sigalerta/assets/public/images/classified/';
+            $_UP['pasta'] = $_SERVER['DOCUMENT_ROOT'] . '/SigaAlerta/assets/public/images/classified/';
             //$_UP['pasta'] = $_SERVER['DOCUMENT_ROOT'] . '/homologation/sigalerta/assets/public/images/classified/';
 
             // Renomeia o arquivo? (Se true, o arquivo será salvo como .jpg e um nome único)

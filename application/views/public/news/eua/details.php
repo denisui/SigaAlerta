@@ -99,7 +99,7 @@
 					<div class="widget" style="margin-bottom: 0;">
 						<div class="add">
 							<a href="#">
-								<img class="img-responsive" src="<?php echo base_url(); ?>assets/public/images/post/add/add2.jpg"
+								<img class="img-responsive center-block" src="<?php echo base_url(); ?>assets/public/images/post/add/add2.jpg"
 								 alt="" />
 							</a>
 						</div>

@@ -47,13 +47,19 @@
                                 <div class="box-body">
                                     <div class="row">
                                         <form id="frm-classified-update">
-                                            <div class="col-md-12">
+                                            <div class="col-md-4">
                                                 <div class="form-group">
                                                     <label>Nome</label>
                                                     <input type="text" name="edtName" value="<?php echo $cla->current()->cla_name; ?>" class="form-control" maxlength="200" required>
                                                     <input type="hidden" name="edtID" value="<?php echo $cla->current()->id; ?>">
                                                 </div>
-                                            </div>                      
+                                            </div>       
+                                            <div class="col-md-4">
+                                                <div class="form-group">
+                                                    <label>Endereço</label>
+                                                    <input type="text" name="edtAddress" class="form-control" maxlength="200" value="<?php echo $cla->current()->cla_address; ?>" required>
+                                                </div>
+                                            </div>                
                                             <div class="col-md-4">
                                                 <div class="form-group">
                                                     <label>Categoria</label>
@@ -80,34 +86,25 @@
                                                     </select>
                                                 </div>
                                             </div>
-                                            <div class="col-md-4 col-type-category">
-                                                <div class="form-group">
-                                                    <label>Tipo da Categoria</label>
-                                                    <br>
-                                                    <select name="cmbTypeCategory" class="form-control select2" id="cmb-type-category" style="width: 100%;" >
-                                                        <option selected disabled>Selecione...</option>
-                                                        <option value="Carro">Carro</option>
-                                                        <option value="Moto">Moto</option>                                                        
-                                                    </select>
-                                                </div>
-                                            </div>
                                             <div class="col-md-4">
                                                 <div class="form-group">
                                                     <label>Subcategoria</label>
                                                     <br>
-                                                    <select name="cmbSubCategory" class="form-control select2" id="cmb-sub-category" style="width: 100%;">
-                                                        <option selected disabled>Selecione...</option>                                                        
+                                                    <select name="cmbSubCategory" class="form-control select2" id="cmb-sub-category" style="width: 100%;">                                                        
+                                                        <option value="" selected disabled>Selecione...</option>
                                                         <option value="Venda">Venda</option>
                                                         <option value="Locação">Locação</option>
+                                                        <option value="Limpeza">Limpeza</option>
+                                                        <option value="Construção">Construção</option>
+                                                        <option value="Pintura">Pintura</option>
+                                                        <option value="Entregador">Entregador</option>
+                                                        <option value="Motorista">Motorista</option>
+                                                        <option value="Babysitter">Babysitter</option>
+                                                        <option value="Escritório">Escritório</option>
+                                                        <option value="Saúde">Saúde</option>
                                                     </select>
                                                 </div>
-                                            </div>
-                                            <div class="col-md-4">
-                                                <div class="form-group">
-                                                    <label>Endereço</label>
-                                                    <input type="text" name="edtAddress" class="form-control" maxlength="200" value="<?php echo $cla->current()->cla_address; ?>" required>
-                                                </div>
-                                            </div>  
+                                            </div>                                             
                                             <div class="col-md-4">
                                                 <div class="form-group">
                                                     <label>Telefone</label>

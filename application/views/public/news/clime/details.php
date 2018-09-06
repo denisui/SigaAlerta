@@ -125,7 +125,7 @@
                                                 ?>
 												<div class="entry-header">
 													<div class="entry-thumbnail">
-														<img class="img-responsive" src="<?php echo base_url(); ?>assets/public/images/news/<?php echo $n->current()->new_img; ?>" alt="" />
+														<img class="img-responsive center-block" src="<?php echo base_url(); ?>assets/public/images/news/<?php echo $n->current()->new_img; ?>" alt="" />
 													</div>
 												</div>
 												<div class="post-content">												

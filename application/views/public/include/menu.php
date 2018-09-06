@@ -241,6 +241,9 @@
 									<li>
 										<a href="<?php echo base_url(); ?>classified/divers">Diversos</a>
 									</li>									
+									<li>
+										<a href="<?php echo base_url(); ?>classified/employment">Empregos</a>
+									</li>									
 								</ul>
 							</li>							
 						</ul>

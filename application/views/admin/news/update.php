@@ -50,8 +50,14 @@
                                             <div class="col-md-6">
                                                 <div class="form-group">
                                                     <label>Título</label>
-                                                    <input type="text" name="edtTitle" class="form-control" maxlength="200" value="<?php echo $n->current()->new_title; ?>" required>
+                                                    <input type="text" name="edtTitle" class="form-control" maxlength="60" value="<?php echo $n->current()->new_title; ?>" required>
                                                     <input type="hidden" name="edtID" value="<?php echo $n->current()->id; ?>">
+                                                </div>
+                                            </div>
+                                            <div class="col-md-6">
+                                                <div class="form-group">
+                                                    <label>Subtítulo</label>
+                                                    <input type="text" name="edtSubtitle" class="form-control" maxlength="80" value="<?php echo $n->current()->new_title; ?>" required>
                                                 </div>
                                             </div>
                                             <div class="col-md-6">

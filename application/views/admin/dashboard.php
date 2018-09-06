@@ -25,8 +25,8 @@
                 <!-- Main content -->
                 <section class="content">
                     <div class="row">
-                        <div class="col-md-12">
-                            <img src="<?php echo base_url(); ?>assets/admin/img/beta.png" class="center-block" style="margin-top: 50px;" alt="">
+                        <div class="col-md-6">                            
+                            
                         </div>
                     </div>
                 </section>
@@ -46,6 +46,14 @@
                 $(".mnmn-dash").addClass("active");                
             });
         </script>        
-        <script src="<?php echo base_url(); ?>assets/admin/js/custom.js"></script>
+        <script src="<?php echo base_url(); ?>assets/admin/js/custom.js"></script>        
+        <script>
+            (function(w,d,s,g,js,fjs){
+            g=w.gapi||(w.gapi={});g.analytics={q:[],ready:function(cb){this.q.push(cb)}};
+            js=d.createElement(s);fjs=d.getElementsByTagName(s)[0];
+            js.src='https://apis.google.com/js/platform.js';
+            fjs.parentNode.insertBefore(js,fjs);js.onload=function(){g.load('analytics')};
+            }(window,document,'script'));
+        </script>
     </body>
 </html>

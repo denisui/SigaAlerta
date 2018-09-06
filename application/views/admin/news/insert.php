@@ -46,13 +46,13 @@
                                             <div class="col-md-6">
                                                 <div class="form-group">
                                                     <label>Título</label>
-                                                    <input type="text" name="edtTitle" class="form-control" maxlength="200" required>
+                                                    <input type="text" name="edtTitle" class="form-control" maxlength="60" required>
                                                 </div>
                                             </div>
                                             <div class="col-md-6">
                                                 <div class="form-group">
                                                     <label>Subtítulo</label>
-                                                    <input type="text" name="edtSubtitle" class="form-control" maxlength="100" required>
+                                                    <input type="text" name="edtSubtitle" class="form-control" maxlength="80" required>
                                                 </div>
                                             </div>
                                             <div class="col-md-6">
