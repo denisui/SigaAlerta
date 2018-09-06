@@ -58,7 +58,7 @@ class Technology extends CI_Controller {
         //$offset = ($this->uri->segment(3)) ? $this->uri->segment(3) : 0;
         $offset = $this->uri->segment(4, 0);
 
-        $data['news'] = $this->Model_News->getNewsCategory('Tecnologia','id', 'asc', $config['per_page'], $offset);
+        $data['news'] = $this->Model_News->getNewsCategory('Tecnologia','id', 'desc', $config['per_page'], $offset);
 
         $this->load->view('public/news/technology/view', $data);
     }
