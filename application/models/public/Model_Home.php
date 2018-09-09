@@ -199,4 +199,26 @@ class Model_Home extends CI_Model {
         }
     }
 
+    /**
+     * getColumnists()
+     * Returns by Columnists
+     * @param boolean $order
+     * @param boolean $sort
+     * @param boolean $limit
+     * @param boolean $offset
+     */
+    public function getColumnists($sort = 'id', $order = 'desc', $limit = NULL, $start = NULL) {
+        $this->db->from('columnists');
+        if ($limit != '' && $start != '') {
+            $this->db->limit($limit, $start);
+        }        
+        $this->db->order_by($sort, $order);        
+        $this->query = $this->db->get();
+        if ($this->query->num_rows() > 0) {
+            return $this->query->result();
+        } else {
+            return null;
+        }
+    }
+
 }

@@ -247,3 +247,10 @@
     padding: 5px;
     background: #c40000;
 }
+
+.text-limitation span {
+    white-space: nowrap;
+    width: 200px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}

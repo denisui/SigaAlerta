@@ -50,13 +50,13 @@
 				<!-- Slideshow -->
 				<div id="home-slider">
 					<?php
-                    if (empty($sliNews)):
-                        //
-                    else :
-                        $n = new ArrayIterator($sliNews);
-                        while ($n->valid()):
-                    ?>
-					<div class="col-sm-12">
+						if (empty($sliNews)):
+							//
+						else :
+							$n = new ArrayIterator($sliNews);
+							while ($n->valid()):
+						?>					
+					<div class="col-sm-12">						
 						<div class="col-sm-6 box-title-news">
 							<h2 class="entry-title">
 								<a href="<?php echo base_url(); ?>news/local/details/<?php echo $n->current()->id; ?>/<?php echo $this->general->normalizeURL($n->current()->new_title); ?>"
@@ -91,7 +91,7 @@
 												<?php 
                                                 $date = explode('-', $n->current()->new_date_time);
                                                 echo $date[1]. ' / '. $date[2] .' / '.$date[0];
-                                            	?>
+                                                ?>
 											</li>
 										</ul>
 									</div>
@@ -99,17 +99,72 @@
 								</div>
 							</div>
 							<!--/post-->
-						</div>
-					</div>
+						</div>											
+					</div>	
 					<?php
-                    $n->next();
-                        endwhile;
-                    endif
-                    ?>
+						$n->next();
+							endwhile;
+						endif
+					?>					
+					<?php
+						if (empty($sliColumnists)):
+							//
+						else :
+							$n = new ArrayIterator($sliColumnists);
+							while ($n->valid()):
+						?>					
+					<div class="col-sm-12">						
+						<div class="col-sm-6 box-title-news">
+							<h2 class="entry-title">
+								<a href="<?php echo base_url(); ?>columnists/eduardo/details/<?php echo $n->current()->id; ?>/<?php echo $this->general->normalizeURL($n->current()->col_title); ?>"
+								 style="font-size: 40px;">
+									<p class="title-news">
+										<?php echo $n->current()->col_title; ?>
+									</p>									
+								</a>
+							</h2>
+						</div>
+						<div class="col-sm-6">
+							<div class="post feature-post">
+								<div class="entry-header">
+									<div class="entry-thumbnail">
+										<a href="<?php echo base_url(); ?>columnists/eduardo/details/<?php echo $n->current()->id; ?>/<?php echo $this->general->normalizeURL($n->current()->col_title); ?>">
+											<img src="<?php echo base_url(); ?>assets/public/images/columnists/<?php echo $n->current()->col_img ?>"
+											 class="h-350" alt="<?php echo $n->current()->col_title; ?>" />
+										</a>
+									</div>
+									<!--<div class="catagory politics">
+									<a href="#">Local</a>
+								</div>-->
+								</div>
+								<div class="post-content">
+									<div class="entry-meta">
+										<ul class="list-inline">
+											<li class="publish-date">
+												<i class="fa fa-calendar"></i>
+												<?php 
+                                                $date = explode('-', $n->current()->col_date_time);
+                                                echo $date[1]. ' / '. $date[2] .' / '.$date[0];
+                                                ?>
+											</li>
+										</ul>
+									</div>
+
+								</div>
+							</div>
+							<!--/post-->
+						</div>											
+					</div>	
+					<?php
+						$n->next();
+							endwhile;
+						endif
+					?>					
 				</div>
 				<!-- Slideshow -->
 			</div>
 		</div>
+		
 		<div class="container">
 			<div class="row">
 				<div class="col-md-12">
@@ -726,88 +781,6 @@
 												</a>
 											</div>
 										</div>
-
-										<div class="section business-section">
-											<h1 class="section-title">Para sua Casa</h1>
-											<?php 
-                                                if (empty($lastForHome)) :
-                                                    //
-                                                else :
-                                                    $fh = new ArrayIterator($lastForHome);
-                                                    while ($fh->valid()) :
-                                            ?>
-											<div class="post medium-post">
-												<div class="entry-header">
-													<div class="entry-thumbnail">
-														<a href="<?php echo base_url(); ?>forhome/garden/details/<?php echo $fh->current()->id; ?>/<?php echo $this->general->normalizeURL($fh->current()->fh_name); ?>">
-															<img class="img-responsive" src="<?php echo base_url(); ?>assets/public/images/forhome/<?php echo $fh->current()->fh_img; ?>"
-															 alt="<?php echo $fh->current()->fh_name; ?>" style="width: 262px; height: 152px;" />
-														</a>
-													</div>
-												</div>
-												<div class="post-content">
-													<h2 class="entry-title">
-														<a href="<?php echo base_url(); ?>forhome/garden/details/<?php echo $fh->current()->id; ?>/<?php echo $this->general->normalizeURL($fh->current()->fh_name); ?>">
-															<?php echo $fh->current()->fh_name; ?>
-														</a>
-													</h2>
-												</div>
-											</div>
-											<!--/post-->
-											<?php
-                                                $fh->next();
-                                                endwhile;
-                                            endif;
-                                            ?>
-
-											<!--<div class="stock-exchange text-center">
-												<div class="stock-exchange-zone">
-													<a href="#">
-														<img class="img-responsive" src="<?php echo base_url(); ?>assets/public/images/gallery/stock.png"
-											alt="" />
-											</a>
-										</div>
-										<div class="stock-header">
-											<div class="row">
-												<div class="col-xs-4">Name</div>
-												<div class="col-xs-4">Price</div>
-												<div class="col-xs-4">%+/-</div>
-											</div>
-										</div>
-										<div class="stock-reports">
-											<div class="com-details">
-												<div class="row">
-													<div class="col-xs-4 com-name">BP</div>
-													<div class="col-xs-4 current-price">388.65</div>
-													<div class="col-xs-4 current-result">+0.58
-														<i class="fa fa-caret-up"></i>
-													</div>
-												</div>
-											</div>
-											<div class="com-details">
-												<div class="row">
-													<div class="col-xs-4 com-name">Royal Ba...</div>
-													<div class="col-xs-4 current-price">318.25</div>
-													<div class="col-xs-4 current-result">+0.32
-														<i class="fa fa-caret-up"></i>
-													</div>
-												</div>
-											</div>
-											<div class="com-details">
-												<div class="row">
-													<div class="col-xs-4 com-name">Inmarsat</div>
-													<div class="col-xs-4 current-price">214.19</div>
-													<div class="col-xs-4 current-result">-0.43
-														<i class="fa fa-caret-down"></i>
-													</div>
-												</div>
-											</div>
-										</div>
-									</div>-->
-
-								</div>
-								<!-- /.business-section -->
-
 							</div>
 							<!--/.middle-content-->
 						</div>
@@ -820,6 +793,8 @@
 					<?php $this->load->view("public/include/widget/social-media"); ?>
 					<!--/#widget-->
 
+					<?php $this->load->view('public/include/widget/sidebar-colums-eduardo');?>
+
 					<div class="widget">
 						<div class="add">
 							<a href="#">
@@ -829,8 +804,6 @@
 						</div>
 					</div>
 					<!--/#widget-->
-
-					<?php //$this->load->view('public/include/widget/sidebar-colums-eduardo');?>
 
 					<div class="widget weather-widget">
 						<div id="weather-widget"></div>

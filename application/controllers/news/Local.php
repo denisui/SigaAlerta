@@ -9,8 +9,6 @@ class Local extends CI_Controller {
     }
 
     public function index() {
-        $data['worldNewsMenu'] = $this->Model_News->getNewsCategory('Mundo', 'id', 'desc', '3', '0');
-        $data['techNewsMenu'] = $this->Model_News->getNewsCategory('Tecnologia', 'id', 'desc', '3', '0');
         
         /** Recebe o numero de linhas */
         $this->row = $this->Model_News->countAll();
@@ -19,7 +17,7 @@ class Local extends CI_Controller {
          * Configuração de paginação
          */
         $config["base_url"] = base_url() . 'news/local/p';
-        $config["per_page"] = 24; // Define a exibição de registros por pagina
+        $config["per_page"] = 21; // Define a exibição de registros por pagina
         $config["num_links"] = 4; // Define o numero de links
         $config["uri_segment"] = 4; // seta a qtd de parametros na url
         $config["total_rows"] = $this->row;
@@ -60,6 +58,8 @@ class Local extends CI_Controller {
 
         $data['news'] = $this->Model_News->getNewsCategory('Local','id', 'desc', $config['per_page'], $offset);
 
+        $data['columnists'] = $this->Model_News->getColumnists('id', 'desc', '6', '0');
+
         $this->load->view('public/news/local/view', $data);
     }
 
@@ -67,8 +67,6 @@ class Local extends CI_Controller {
         if (empty($id)) {            
             redirect(base_url('news/local'));
         } else {
-            $data['worldNewsMenu'] = $this->Model_News->getNewsCategory('Mundo', 'id', 'desc', '3', '0');
-            $data['techNewsMenu'] = $this->Model_News->getNewsCategory('Tecnologia', 'id', 'desc', '3', '0');
             $data['new'] = $this->Model_News->_selectByID($id);
             $data['older_news'] = $this->Model_News->_getNewRand('6', '0');
             $this->load->view('public/news/local/details', $data);

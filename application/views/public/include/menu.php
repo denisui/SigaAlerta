@@ -206,7 +206,7 @@
 									</li>
 								</ul>
 							</li>							
-							<li class="politics dropdown">
+							<!--<li class="politics dropdown">
 								<a href="javascript:void(0);" class="dropdown-toggle" data-toggle="dropdown">Para sua casa</a>
 								<ul class="dropdown-menu">
 									<li>
@@ -228,7 +228,7 @@
 										<a href="<?php echo base_url(); ?>forhome/painting">Pintura</a>
 									</li>
 								</ul>
-							</li>							
+							</li>-->						
 							<li class="politics dropdown">
 								<a href="javascript:void(0);" class="dropdown-toggle" data-toggle="dropdown">Classificados</a>
 								<ul class="dropdown-menu">

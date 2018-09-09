@@ -4,8 +4,8 @@
  * Last change:
  -----------------------------------------*/
 
-//BASEURL = 'https://www.sigalerta.com/';
-BASEURL = 'http://localhost:8080/SigaAlerta/';
+BASEURL = 'https://www.sigalerta.com/';
+//BASEURL = 'http://localhost:8080/SigaAlerta/';
 //BASEURL = 'https://simonsautobody.com/homologation/sigalerta/';
 
 /**
@@ -388,6 +388,181 @@ $(".btn-delete-news").on('click', function() {
         });
     });
 });
+
+
+/**
+ * FORM COLUMNISTS - INSERT
+ */
+$("#frm-columnists-insert").validator().on('submit', function(e) {
+    if (e.isDefaultPrevented()) {
+        console.log('Validou!!');
+    } else {
+        tinyMCE.triggerSave();
+        var form = new FormData($("#frm-columnists-insert")[0]);
+        //console.log(form.get('edtTitle'));
+        $.ajax({
+            type: "POST",
+            url: BASEURL + 'admin/columnists/setInsert',
+            data: form,
+            mimeType: "multipart/form-data",
+            contentType: false,
+            cache: false,
+            processData: false,
+            //async: false, //blocks window close
+            beforeSend: function() {
+                $.blockUI({
+                    message: '<h3>processando...</h3>',
+                    css: {
+                        border: 'none',
+                        padding: '15px',
+                        backgroundColor: '#000',
+                        '-webkit-border-radius': '10px',
+                        '-moz-border-radius': '10px',
+                        opacity: .5,
+                        color: '#fff'
+                    }
+                });
+            },
+            success: function(data) {
+                if (data === 'TRUE') {
+                    $.unblockUI();
+                    swal("", "Registros cadastrados com sucesso!", "success");
+                    //$("#frm-imo")[0].reset();
+                    setTimeout(function() {
+                        $(location).attr('href', BASEURL + 'admin/columnists');
+                    }, 3000);
+                } else if (data === 'FALSE') {
+                    $.unblockUI();
+                    swal("", "Erro ao cadastrar!", "warning");
+                }
+            },
+            error: function(data) {
+                $.unblockUI();
+                //console.log(data);
+                swal("Atenção", "Erro ao atualizar, consulte o administrador do sistema!", "warning");
+            }
+        });
+
+        // Cancela o submit do form
+        e.preventDefault();
+    }
+});
+
+
+/**
+ * FORM NEWS - UPDATE
+ */
+$('#frm-columnists-update').validator().on('submit', function(e) {
+    if (e.isDefaultPrevented()) {
+        console.log('Validou!!');
+    } else {
+        tinyMCE.triggerSave();
+        var form = new FormData($("#frm-columnists-update")[0]);
+        console.log(form);
+        $.ajax({
+            url: BASEURL + 'admin/columnists/setUpdate',
+            type: "POST",
+            data: form,
+            mimeType: "multipart/form-data",
+            contentType: false,
+            cache: false,
+            processData: false,
+            //async: false, //blocks window close
+            beforeSend: function() {
+                $.blockUI({
+                    message: '<h3>processando...</h3>',
+                    css: {
+                        border: 'none',
+                        padding: '15px',
+                        backgroundColor: '#000',
+                        '-webkit-border-radius': '10px',
+                        '-moz-border-radius': '10px',
+                        opacity: .5,
+                        color: '#fff'
+                    }
+                });
+            },
+            success: function(data) {
+                if (data === 'TRUE') {
+                    $.unblockUI();
+                    swal("", "Registro atualizado com sucesso!", "success");
+                    //$("#frm-imo")[0].reset();
+                    setTimeout(function() {
+                        $(location).attr('href', BASEURL + 'admin/columnists');
+                    }, 3000);
+                } else if (data === 'FALSE') {
+                    $.unblockUI();
+                    swal("", "Erro ao atualizar!", "warning");
+                }
+            },
+            error: function(data) {
+                $.unblockUI();
+                console.log(data);
+                swal("Atenção", "Erro ao atualizar, consulte o administrador do sistema!", "warning");
+            }
+        });
+
+        // Cancela o submit do form
+        e.preventDefault();
+    }
+});
+
+/**
+ * FORM NEWS - DELETE
+ */
+$(".btn-delete-columnists").on('click', function() {
+    var dados = 'id=' + $(this).attr("data-id");
+    //console.log(dados);
+    swal({
+        title: 'Atenção',
+        text: "Deseja realmente excluir este registro?",
+        type: 'warning',
+        showCancelButton: true,
+        confirmButtonColor: '#3085d6',
+        cancelButtonColor: '#d33',
+        confirmButtonText: 'Sim',
+        cancelButtonText: 'Não'
+    }).then(function() {
+        $.ajax({
+            type: 'POST',
+            url: BASEURL + 'admin/columnists/setDelete',
+            data: dados,
+            beforeSend: function(data) {
+                $.blockUI({
+                    message: '<h3>processando...</h3>',
+                    css: {
+                        border: 'none',
+                        padding: '15px',
+                        backgroundColor: '#000',
+                        '-webkit-border-radius': '10px',
+                        '-moz-border-radius': '10px',
+                        opacity: .5,
+                        color: '#fff'
+                    }
+                });
+            },
+            success: function(data) {
+                //console.log(data);                
+                if (data === 'TRUE') {
+                    $.unblockUI();
+                    swal('Excluido!', 'Registro excluído com sucesso.', 'success');
+                    setTimeout(function() {
+                        $(location).attr('href', BASEURL + 'admin/columnists');
+                    }, 2000);
+                } else if (data === 'FALSE') {
+                    $.unblockUI();
+                    swal('', 'Erro ao excluir registro!', 'warning');
+                }
+            },
+            error: function() {
+                $.unblockUI();
+                swal("", "Erro na operação, consulte o administrador do sistema!", "warning");
+            }
+        });
+    });
+});
+
+
 
 /**
  * FORM SERVICE - INSERT

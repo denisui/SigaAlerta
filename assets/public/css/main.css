@@ -992,7 +992,8 @@ img.mfp-img {
     width: 8px;
     height: 8px;
     margin: 5px;
-    background-color: #fff;
+    /*background-color: #fff;*/
+    background-color: #ccc;
     -webkit-border-radius: 100%;
     -moz-border-radius: 100%;
     border-radius: 100%;
@@ -1362,24 +1363,30 @@ img.mfp-img {
 
 .video-post-list .post,
 .widget .post-list .post {
-    max-height: 100px;
+    /*max-height: 100px;*/
 }
 
 .video-post-list .entry-header,
 .widget .post-list .entry-header {
     float: left;
-    width: 40%;
+    width: 100%;
+}
+
+.video-post-list .entry-header-columnists,
+.widget .post-list .entry-header-columnists {
+    float: none;
+    width: 100%;
 }
 
 .video-post-list .entry-thumbnail,
 .widget .post-list .entry-thumbnail {
-    height: 100px;
+    /*height: 100px;*/
 }
 
 .video-post-list .post-content,
 .widget .post-list .post-content {
     float: left;
-    width: 60%;
+    width: 100%;
     padding: 20px 15px;
 }
 

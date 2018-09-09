@@ -16,8 +16,9 @@ class Home extends CI_Controller
         $data['result'] = $this->massdot->getData();
         $data['worldNewsMenu'] = $this->Model_Home->getNewsCategory('Mundo', 'id', 'desc', '3', '0');
         $data['techNewsMenu'] = $this->Model_Home->getNewsCategory('Tecnologia', 'id', 'desc', '3', '0');
-        $data['sliNews'] = $this->Model_Home->getNewsSli('id', 'desc', '3', '0');
-        $data['newHealth'] = $this->Model_Home->getNewsCategory('Saúde', 'id', 'desc', '1', '0');
+        $data['sliNews'] = $this->Model_Home->getNewsSli('id', 'desc', '4', '0');
+        $data['sliColumnists'] = $this->Model_Home->getColumnists('id', 'desc', '1', '0');
+        $data['newHealth'] = $this->Model_Home->getNewsCategory('Saúde', 'id', 'desc', '1', '1');
         $data['newHealth2'] = $this->Model_Home->getNewsCategory('Saúde', 'id', 'desc', '1', '1');
         $data['newsTec'] = $this->Model_Home->getNewsCategory('Tecnologia', 'id', 'desc', '1', '0');
         $data['newsEua'] = $this->Model_Home->getNewsCategory('Estados Unidos', 'id', 'desc', '1', '1');
@@ -42,6 +43,7 @@ class Home extends CI_Controller
         $data['lastNewsFashion'] = $this->Model_Home->getNewsCategory('Moda', 'id', 'desc', '2', '0');
         $data['lastNewsEntertainment'] = $this->Model_Home->getNewsCategory('Entretenimento', 'id', 'desc', '2', '0');
         $data['morePopular'] = $this->Model_Home->getNewRand('4', '0');
+        $data['columnists'] = $this->Model_Home->getColumnists('id', 'desc', '1', '0');
         $this->load->view('public/home', $data);
     }
 }

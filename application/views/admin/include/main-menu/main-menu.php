@@ -19,8 +19,8 @@
             </li>
             <li class="treeview mnmn-news">
                 <a href="<?php echo base_url(); ?>admin/news">
-                    <i class="fa fa-book"></i> <span>Notícias</span>                    
-                </a>                
+                    <i class="fa fa-book"></i> <span>Notícias</span>
+                </a>
             </li>               
            <!-- <li class="treeview mnmn-service">
                 <a href="#">
@@ -42,9 +42,9 @@
                     <i class="fa fa-dice-five"></i> <span>Serviços</span>
                 </a>
             </li>               
-            <li class="treeview mnmn-forhome">
-                <a href="<?php echo base_url(); ?>admin/forhome">
-                    <i class="fa fa-home"></i> <span>Para sua casa</span>
+            <li class="treeview mnmn-columnists">
+                <a href="<?php echo base_url(); ?>admin/columnists">
+                    <i class="fa fa-home"></i> <span>Coluna de Notícia</span>
                 </a>
             </li>               
             <li class="treeview mnmn-classified">

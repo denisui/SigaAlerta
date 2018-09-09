@@ -5,15 +5,15 @@
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<meta name="description" content="">
-	<meta name="author" content="">
+	<meta name="author" content="Unlimited Image">
 
 	<!-- view social media -->
 	<?php
 	$n = new ArrayIterator($new);
 	while ($n->valid()):
 	?>
-	<meta property='og:title' content="Sigalerta" />
-	<meta property='og:description' content='<?php echo $n->current()->new_title; ?>' />
+	<meta property='og:title' content="<?php echo $n->current()->new_title; ?>" />
+	<meta property='og:description' content='' />
 	<meta property='og:url' content="<?php echo base_url(); ?>news/local/details/<?php echo $n->current()->id; ?>/<?php echo $this->general->normalizeURL($n->current()->new_title); ?>" />
 	<meta property='og:image' content="<?php echo base_url(); ?>assets/public/images/news/<?php echo $n->current()->new_img; ?>" />
 	<meta property="og:image:width" content="800">

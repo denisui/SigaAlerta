@@ -1,24 +1,35 @@
                             <div class="widget">
-								<h1 class="section-title title">Siga com Eduardo</h1>
+								<h1 class="section-title title">Colunista</h1>								
 								<ul class="post-list">
-									<!--<li>
+									<?php 
+										$c = new ArrayIterator($columnists);
+										while($c->valid()) :
+									?>
+									<li>
 										<div class="post small-post">
-											<div class="entry-header">
-												<div class="entry-thumbnail">
-													<img class="img-responsive" src="<?php echo base_url(); ?>assets/public/images/post/rising/1.jpg" alt="" />
+											<div class="entry-header entry-header-columnists">
+												<div class="col-md-12">
+													<div class="entry-thumbnail">
+														<a href="<?php echo base_url(); ?>columnists/eduardo/details/<?php echo $c->current()->id; ?>/<?php echo $this->general->normalizeURL($c->current()->col_title); ?>" class="">
+															<img class="img-responsive img-circle center-block" src="<?php echo base_url(); ?>assets/public/images/columnists/author/eduardo.png" alt="" />
+														</a>
+													</div>
 												</div>
 											</div>
-											<div class="post-content">
-												<div class="video-catagory">
-													<a href="#">World</a>
-												</div>
+											<div class="post-content">					
 												<h2 class="entry-title">
-													<a href="news-details.html">3 students arrested after body-slamming principal</a>
+													<a href="<?php echo base_url(); ?>columnists/eduardo/details/<?php echo $c->current()->id; ?>/<?php echo $this->general->normalizeURL($c->current()->col_title); ?>" class="text-limitation">
+														<?php echo  substr($c->current()->col_description, 0, 350); ?>...
+													</a>
 												</h2>
 											</div>
 										</div>
-										<!--/post
-									</li>-->
+										<!--/post -->
+									</li>
+									<?php
+										$c->next();
+									endwhile;
+									?>
 								</ul>
 							</div>
 							<!--/#widget-->
