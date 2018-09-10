@@ -6,6 +6,7 @@ class Technology extends CI_Controller {
     public function __construct() {
         parent::__construct();
         $this->load->model('public/Model_News');
+        $this->load->model('public/Model_Columnists');
     }
 
     public function index() {
@@ -59,6 +60,7 @@ class Technology extends CI_Controller {
         $offset = $this->uri->segment(4, 0);
 
         $data['news'] = $this->Model_News->getNewsCategory('Tecnologia','id', 'desc', $config['per_page'], $offset);
+        $data['columnists'] = $this->Model_Columnists->getColumnists('id', 'desc', '1', '0');
 
         $this->load->view('public/news/technology/view', $data);
     }

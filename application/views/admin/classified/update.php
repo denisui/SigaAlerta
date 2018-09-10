@@ -102,6 +102,17 @@
                                                         <option value="Babysitter">Babysitter</option>
                                                         <option value="Escritório">Escritório</option>
                                                         <option value="Saúde">Saúde</option>
+                                                        <option value="Dishwasher">Dishwasher</option>
+                                                        <option value="Atendente">Atendente</option>
+                                                        <option value="Balconista">Balconista</option>
+                                                        <option value="Higienista">Higienista</option>
+                                                        <option value="Secretária">Secretária</option>
+                                                        <option value="Secretária bilingue">Secretária Bilingue</option>
+                                                        <option value="Carpinteiro">Carpinteiro</option>
+                                                        <option value="Jardineiro">Jardineiro</option>
+                                                        <option value="Assistente">Assistente</option>
+                                                        <option value="Housecleaner">Housecleaner</option>
+                                                        <option value="Programador">Programador</option>
                                                     </select>
                                                 </div>
                                             </div>                                             
@@ -114,7 +125,11 @@
                                             <div class="col-md-4">
                                                 <div class="form-group">
                                                     <label>Valor</label>
-                                                    <input type="text" name="edtValue" class="form-control" value="<?php echo $cla->current()->cla_value; ?>" required>
+                                                    <input type="text" name="edtValue" class="form-control" value="<?php  
+                                                        $value = $cla->current()->cla_value;
+                                                        if ($value != "0.00")
+                                                            echo "$value";
+                                                        ?>">
                                                 </div>
                                             </div>  
                                             <div class="col-md-12">

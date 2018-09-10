@@ -6,6 +6,7 @@ class Eua extends CI_Controller {
     public function __construct() {
         parent::__construct();
         $this->load->model('public/Model_News');
+        $this->load->model('public/Model_Columnists');
     }
 
     public function index() {
@@ -19,9 +20,9 @@ class Eua extends CI_Controller {
          * Configuração de paginação
          */
         $config["base_url"] = base_url() . 'news/eua/p';
-        $config["per_page"] = 24; // Define a exibição de registros por pagina
+        $config["per_page"] = 12; // Define a exibição de registros por pagina
         $config["num_links"] = 4; // Define o numero de links
-        $config["uri_segment"] = 3; // seta a qtd de parametros na url
+        $config["uri_segment"] = 4; // seta a qtd de parametros na url
         $config["total_rows"] = $this->row;
         $config["full_tag_open"] = "<ul class='pagination text-center'>";
         $config["full_tag_close"] = "</ul>";
@@ -59,6 +60,7 @@ class Eua extends CI_Controller {
         $offset = $this->uri->segment(3, 0);
 
         $data['new'] = $this->Model_News->getNewsCategory('Estados Unidos','id', 'desc', $config['per_page'], $offset);
+        $data['columnists'] = $this->Model_Columnists->getColumnists('id', 'desc', '1', '0');
 
         $this->load->view('public/news/eua/view', $data);
     }

@@ -78,11 +78,8 @@
                                                     <img src="<?php echo base_url() ?>assets/public/images/news/<?php echo $n->current()->new_img; ?>" width="100" height="100">
                                                 </td>
                                                 <td>
-                                                    <a href="<?php echo base_url(); ?>admin/news/update/<?php echo $n->current()->id; ?>"
-                                                        class="btn bg-yellow">
-                                                        <i class="fas fa-pen-square"></i> Editar</a>
-                                                    <button type="button" class="btn bg-red btn-delete-news" data-id="<?php echo $n->current()->id; ?>">
-                                                        <i class="fa fa-trash"></i> Excluir</button>
+                                                    <a href="<?php echo base_url(); ?>admin/news/update/<?php echo $n->current()->id; ?>" class="btn btn-sm bg-yellow" title="Edit"><i class="fas fa-pen"></i></a>
+                                                    <button type="button" class="btn btn-sm bg-red btn-delete-news" data-id="<?php echo $n->current()->id; ?>" title="Delete"><i class="fa fa-trash"></i></button>
                                                 </td>
                                             </tr>
                                             <?php

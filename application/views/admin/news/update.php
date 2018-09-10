@@ -57,7 +57,7 @@
                                             <div class="col-md-6">
                                                 <div class="form-group">
                                                     <label>Subtítulo</label>
-                                                    <input type="text" name="edtSubtitle" class="form-control" maxlength="80" value="<?php echo $n->current()->new_title; ?>" required>
+                                                    <input type="text" name="edtSubtitle" class="form-control" maxlength="80" value="<?php echo $n->current()->new_subtitle; ?>" required>
                                                 </div>
                                             </div>
                                             <div class="col-md-6">

@@ -12,8 +12,8 @@
 	$c = new ArrayIterator($data);
 	while ($c->valid()):
 	?>
-	<meta property='og:title' content="Sigalerta" />
-	<meta property='og:description' content='<?php echo $c->current()->cla_name; ?>' />
+	<meta property='og:title' content='<?php echo $c->current()->cla_name; ?>' />
+	<meta property='og:description' content='' />
 	<meta property='og:url' content="<?php echo base_url(); ?>classified/divers/details/<?php echo $c->current()->id; ?>/<?php echo $this->general->normalizeURL($c->current()->cla_name); ?>" />
 	<meta property='og:image' content="<?php echo base_url(); ?>assets/public/images/classified/<?php echo $c->current()->cla_img; ?>" />
 	<meta property="og:image:width" content="800">
@@ -45,6 +45,8 @@
 	<link rel="apple-touch-icon-precomposed" sizes="114x114" href="<?php echo base_url();  ?>assets/public/images/ico/apple-touch-icon-114-precomposed.png">
 	<link rel="apple-touch-icon-precomposed" sizes="72x72" href="<?php echo base_url();  ?>assets/public/images/ico/apple-touch-icon-72-precomposed.png">
 	<link rel="apple-touch-icon-precomposed" href="<?php echo base_url();  ?>assets/public/images/ico/apple-touch-icon-57-precomposed.png">
+	<!-- SHARE THIS -->
+	<script type='text/javascript' src='//platform-api.sharethis.com/js/sharethis.js#property=5b733a7d339acb0011591237&product=inline-share-buttons' async='async'></script>
 </head>
 <!--/head-->
 
@@ -90,7 +92,16 @@
 																									
 													<div class="entry-content">
 														<h2><?php echo $c->current()->cla_name; ?></h2>
-														<h4>$ <?php echo $c->current()->cla_value; ?></h4>
+														<h4>
+														<?php 
+															$value =  $c->current()->cla_value; 
+															if($value === "0.00") :
+																//
+															else :
+															 	echo "$ $value";
+															endif;
+														?>
+														</h4>
 														<p><?php echo $c->current()->cla_description; ?></p>
 
 														<hr>

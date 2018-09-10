@@ -240,12 +240,12 @@
 									</li>
 									<li>
 										<a href="<?php echo base_url(); ?>classified/divers">Diversos</a>
-									</li>									
-									<li>
-										<a href="<?php echo base_url(); ?>classified/employment">Empregos</a>
-									</li>									
+									</li>																		
 								</ul>
-							</li>							
+							</li>	
+							<li class="business">
+								<a href="<?php echo base_url(); ?>classified/employment">Empregos</a>
+							</li>						
 						</ul>
 					</nav>
 					<div class="searchNlogin">
@@ -287,8 +287,8 @@
 							</li>-->
 						</ul>
 						<div class="search">
-							<form role="form">
-								<input type="text" class="search-form" autocomplete="off" placeholder="pesquisar...">
+							<form role="form" action="<?php echo base_url(); ?>search" method="get">
+								<input type="text" class="search-form" name="s" autocomplete="off" placeholder="pesquisar...">
 							</form>
 						</div>
 						<!--/.search-->

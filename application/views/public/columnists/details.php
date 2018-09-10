@@ -14,8 +14,8 @@
 	?>
 	<meta property='og:title' content="<?php echo $c->current()->col_title; ?>" />
 	<meta property='og:description' content='' />
-	<meta property='og:url' content="<?php echo base_url(); ?>cols/local/details/<?php echo $c->current()->id; ?>/<?php echo $this->general->normalizeURL($c->current()->col_title); ?>" />
-	<meta property='og:image' content="<?php echo base_url(); ?>assets/public/images/cols/<?php echo $c->current()->col_img; ?>" />
+	<meta property='og:url' content="<?php echo base_url(); ?>columnists/eduardo/details/<?php echo $c->current()->id; ?>/<?php echo $this->general->normalizeURL($c->current()->col_title); ?>" />
+	<meta property='og:image' content="<?php echo base_url(); ?>assets/public/images/columnists/<?php echo $c->current()->col_img; ?>" />
 	<meta property="og:image:width" content="800">
 	<meta property="og:image:height" content="600">
 	<meta property='og:type' content='website' />
@@ -125,35 +125,7 @@
 										<!--/.section-->
 									</div>
 									<!--/.left-content-->
-
-									<!--Commnets-->
-									<div class="comments-box gap-50">
-										<h1 class="section-title title">Deixe o seu comentário</h1>
-										<div id="disqus_thread"></div>
-										<script>
-											/**
-											 *  RECOMMENDED CONFIGURATION VARIABLES: EDIT AND UNCOMMENT THE SECTION BELOW TO INSERT DYNAMIC VALUES FROM YOUR PLATFORM OR CMS.
-											 *  LEARN WHY DEFINING THESE VARIABLES IS IMPORTANT: https://disqus.com/admin/universalcode/#configuration-variables*/
-											/*
-											var disqus_config = function () {
-											this.page.url = PAGE_URL;  // Replace PAGE_URL with your page's canonical URL variable
-											this.page.identifier = PAGE_IDENTIFIER; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
-											};
-											*/
-											(function() { // DON'T EDIT BELOW THIS LINE
-												var d = document,
-													s = d.createElement('script');
-												s.src = 'https://sigalerta.disqus.com/embed.js';
-												s.setAttribute('data-timestamp', +col Date());
-												(d.head || d.body).appendChild(s);
-											})();
-										</script>
-										<noscript>Please enable JavaScript to view the
-											<a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a>
-										</noscript>
-									</div>
-									<!--/.Commnets-->
-
+									
 									<!--Old cols-->
 									<div class="section gap-50">
 										<h1 class="section-title">Veja Também</h1>

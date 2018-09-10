@@ -6,6 +6,7 @@ class Policy extends CI_Controller {
     public function __construct() {
         parent::__construct();
         $this->load->model('public/Model_News');
+        $this->load->model('public/Model_Columnists');
     }
 
     public function index() {
@@ -19,7 +20,7 @@ class Policy extends CI_Controller {
          * Configuração de paginação
          */
         $config["base_url"] = base_url() . 'news/policy/p';
-        $config["per_page"] = 24; // Define a exibição de registros por pagina
+        $config["per_page"] = 12; // Define a exibição de registros por pagina
         $config["num_links"] = 4; // Define o numero de links
         $config["uri_segment"] = 4; // seta a qtd de parametros na url
         $config["total_rows"] = $this->row;
@@ -59,6 +60,7 @@ class Policy extends CI_Controller {
         $offset = $this->uri->segment(4, 0);
 
         $data['news'] = $this->Model_News->getNewsCategory('Política','id', 'desc', $config['per_page'], $offset);
+        $data['columnists'] = $this->Model_Columnists->getColumnists('id', 'desc', '1', '0');
 
         $this->load->view('public/news/policy/view', $data);
     }

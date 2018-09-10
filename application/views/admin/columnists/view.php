@@ -74,10 +74,8 @@
                                                     <img src="<?php echo base_url() ?>assets/public/images/columnists/<?php echo $c->current()->col_img; ?>" width="100" height="100">
                                                 </td>
                                                 <td>
-                                                    <a href="<?php echo base_url(); ?>admin/columnists/update/<?php echo $c->current()->id; ?>" class="btn bg-yellow" title="Editar">
-                                                        <i class="fas fa-pen-square"></i></a>
-                                                    <button type="button" class="btn bg-red btn-delete-columnists" data-id="<?php echo $c->current()->id; ?>" title="Excluir">
-                                                        <i class="fa fa-trash"></i></button>
+                                                    <a href="<?php echo base_url(); ?>admin/columnists/update/<?php echo $c->current()->id; ?>" class="btn btn-sm bg-yellow" title="Editar"><i class="fas fa-pen"></i></a>
+                                                    <button type="button" class="btn btn-sm bg-red btn-delete-columnists" data-id="<?php echo $c->current()->id; ?>" title="Excluir"><i class="fa fa-trash"></i></button>
                                                 </td>
                                             </tr>
                                             <?php

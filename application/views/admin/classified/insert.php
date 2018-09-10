@@ -100,8 +100,19 @@
                                                     <option value="Entregador">Entregador</option>
                                                     <option value="Motorista">Motorista</option>
                                                     <option value="Babysitter">Babysitter</option>
-                                                    <option value="Escritório">Escritório</option>
+                                                    <option value="Escritório">Escritório</option>                                                    
                                                     <option value="Saúde">Saúde</option>
+                                                    <option value="Dishwasher">Dishwasher</option>
+                                                    <option value="Atendente">Atendente</option>
+                                                    <option value="Balconista">Balconista</option>
+                                                    <option value="Higienista">Higienista</option>
+                                                    <option value="Secretária">Secretária</option>
+                                                    <option value="Secretária bilingue">Secretária Bilingue</option>
+                                                    <option value="Carpinteiro">Carpinteiro</option>
+                                                    <option value="Jardineiro">Jardineiro</option>
+                                                    <option value="Assistente">Assistente</option>
+                                                    <option value="Housecleaner">Housecleaner</option>
+                                                    <option value="Programador">Programador</option>
                                                 </select>
                                             </div>
                                         </div>                                        
@@ -109,15 +120,13 @@
                                         <div class="col-md-4">
                                             <div class="form-group">
                                                 <label>Telefone</label>
-                                                <input type="text" name="edtPhone" class="form-control" maxlength="20"
-                                                    required>
+                                                <input type="text" name="edtPhone" class="form-control" maxlength="20" required>
                                             </div>
                                         </div>
                                         <div class="col-md-4">
                                             <div class="form-group">
                                                 <label>Valor</label>
-                                                <input type="text" name="edtValue" class="form-control" maxlength="20"
-                                                    required>
+                                                <input type="text" name="edtValue" class="form-control" maxlength="20">
                                             </div>
                                         </div>
                                         <div class="col-md-12">

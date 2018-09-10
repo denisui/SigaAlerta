@@ -115,6 +115,47 @@ class Model_Classified extends CI_Model {
         }
     }
 
+    /**
+     * getSearchSimple()
+     * Returns the all news
+     * @param boolean $sort
+     * @param boolean $order
+     * @param boolean $limit
+     * @param boolean $offset
+     */
+    public function getSearchSimple($like = NULL, $sort = 'id', $order = 'desc') {
+        $this->db->order_by($sort, $order);
+        $this->db->like("cla_name", $like);        
+        $query = $this->db->get($this->table);
+        if ($query->num_rows() > 0) {
+            return $query->result();
+        } else {
+            return null;
+        }
+    }
+
+    /**
+     * getSearchPagination()
+     * Returns the all news
+     * @param boolean $sort
+     * @param boolean $order
+     * @param boolean $limit
+     * @param boolean $offset
+     */
+    public function getSearchPagination($like = NULL, $sort = 'id', $order = 'desc', $limit = NULL, $offset = NULL) {
+        $this->db->order_by($sort, $order);
+        $this->db->like("cla_name", $like);      
+        if ($limit) {
+            $this->db->limit($limit, $offset);
+        }
+        $query = $this->db->get($this->table);
+        if ($query->num_rows() > 0) {
+            return $query->result();
+        } else {
+            return null;
+        }
+    }
+
     /** @retorna o total de linhas da tabela */
     public function countAll($post = NULL) {
         if (empty($post)) :

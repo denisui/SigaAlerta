@@ -59,14 +59,7 @@
 				</div>
 			</div>
 			<div class="page-breadcrumbs page-breadcrumbs-custom">
-				<h1 class="section-title">Notícias</h1>
-				<div class="world-nav cat-menu">
-					<ul class="list-inline">
-						<li class="active">
-							<a href="#">Locais</a>
-						</li>
-					</ul>
-				</div>
+				<h1 class="section-title">Resultados</h1>				
 			</div>
 			<div class="section  section-custom">
 				<div class="row">
@@ -75,10 +68,8 @@
 							<div class="row">
 								<?php 
 								if (empty($news)) :								
-								?>
-									<h4 class="text-center">Nenhuma notícia encontrada</h4>
-								<?php
-									else :
+									//
+								else :
 									$n = new ArrayIterator($news);
 									while ($n->valid()):
 								?>
@@ -118,7 +109,95 @@
 							endif;
 							?>
 							</div>
-							<!--/.section -->
+							<!--/.new -->
+							
+							<!-- classified -->
+							<div class="row">
+								<?php 
+								if (empty($classified)) :
+									//
+								else :
+									$d = new ArrayIterator($classified);
+									while ($d->valid()):
+								?>
+								<!-- col-sm-4 -->
+								<div class="col-sm-4" data-mh="group-name">
+									<div class="post medium-post">
+										<div class="entry-header">
+											<div class="entry-thumbnail">
+												<a href="<?php echo base_url(); ?>classified/car/details/<?php echo $d->current()->id; ?>/<?php echo $this->general->normalizeURL($d->current()->cla_name); ?>">
+													<img class="img-responsive h-150" src="<?php echo base_url(); ?>assets/public/images/classified/<?php echo $d->current()->cla_img ?>" alt="" />
+												</a>
+											</div>
+										</div>
+										<div class="post-content">
+											<div class="entry-meta">
+												<ul class="list-inline">
+													<li class="publish-date">
+														<i class="fa fa-calendar"></i>
+														<?php
+                                                            $date = explode('-', $d->current()->cla_date_publish);
+                                                            echo $date[1]. ' / '. $date[2] .' / '.$date[0];
+                                                        ?>
+													</li>
+													<li>-</li>
+													<li><?php echo $d->current()->cla_subcategory; ?></li>
+												</ul>
+											</div>
+											<h2 class="entry-title">
+												<a href="<?php echo base_url(); ?>classified/car/details/<?php echo $d->current()->id; ?>/<?php echo $this->general->normalizeURL($d->current()->cla_name); ?>"><?php echo $d->current()->cla_name; ?></a>
+											</h2>
+										</div>
+									</div>
+									<!--/post-->
+								</div>
+								<!-- /.col-sm-4 -->
+								<?php
+									$d->next();
+									endwhile;
+								endif;
+								?>
+							</div>
+							<!--/.classified -->
+
+							<!-- Service -->
+							<div class="row">
+								<?php 
+								if (empty($service)) :
+									//
+                                else :
+                                    $n = new ArrayIterator($service);
+                                    while ($n->valid()):
+                                ?>
+								<!-- col-sm-4 -->
+								<div class="col-sm-4" data-mh="group-name">
+									<div class="post medium-post">
+										<div class="entry-header">
+											<div class="entry-thumbnail">
+												<a href="<?php echo base_url(); ?>services/academy/details/<?php echo $n->current()->id; ?>/<?php echo $this->general->normalizeURL($n->current()->serv_name); ?>">
+													<img class="img-responsive h-150" src="<?php echo base_url(); ?>assets/public/images/services/<?php echo $n->current()->serv_img ?>" alt="" />
+												</a>
+											</div>
+										</div>
+										<div class="post-content">											
+											<h2 class="entry-title">
+												<a href="<?php echo base_url(); ?>services/academy/details/<?php echo $n->current()->id; ?>/<?php echo $this->general->normalizeURL($n->current()->serv_name); ?>">
+													<?php echo $n->current()->serv_name ?>
+												</a>
+											</h2>
+										</div>
+									</div>
+									<!--/post-->
+								</div>
+								<!-- /.col-sm-4 -->
+								<?php
+									$n->next();
+									endwhile;
+								endif;
+								?>
+							</div>
+							<!--/.service -->
+
 						</div>
 						<!--/#site-content-->
 
@@ -126,22 +205,13 @@
 							<div class="google-add">
 								<div class="add inner-add text-center">
 									<a href="#">
-										<img class="img-responsive" src="<?php echo base_url(); ?>assets/public/images/post/google-add.jpg"
-										 alt="" />
+										<img class="img-responsive" src="<?php echo base_url(); ?>assets/public/images/post/google-add.jpg" alt="" />
 									</a>
 								</div>
 								<!--/.section-->
 							</div>
 							<!--/.google-add-->
-						</div>
-
-						<div class="pagination-wrapper">						
-							<?php 
-                                if (!empty($news)) {
-                                    echo $pagination;
-                                }
-							?>
-						</div>
+						</div>						
 					</div>
 					<!--/.col-sm-9 -->
 

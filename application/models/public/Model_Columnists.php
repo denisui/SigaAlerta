@@ -40,15 +40,7 @@ class Model_Columnists extends CI_Model {
         endif;
     }
 
-    /**
-     * getColumnists()
-     * Returns the news by categories
-     * @param boolean $editor
-     * @param boolean $order
-     * @param boolean $sort
-     * @param boolean $limit
-     * @param boolean $offset
-     */
+    /*   
     public function getColumnists($editor = NULL, $sort = 'id', $order = 'desc', $limit = NULL, $start = NULL) {
         $sql = "SELECT T1.id as id_columnists, T1.col_editor, T1.col_title, T1.col_description, T1.col_date_time, T1.col_img, T2.id as id_user, T2.user_name FROM columnists AS T1 INNER JOIN user AS T2 WHERE T2.id = ". $editor;
                
@@ -57,6 +49,29 @@ class Model_Columnists extends CI_Model {
         }        
         $this->db->order_by($sort, $order);
         $this->query = $this->db->query($sql);
+        if ($this->query->num_rows() > 0) {
+            return $this->query->result();
+        } else {
+            return null;
+        }
+    }*/
+
+    /**
+     * getColumnists()
+     * Returns by categories
+     * @param boolean $category
+     * @param boolean $order
+     * @param boolean $sort
+     * @param boolean $limit
+     * @param boolean $offset
+     */
+    public function getColumnists($sort = 'id', $order = 'desc', $limit = NULL, $start = NULL) {
+        $this->db->from('columnists');
+        if ($limit != '' && $start != '') {
+            $this->db->limit($limit, $start);
+        }        
+        $this->db->order_by($sort, $order);        
+        $this->query = $this->db->get();
         if ($this->query->num_rows() > 0) {
             return $this->query->result();
         } else {
