@@ -8,10 +8,10 @@
 	<meta name="author" content="">
 
 	<!-- view social media -->
-	<meta property='og:title' content="Sigalerta" />
+	<meta property='og:title' content="Sigalerta | O portal nº 1 em notícias" />
 	<meta property='og:description' content='' />
-	<meta property='og:url' content="" />
-	<meta property='og:image' content="" />
+	<meta property='og:url' content="<?php echo base_url(); ?>classified/car" />
+	<meta property='og:image' content="<?php echo base_url(); ?>assets/public/images/screen.jpg" />
 	<meta property="og:image:width" content="800">
 	<meta property="og:image:height" content="600">
 	<meta property='og:type' content='website' />
@@ -23,7 +23,7 @@
 	<meta name="apple-mobile-web-app-capable" content="yes" />
 
 	<!--title-->
-	<title>Sigalerta .: Classificados | Automóveis :.</title>
+	<title>Sigalerta .: Classificados | Carros :.</title>
 
 	<?php $this->load->view('public/include/styles.php'); ?>
 
@@ -48,12 +48,37 @@
 			<div class="row">
 				<div class="col-sm-12">
 					<div class="widget" style="margin-bottom: 0;">
+						<?php 
+						if (empty($adsW1140H87)) :
+						?>
 						<div class="add">
-							<a href="#">
-								<img class="img-responsive" src="<?php echo base_url(); ?>assets/public/images/post/add/add2.jpg"
-								 alt="" />
-							</a>
+							<img class="img-responsive" src="https://via.placeholder.com/1140x87" alt="">
 						</div>
+						<?php
+							else:
+								$ads = new ArrayIterator($adsW1140H87);
+								while ($ads->valid()) :
+									$today = date("Y-m-d");
+									$dateFinish = $ads->current()->ads_date_finish;
+									if (($dateFinish <= $today) || ($dateFinish === '0000-00-00')) :
+								?>
+								<div class="add">
+									<a href="#">
+										<img class="img-responsive center-block" src="<?php echo base_url(); ?>assets/public/images/advertising/<?php echo $ads->current()->ads_img; ?>" width="1140" height="87" alt="<?php echo $ads->current()->ads_title; ?>" />
+									</a>
+								</div>
+								<?php
+									else :
+								?>
+								<div class="add">
+									<img class="img-responsive" src="https://via.placeholder.com/1140x87" alt="">
+								</div>
+								<?php
+									endif;
+									$ads->next();
+								endwhile;
+							endif;
+						?>			
 					</div>
 					<!--/#widget-->
 				</div>
@@ -63,7 +88,7 @@
 				<div class="world-nav cat-menu">
 					<ul class="list-inline">
 						<li class="active">
-							<a href="#">Automóveis</a>
+							<a href="#">Carros</a>
 						</li>
 					</ul>
 				</div>
@@ -122,19 +147,7 @@
 							</div>
 							<!--/.section -->
 						</div>
-						<!--/#site-content-->
-
-						<div class="col-sm-12 gap-30">
-							<div class="google-add">
-								<div class="add inner-add text-center">
-									<a href="#">
-										<img class="img-responsive" src="<?php echo base_url(); ?>assets/public/images/post/google-add.jpg" alt="" />
-									</a>
-								</div>
-								<!--/.section-->
-							</div>
-							<!--/.google-add-->
-						</div>
+						<!--/#site-content-->						
 
 						<div class="pagination-wrapper">
 							<?php 
@@ -147,238 +160,46 @@
 					<!--/.col-sm-9 -->
 
 					<div class="col-md-3 col-sm-4">
-						<div class="widget">
-							<div class="add featured-add">
-								<a href="#"><img class="img-responsive" src="<?php echo base_url(); ?>assets/public/images/post/add/add1.jpg" alt="" /></a>
-							</div>
-						</div><!--/#widget-->
 						<div id="sitebar">
-							<div class="widget follow-us">
-								<h1 class="section-title title">Mídias Sociais</h1>
-								<ul class="list-inline social-icons">
-									<li>
-										<a href="#">
-											<i class="fa fa-facebook"></i>
-										</a>
-									</li>
-									<li>
-										<a href="#">
-											<i class="fa fa-twitter"></i>
-										</a>
-									</li>
-									<li>
-										<a href="#">
-											<i class="fa fa-google-plus"></i>
-										</a>
-									</li>
-									<li>
-										<a href="#">
-											<i class="fa fa-linkedin"></i>
-										</a>
-									</li>
-									<li>
-										<a href="#">
-											<i class="fa fa-youtube"></i>
-										</a>
-									</li>
-								</ul>
-							</div>
-							<!--/#widget-->
-
 							<div class="widget">
+								<?php 
+								if (empty($adsW263H293)) :
+								?>
 								<div class="add">
-									<a href="#">
-										<img class="img-responsive" src="<?php echo base_url(); ?>assets/public/images/post/add/add3.jpg" alt="" />
-									</a>
+									<img class="img-responsive" src="https://via.placeholder.com/263x293" alt="">
 								</div>
+								<?php
+									else:
+										$ads = new ArrayIterator($adsW263H293);
+										while ($ads->valid()) :
+											$today = date("Y-m-d");
+											$dateFinish = $ads->current()->ads_date_finish;
+											if (($dateFinish <= $today) || ($dateFinish === '0000-00-00')) :
+										?>
+										<div class="add">
+											<a href="#">
+												<img class="img-responsive center-block" src="<?php echo base_url(); ?>assets/public/images/advertising/<?php echo $ads->current()->ads_img; ?>" width="263" height="293" alt="<?php echo $ads->current()->ads_title; ?>" />
+											</a>
+										</div>
+										<?php
+											else :
+										?>
+										<div class="add">
+											<img class="img-responsive" src="https://via.placeholder.com/263x293" alt="">
+										</div>
+										<?php
+											endif;
+											$ads->next();
+										endwhile;
+									endif;
+								?>	
 							</div>
 							<!--/#widget-->
 
-							<div class="widget">
-								<h1 class="section-title title">Siga com Eduardo</h1>
-								<ul class="post-list">
-									<li>
-										<div class="post small-post">
-											<div class="entry-header">
-												<div class="entry-thumbnail">
-													<img class="img-responsive" src="<?php echo base_url(); ?>assets/public/images/post/rising/1.jpg"
-													 alt="" />
-												</div>
-											</div>
-											<div class="post-content">
-												<div class="video-catagory">
-													<a href="#">World</a>
-												</div>
-												<h2 class="entry-title">
-													<a href="news-details.html">3 students arrested after body-slamming principal</a>
-												</h2>
-											</div>
-										</div>
-										<!--/post-->
-									</li>
-									<li>
-										<div class="post small-post">
-											<div class="entry-header">
-												<div class="entry-thumbnail">
-													<img class="img-responsive" src="<?php echo base_url(); ?>assets/public/images/post/rising/2.jpg"
-													 alt="" />
-												</div>
-											</div>
-											<div class="post-content">
-												<div class="video-catagory">
-													<a href="#">Business</a>
-												</div>
-												<h2 class="entry-title">
-													<a href="news-details.html">3 students arrested after body-slamming principal</a>
-												</h2>
-											</div>
-										</div>
-										<!--/post-->
-									</li>
-									<li>
-										<div class="post small-post">
-											<div class="entry-header">
-												<div class="entry-thumbnail">
-													<img class="img-responsive" src="<?php echo base_url(); ?>assets/public/images/post/rising/3.jpg"
-													 alt="" />
-												</div>
-											</div>
-											<div class="post-content">
-												<div class="video-catagory">
-													<a href="#">Sports</a>
-												</div>
-												<h2 class="entry-title">
-													<a href="news-details.html">3 students arrested after body-slamming principal</a>
-												</h2>
-											</div>
-										</div>
-										<!--/post-->
-									</li>
-									<li>
-										<div class="post small-post">
-											<div class="entry-header">
-												<div class="entry-thumbnail">
-													<img class="img-responsive" src="<?php echo base_url(); ?>assets/public/images/post/rising/4.jpg"
-													 alt="" />
-												</div>
-											</div>
-											<div class="post-content">
-												<div class="video-catagory">
-													<a href="#">Technology</a>
-												</div>
-												<h2 class="entry-title">
-													<a href="news-details.html">3 students arrested after body-slamming principal</a>
-												</h2>
-											</div>
-										</div>
-										<!--/post-->
-									</li>
-									<li>
-										<div class="post small-post">
-											<div class="entry-header">
-												<div class="entry-thumbnail">
-													<img class="img-responsive" src="<?php echo base_url(); ?>assets/public/images/post/rising/5.jpg"
-													 alt="" />
-												</div>
-											</div>
-											<div class="post-content">
-												<div class="video-catagory">
-													<a href="#">Politics</a>
-												</div>
-												<h2 class="entry-title">
-													<a href="news-details.html">3 students arrested after body-slamming principal</a>
-												</h2>
-											</div>
-										</div>
-										<!--/post-->
-									</li>
-									<li>
-										<div class="post small-post">
-											<div class="entry-header">
-												<div class="entry-thumbnail">
-													<img class="img-responsive" src="<?php echo base_url(); ?>assets/public/images/post/rising/6.jpg"
-													 alt="" />
-												</div>
-											</div>
-											<div class="post-content">
-												<div class="video-catagory">
-													<a href="#">Health</a>
-												</div>
-												<h2 class="entry-title">
-													<a href="news-details.html">3 students arrested after body-slamming principal</a>
-												</h2>
-											</div>
-										</div>
-										<!--/post-->
-									</li>
-									<li>
-										<div class="post small-post">
-											<div class="entry-header">
-												<div class="entry-thumbnail">
-													<img class="img-responsive" src="<?php echo base_url(); ?>assets/public/images/post/rising/7.jpg"
-													 alt="" />
-												</div>
-											</div>
-											<div class="post-content">
-												<div class="video-catagory">
-													<a href="#">Lifestyle</a>
-												</div>
-												<h2 class="entry-title">
-													<a href="news-details.html">3 students arrested after body-slamming principal</a>
-												</h2>
-											</div>
-										</div>
-										<!--/post-->
-									</li>
-									<li>
-										<div class="post small-post">
-											<div class="entry-header">
-												<div class="entry-thumbnail">
-													<img class="img-responsive" src="<?php echo base_url(); ?>assets/public/images/post/rising/8.jpg"
-													 alt="" />
-												</div>
-											</div>
-											<div class="post-content">
-												<div class="video-catagory">
-													<a href="#">Entertainment</a>
-												</div>
-												<h2 class="entry-title">
-													<a href="news-details.html">3 students arrested after body-slamming principal</a>
-												</h2>
-											</div>
-										</div>
-										<!--/post-->
-									</li>
-									<li>
-										<div class="post small-post">
-											<div class="entry-header">
-												<div class="entry-thumbnail">
-													<img class="img-responsive" src="<?php echo base_url(); ?>assets/public/images/post/7.jpg"
-													 alt="" />
-												</div>
-											</div>
-											<div class="post-content">
-												<div class="video-catagory">
-													<a href="#">Business</a>
-												</div>
-												<h2 class="entry-title">
-													<a href="news-details.html">3 students arrested after body-slamming principal</a>
-												</h2>
-											</div>
-										</div>
-										<!--/post-->
-									</li>
-								</ul>
-							</div>
-							<!--/#widget-->
+							<?php $this->load->view('public/include/widget/sidebar-colums-eduardo'); ?>
 
-							<div class="widget">
-								<div class="add">
-									<a href="#">
-										<img class="img-responsive" src="<?php echo base_url(); ?>assets/public/images/post/add/add6.jpg"
-										 alt="" />
-									</a>
-								</div>
+							<div class="widget weather-widget">
+								<div id="weather-widget"></div>
 							</div>
 							<!--/#widget-->
 

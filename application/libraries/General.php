@@ -47,9 +47,9 @@ class General {
         return $str;
     }
 
-    public function formatDate($str) {
-        $date = explode("-",$str);
-        $format = $date[1] . '/' . $date[2] . '/' . $date[0];
-        return $format;
+    public function formatDateMysql($str) {
+        $date = strtotime($str);
+        $newformat = date('Y-m-d', $date);
+        return $newformat;
     }
 }

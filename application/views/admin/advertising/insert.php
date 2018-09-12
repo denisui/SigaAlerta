@@ -51,7 +51,7 @@
                                         </div>
                                         <div class="col-md-6">
                                             <div class="form-group">
-                                                <label>Página</label>
+                                                <label>Página de exibição</label>
                                                 <br>
                                                 <select name="cmbPage" class="form-control select2" id="cmd-page" style="width: 100%;" required>
                                                     <option selected disabled>Selecione...</option>
@@ -93,6 +93,7 @@
                                                     <option value="1140x87">Horizontal (1140x87)</option>
                                                     <option value="555x88">Horizontal (555x88)</option>
                                                     <option value="263x293">Vertical (263x293)</option>
+                                                    <option value="263x588">Vertical (263x588)</option>
                                                 </select>
                                             </div>
                                         </div>          
@@ -104,13 +105,13 @@
                                         <div class="col-md-6">
                                             <div class="form-group">
                                                 <label>De:</label>
-                                                <input type="text" name="edtDateInitial" class="form-control input-date" maxlength="200" required>
+                                                <input type="text" name="edtDateInitial" class="form-control input-date" placeholder="Opcional" maxlength="20">
                                             </div>
                                         </div>
                                         <div class="col-md-6">
                                             <div class="form-group">
                                                 <label>Até:</label>
-                                                <input type="text" name="edtDateFinish" class="form-control input-date" maxlength="200" required>
+                                                <input type="text" name="edtDateFinish" class="form-control input-date" placeholder="Opcional" maxlength="20">
                                             </div>
                                         </div>
                                         <div class="col-md-12">
@@ -174,11 +175,10 @@
                     showUpload: false
                 });    
 
-                $('.input-date').datetimepicker({
-                    yearOffset:222,
+                $('.input-date').datetimepicker({                    
                     lang: 'pt-BR',
                     timepicker: false,
-                    format: 'd/m/Y',
+                    format: 'Y/m/d',
                     formatDate: 'Y/m/d'
                 });
 

@@ -18,8 +18,23 @@ class Model_Home extends CI_Model {
      * Selects all records in the table
      * @param: $table = Nome da tabela
      */
-    public function _selectAll() {        
-        $this->query = $this->db->get($this->table);
+    public function _selectAll() {
+        $this->db->select('*')->from("$this->table")->where('new_status', 'published');
+        $this->query = $this->db->get();
+        if ($this->query->num_rows() > 0) :
+            $this->data = $this->query->result();
+            return $this->data;
+        endif;
+    }
+
+    /**
+     * _selectAllPeding()
+     * Selects all records in the table
+     * @param: $table = Nome da tabela
+     */
+    public function _selectAllPending() {
+        $this->db->select('*')->from("$this->table")->where('new_status', 'pending');
+        $this->query = $this->db->get();
         if ($this->query->num_rows() > 0) :
             $this->data = $this->query->result();
             return $this->data;
@@ -50,13 +65,10 @@ class Model_Home extends CI_Model {
      */
     public function getNewsAll($sort = 'id', $order = 'desc', $limit = NULL, $offset = NULL) {
         $this->db->order_by($sort, $order);
-
         if ($limit) {
             $this->db->limit($limit, $offset);
         }
-
         $query = $this->db->get($this->table);
-
         if ($query->num_rows() > 0) {
             return $query->result();
         } else {
@@ -101,6 +113,7 @@ class Model_Home extends CI_Model {
      */
     public function getNewsSli($sort = 'id', $order = 'desc', $limit = NULL, $start = NULL) {
         $this->db->from($this->table);        
+        $this->db->where('new_status', 'published');
         if ($limit != '' && $start != '') {
             $this->db->limit($limit, $start);
         }        
@@ -219,6 +232,14 @@ class Model_Home extends CI_Model {
         } else {
             return null;
         }
+    }
+
+    public function publishPost($id, $data) {
+        $this->db->where('id', $id);
+        $this->query = $this->db->update("$this->table", $data);
+        if ($this->query) :
+            return true;
+        endif;
     }
 
 }

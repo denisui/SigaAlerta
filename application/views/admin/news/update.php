@@ -87,17 +87,13 @@
                                                     </select>
                                                 </div>
                                             </div>                                            
-                                            <!--<div class="col-md-6">
+                                            <div class="col-md-6">
                                                 <div class="form-group">
-                                                    <label>Destaque?</label>
+                                                    <label>Agendar data de Postagem</label>
                                                     <br>
-                                                    <select name="cmbFeatured" class="form-control select2" id="cmb-featured" style="width: 100%;" required>
-                                                        <option selected disabled>Selecione...</option>
-                                                        <option value="Sim">Sim</option>
-                                                        <option value="Nao">Não</option>
-                                                    </select>
+                                                    <input type="text" name="edtDate" class="form-control input-date" value="<?php echo $n->current()->new_agend_date_post; ?>" placeholder="Opcional" maxlength="20">
                                                 </div>
-                                            </div>-->
+                                            </div>
                                             <div class="col-md-12">
                                                 <div class="form-group">
                                                     <label>Descricao da Postagem</label>
@@ -148,13 +144,18 @@
         <script>
             $(function() {
                 $(".mnmn-news").addClass("active");
+
                 //input date
-                $('.input-date').datetimepicker({
+                $('.input-date').datetimepicker({                    
                     lang: 'pt-BR',
-                    timepicker: false,
-                    format: 'm/d/Y',
-                    formatDate: 'Y/m/d'
+                    formatTime:'H:i',
+                    formatDate:'d/m/Y',
+                    //defaultDate:'8.12.1986', // it's my birthday
+                    defaultDate:'+03.01.1970', // it's my birthday
+                    defaultTime:'01:00',
+                    timepickerScrollbar:true
                 });
+
                 /* File Input - Drag & Drop */
                 $("#file-1").fileinput({
                     language: 'pt-BR',
@@ -171,6 +172,7 @@
                     maxFilesNum: 1,
                     showUpload: false
                 });
+
                 /*$("#cmb-featured").val("<?php echo $n->current()->new_featured; ?>");*/
                 $("#cmb-category").val("<?php echo $n->current()->new_category; ?>");
                 //Initialize Select2 Elements

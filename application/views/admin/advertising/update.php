@@ -54,7 +54,7 @@
                                             </div>                      
                                             <div class="col-md-6">
                                                 <div class="form-group">
-                                                    <label>Página</label>
+                                                    <label>Página de exibição</label>
                                                     <br>
                                                     <select name="cmbPage" class="form-control select2" id="cmd-page" style="width: 100%;" required>
                                                         <option selected disabled>Selecione...</option>
@@ -92,13 +92,34 @@
                                                     <label>Tipo</label>
                                                     <br>
                                                     <select name="cmbSize" class="form-control select2" id="cmd-size" style="width: 100%;" required> 
-                                                        <option value="">Selecione...</option>
                                                         <option value="1140x87">Horizontal (1140x87)</option>
                                                         <option value="555x88">Horizontal (555x88)</option>
                                                         <option value="263x293">Vertical (263x293)</option>
+                                                        <option value="263x588">Vertical (263x588)</option>
                                                     </select>
                                                 </div>
                                             </div>
+                                            <div class="col-md-12">
+                                            <h4>Agendamento</h4>
+                                            <small>Informe a data de início e término que o anúncio será visualizado!</small>
+                                            <hr>
+                                        </div>                                          
+                                        <div class="col-md-6">
+                                            <div class="form-group">
+                                                <label>De:</label>
+                                                <input type="text" name="edtDateInitial" class="form-control input-date" maxlength="20" value="<?php echo $a->current()->ads_date_initial; ?>">
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <div class="form-group">
+                                                <label>Até:</label>
+                                                <input type="text" name="edtDateFinish" class="form-control input-date" maxlength="20" value="<?php echo $a->current()->ads_date_finish; ?>">
+                                            </div>
+                                        </div>
+                                        <div class="col-md-12">
+                                            <h4>Mídia</h4>
+                                            <hr>
+                                        </div>       
                                             <div class="col-md-12">
                                                 <label>Imagem</label>
                                                 <!-- Upload Button -->
@@ -162,6 +183,14 @@
                 });                            
                 $("#cmd-page").val("<?php echo $a->current()->ads_page; ?>");
                 $("#cmd-size").val("<?php echo $a->current()->ads_size; ?>");
+
+                $('.input-date').datetimepicker({                    
+                    lang: 'pt-BR',
+                    timepicker: false,
+                    format: 'Y/m/d',
+                    formatDate: 'Y/m/d'
+                });
+
                 //Initialize Select2 Elements
                 $('.select2').select2();
             });

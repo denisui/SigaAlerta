@@ -8,10 +8,10 @@
 	<meta name="author" content="">
 
 	<!-- view social media -->
-	<meta property='og:title' content="Sigalerta" />
-	<meta property='og:description' content='' />
-	<meta property='og:url' content="" />
-	<meta property='og:image' content="" />
+	<meta property='og:title' content="Sigalerta | O portal nº 1 em notícias" />
+	<meta property='og:description' content='Últimas notícias de economia, política, carros, emprego, educação, ciência, saúde, cultura do Brasil e do mundo.' />
+	<meta property='og:url' content="<?php echo base_url(); ?>" />
+	<meta property='og:image' content="<?php echo base_url(); ?>assets/public/images/screen.jpg" />
 	<meta property="og:image:width" content="800">
 	<meta property="og:image:height" content="600">
 	<meta property='og:type' content='website' />
@@ -23,7 +23,7 @@
 	<meta name="apple-mobile-web-app-capable" content="yes" />
 
 	<!--title-->
-	<title>Sigalerta</title>
+	<title>Sigalerta | O portal nº 1 em notícias</title>
 
 	<?php $this->load->view('public/include/styles.php'); ?>
 
@@ -50,12 +50,12 @@
 				<!-- Slideshow -->
 				<div id="home-slider">
 					<?php
-						if (empty($sliNews)):
-							//
-						else :
-							$n = new ArrayIterator($sliNews);
-							while ($n->valid()):
-						?>					
+                        if (empty($sliNews)):
+                            //
+                        else :
+                            $n = new ArrayIterator($sliNews);
+                            while ($n->valid()):
+                        ?>					
 					<div class="col-sm-12">						
 						<div class="col-sm-6 box-title-news">
 							<h2 class="entry-title">
@@ -102,17 +102,17 @@
 						</div>											
 					</div>	
 					<?php
-						$n->next();
-							endwhile;
-						endif
-					?>					
+                        $n->next();
+                            endwhile;
+                        endif
+                    ?>					
 					<?php
-						if (empty($sliColumnists)):
-							//
-						else :
-							$n = new ArrayIterator($sliColumnists);
-							while ($n->valid()):
-						?>					
+                        if (empty($sliColumnists)):
+                            //
+                        else :
+                            $n = new ArrayIterator($sliColumnists);
+                            while ($n->valid()):
+                        ?>					
 					<div class="col-sm-12">						
 						<div class="col-sm-6 box-title-news">
 							<h2 class="entry-title">
@@ -156,10 +156,10 @@
 						</div>											
 					</div>	
 					<?php
-						$n->next();
-							endwhile;
-						endif
-					?>					
+                        $n->next();
+                            endwhile;
+                        endif
+                    ?>					
 				</div>
 				<!-- Slideshow -->
 			</div>
@@ -436,12 +436,37 @@
 					<!--/#content-->
 
 					<div class="col-md-3 visible-md visible-lg">
-						<div class="add featured-add">
-							<a href="#">
-								<img class="img-responsive" src="<?php echo base_url(); ?>assets/public/images/post/add/add1.jpg"
-								 alt="" />
-							</a>
-						</div>
+						<?php 
+                        if (empty($adsW263H588)) :
+                        ?>
+							<div class="add featured-add">
+								<img class="img-responsive" src="https://via.placeholder.com/263x588" alt="">
+							</div>
+						<?php
+                         else:
+                            $ads = new ArrayIterator($adsW263H588);
+                            while ($ads->valid()) :
+                                $today = date("Y-m-d");
+                                $dateFinish = $ads->current()->ads_date_finish;
+                                if (($dateFinish <= $today) || ($dateFinish === '0000-00-00')) :
+                            ?>								
+								<div class="add featured-add">
+									<a href="#">
+										<img class="img-responsive center-block" src="<?php echo base_url(); ?>assets/public/images/advertising/<?php echo $ads->current()->ads_img; ?>" width="263" height="588" alt="<?php echo $ads->current()->ads_title; ?>" />
+									</a>
+								</div>
+							<?php	
+                                else :
+                                    ?>
+									<div class="add featured-add">
+										<img class="img-responsive" src="https://via.placeholder.com/263x588" alt="">
+									</div>									
+									<?php	
+                                endif;
+                                $ads->next();
+                            endwhile;
+                        endif;
+                        ?>
 					</div>
 					<!--/#add-->
 				</div>
@@ -449,10 +474,37 @@
 			<!--/.section-->
 
 			<div class="section add inner-add">
-				<a href="#">
-					<img class="img-responsive" src="<?php echo base_url(); ?>assets/public/images/post/add/add2.jpg"
-					 alt="" />
-				</a>
+			<?php 
+                if (empty($adsW1140H87)) :
+                ?>
+				<div class="add featured-add">
+					<img class="img-responsive" src="https://via.placeholder.com/1140x87" alt="">
+				</div>
+				<?php
+                    else:
+                        $ads = new ArrayIterator($adsW1140H87);
+                        while ($ads->valid()) :
+                 	        $today = date("Y-m-d");
+                            $dateFinish = $ads->current()->ads_date_finish;
+                            if (($dateFinish <= $today) || ($dateFinish === '0000-00-00')) :
+                        ?>								
+						<div class="add featured-add">
+							<a href="#">
+								<img class="img-responsive center-block" src="<?php echo base_url(); ?>assets/public/images/advertising/<?php echo $ads->current()->ads_img; ?>" width="1140" height="87" alt="<?php echo $ads->current()->ads_title; ?>" />
+							</a>
+						</div>
+						<?php
+                            else :
+                        ?>
+						<div class="add featured-add">
+							<img class="img-responsive" src="https://via.placeholder.com/1140x87" alt="">
+						</div>
+						<?php
+                            endif;
+                    	    $ads->next();
+                        endwhile;
+                	endif;
+                ?>			
 			</div>
 			<!--/.section-->
 
@@ -708,14 +760,39 @@
 										<!--/technology-news-->
 
 										<div class="section add inner-add">
-											<a href="#">
-												<img class="img-responsive" src="<?php echo base_url(); ?>assets/public/images/post/add/add4.jpg"
-												 alt="" />
-											</a>
+										<?php 
+											if (empty($adsW555H88)) :
+											?>
+											<div class="add featured-add">
+												<img class="img-responsive" src="https://via.placeholder.com/555x88" alt="">
+											</div>
+											<?php
+												else:
+													$ads = new ArrayIterator($adsW555H88);
+													while ($ads->valid()) :
+														$today = date("Y-m-d");
+														$dateFinish = $ads->current()->ads_date_finish;
+														if (($dateFinish <= $today) || ($dateFinish === '0000-00-00')) :
+													?>								
+													<div class="add featured-add">
+														<a href="#">
+															<img class="img-responsive center-block" src="<?php echo base_url(); ?>assets/public/images/advertising/<?php echo $ads->current()->ads_img; ?>" width="555" height="88" alt="<?php echo $ads->current()->ads_title; ?>" />
+														</a>
+													</div>
+													<?php
+														else :
+													?>
+													<div class="add featured-add">
+														<img class="img-responsive" src="https://via.placeholder.com/555x88" alt="">
+													</div>
+													<?php
+														endif;
+														$ads->next();
+													endwhile;
+												endif;
+											?>			
 										</div>
 										<!--/.section add-->
-
-
 									</div>
 									<!--/.left-content-->
 								</div>
@@ -774,12 +851,37 @@
 										<!--/.sports-section -->
 
 										<div class="section">
+											<?php 
+											if (empty($adsW263H293)) :
+											?>
 											<div class="add inner-add">
-												<a href="#">
-													<img class="img-responsive" src="<?php echo base_url(); ?>assets/public/images/post/add/add5.jpg"
-													 alt="" />
-												</a>
+												<img class="img-responsive" src="https://via.placeholder.com/263x293" alt="">
 											</div>
+											<?php
+												else:
+													$ads = new ArrayIterator($adsW263H293);
+													while ($ads->valid()) :
+														$today = date("Y-m-d");
+														$dateFinish = $ads->current()->ads_date_finish;
+														if (($dateFinish <= $today) || ($dateFinish === '0000-00-00')) :
+													?>								
+													<div class="add inner-add">
+														<a href="#">
+															<img class="img-responsive center-block" src="<?php echo base_url(); ?>assets/public/images/advertising/<?php echo $ads->current()->ads_img; ?>" width="263" height="293" alt="<?php echo $ads->current()->ads_title; ?>" />
+														</a>
+													</div>
+													<?php
+														else :
+													?>
+													<div class="add inner-add">
+														<img class="img-responsive" src="https://via.placeholder.com/263x293" alt="">
+													</div>
+													<?php
+														endif;
+														$ads->next();
+													endwhile;
+												endif;
+											?>
 										</div>
 							</div>
 							<!--/.middle-content-->
@@ -796,28 +898,43 @@
 					<?php $this->load->view('public/include/widget/sidebar-colums-eduardo');?>
 
 					<div class="widget">
+					<?php 
+						if (empty($adsW263H293_2)) :
+					?>
 						<div class="add">
-							<a href="#">
-								<img class="img-responsive" src="<?php echo base_url(); ?>assets/public/images/post/add/add3.jpg"
-								 alt="" />
-							</a>
+							<img class="img-responsive" src="https://via.placeholder.com/263x293" alt="">
 						</div>
+					<?php
+						else:
+							$ads = new ArrayIterator($adsW263H293_2);
+							while ($ads->valid()) :
+							$today = date("Y-m-d");
+							$dateFinish = $ads->current()->ads_date_finish;
+							if (($dateFinish <= $today) || ($dateFinish === '0000-00-00')) :
+						?>								
+							<div class="add">
+								<a href="#">
+									<img class="img-responsive center-block" src="<?php echo base_url(); ?>assets/public/images/advertising/<?php echo $ads->current()->ads_img; ?>" width="263" height="293" alt="<?php echo $ads->current()->ads_title; ?>" />
+								</a>
+							</div>
+						<?php
+							else :
+						?>
+							<div class="add">
+								<img class="img-responsive" src="https://via.placeholder.com/263x293" alt="">
+							</div>
+						<?php
+							endif;
+								$ads->next();
+							endwhile;
+						endif;
+						?>
 					</div>
 					<!--/#widget-->
 
 					<div class="widget weather-widget">
 						<div id="weather-widget"></div>
-					</div>
-					<!--/#widget-->
-					<div class="widget">
-						<div class="add">
-							<a href="#">
-								<img class="img-responsive" src="<?php echo base_url(); ?>assets/public/images/post/add/add6.jpg"
-								 alt="" />
-							</a>
-						</div>
-					</div>
-					<!--/#widget-->
+					</div>					
 				</div>
 				<!--/#sitebar-->
 			</div>

@@ -12,6 +12,8 @@ class News extends CI_Controller {
     public $featured;
     public $post;
     public $img;
+    public $agendPost;
+    public $status;
     public $_return;
     public $_arrData;
 
@@ -68,6 +70,12 @@ class News extends CI_Controller {
         /*$this->featured = $this->input->post("cmbFeatured");*/
         $this->post = $this->input->post("txtDesc");
         $this->img = $this->input->post("image");
+        $this->agendPost = $this->input->post("edtDate");
+        if (empty($this->agendPost)) {
+            $this->status = "published";
+        } else {
+            $this->status = "pending";
+        }
                 
         /**
          * UPLOAD IMAGEM
@@ -76,7 +84,7 @@ class News extends CI_Controller {
 
             // Pasta onde o arquivo vai ser salvo
             $_UP['pasta'] = $_SERVER['DOCUMENT_ROOT'] . '/assets/public/images/news/';
-            //$_UP['pasta'] = $_SERVER['DOCUMENT_ROOT'] . '/sigalerta/assets/public/images/news/';
+            //$_UP['pasta'] = $_SERVER['DOCUMENT_ROOT'] . '/SigaAlerta/assets/public/images/news/';
             //$_UP['pasta'] = $_SERVER['DOCUMENT_ROOT'] . '/homologation/sigalerta/assets/public/images/news/';
 
             // Renomeia o arquivo? (Se true, o arquivo será salvo como .jpg e um nome único)
@@ -110,7 +118,9 @@ class News extends CI_Controller {
                 "new_category" => $this->category,
                 "new_description" => $this->post,
                 "new_date_time" => date("Y-m-d"),
-                "new_img" => $this->img
+                "new_img" => $this->img,
+                "new_agend_date_post" => $this->agendPost,
+                "new_status" => $this->status
             );
 
             //echo "<pre>";
@@ -130,6 +140,8 @@ class News extends CI_Controller {
                 "new_category" => $this->category,
                 "new_description" => $this->post,
                 "new_date_time" => date("Y-m-d"),
+                "new_agend_date_post" => $this->agendPost,
+                "new_status" => $this->status
             );
 
             /*echo "<pre>";
@@ -156,6 +168,7 @@ class News extends CI_Controller {
         $this->category = $this->input->post("cmbCategory");
         $this->post = $this->input->post("txtDesc");
         $this->img = $this->input->post("image");
+        $this->agendPost = $this->input->post("edtDate");        
 
         /**
          * UPLOAD IMAGEM
@@ -164,7 +177,7 @@ class News extends CI_Controller {
 
              // Pasta onde o arquivo vai ser salvo
             $_UP['pasta'] = $_SERVER['DOCUMENT_ROOT'] . '/assets/public/images/news/';
-            //$_UP['pasta'] = $_SERVER['DOCUMENT_ROOT'] . '/sigalerta/assets/public/images/news/';
+            //$_UP['pasta'] = $_SERVER['DOCUMENT_ROOT'] . '/SigaAlerta/assets/public/images/news/';
             //$_UP['pasta'] = $_SERVER['DOCUMENT_ROOT'] . '/homologation/sigalerta/assets/public/images/news/';
 
             // Renomeia o arquivo? (Se true, o arquivo será salvo como .jpg e um nome único)
@@ -197,7 +210,8 @@ class News extends CI_Controller {
                 "new_subtitle" => $this->subtitle,
                 "new_category" => $this->category,
                 "new_description" => $this->post,                
-                "new_img" => $this->img
+                "new_img" => $this->img,
+                "new_agend_date_post" => $this->agendPost
             );
 
             $this->_return = $this->Model_News->_update($this->id, $this->_arrData);
@@ -211,7 +225,8 @@ class News extends CI_Controller {
                 "new_title" => $this->title,
                 "new_subtitle" => $this->subtitle,
                 "new_category" => $this->category,
-                "new_description" => $this->post
+                "new_description" => $this->post,
+                "new_agend_date_post" => $this->agendPost
             );
 
             $this->_return = $this->Model_News->_update($this->id, $this->_arrData);

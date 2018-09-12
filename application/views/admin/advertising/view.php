@@ -51,7 +51,7 @@
                                             <tr>
                                                 <th>Cod.</th>
                                                 <th style="width: 25%;">Título</th>
-                                                <th style="width: 15%;">Página</th>
+                                                <th style="width: 15%;">Página de Exibição</th>
                                                 <th style="width: 25%;">Dimensão</th>
                                                 <th>Imagem</th>
                                                 <th>Ação</th>

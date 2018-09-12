@@ -7,11 +7,11 @@ class Immobile extends CI_Controller {
         parent::__construct();
         $this->load->model('public/Model_Classified');
         $this->load->model('public/Model_News');
+        $this->load->model('public/Model_Advertising');    
+        $this->load->model('public/Model_Columnists');
     }
 
     public function index() {
-        $data['worldNewsMenu'] = $this->Model_News->getNewsCategory('Mundo', 'id', 'desc', '3', '0');
-        $data['techNewsMenu'] = $this->Model_News->getNewsCategory('Tecnologia', 'id', 'desc', '3', '0');
         
         /** Recebe o numero de linhas */
         $this->row = $this->Model_Classified->countAll();
@@ -60,7 +60,10 @@ class Immobile extends CI_Controller {
         $offset = $this->uri->segment(4, 0);
 
         $data['data'] = $this->Model_Classified->getNewsCategory('immobile','id', 'desc', $config['per_page'], $offset);
-
+        $data['columnists'] = $this->Model_Columnists->getColumnists('id', 'desc', '1', '0');
+        $data['adsW1140H87'] = $this->Model_Advertising->getByPage('Classificados', 'id', 'asc', '1', '0');
+        $data['adsW263H293'] = $this->Model_Advertising->getByPage('Classificados', 'id', 'asc', '1', '1');
+        $data['adsW263H293_2'] = $this->Model_Advertising->getByPage('Classificados', 'id', 'asc', '1', '2');
         $this->load->view('public/classified/immobile/view', $data);
     }
 
@@ -68,10 +71,11 @@ class Immobile extends CI_Controller {
         if (empty($id)) {            
             redirect(base_url('classified/immobile'));
         } else {
-            $data['worldNewsMenu'] = $this->Model_News->getNewsCategory('Mundo', 'id', 'desc', '3', '0');
-            $data['techNewsMenu'] = $this->Model_News->getNewsCategory('Tecnologia', 'id', 'desc', '3', '0');
             $data['data'] = $this->Model_Classified->_selectByID($id);
             $data['older_data'] = $this->Model_Classified->_getNewRand('6', '0');
+            $data['columnists'] = $this->Model_Columnists->getColumnists('id', 'desc', '1', '0');
+            $data['adsW1140H87'] = $this->Model_Advertising->getByPage('Classificados', 'id', 'asc', '1', '0');
+            $data['adsW263H293'] = $this->Model_Advertising->getByPage('Classificados', 'id', 'asc', '1', '1');
             $this->load->view('public/classified/immobile/details', $data);
         }        
     }   

@@ -7,11 +7,10 @@ class Health extends CI_Controller {
         parent::__construct();
         $this->load->model('public/Model_News');
         $this->load->model('public/Model_Columnists');
+        $this->load->model('public/Model_Advertising');
     }
 
     public function index() {
-        $data['worldNewsMenu'] = $this->Model_News->getNewsCategory('Mundo', 'id', 'desc', '3', '0');
-        $data['techNewsMenu'] = $this->Model_News->getNewsCategory('Tecnologia', 'id', 'desc', '3', '0');
 
         /** Recebe o numero de linhas */
         $this->row = $this->Model_News->countAll();
@@ -59,9 +58,11 @@ class Health extends CI_Controller {
         //$offset = ($this->uri->segment(3)) ? $this->uri->segment(3) : 0;
         $offset = $this->uri->segment(4, 0);
 
-        $data['news'] = $this->Model_News->getNewsCategory('Saúde','id', 'asc', $config['per_page'], $offset);
+        $data['news'] = $this->Model_News->getNewsCategory('Saúde','id', 'desc', $config['per_page'], $offset);
         $data['columnists'] = $this->Model_Columnists->getColumnists('id', 'desc', '1', '0');
-
+        $data['adsW1140H87'] = $this->Model_Advertising->getByPage('Saúde', 'id', 'asc', '1', '0');
+        $data['adsW263H293'] = $this->Model_Advertising->getByPage('Saúde', 'id', 'asc', '1', '1');
+        $data['adsW263H293_2'] = $this->Model_Advertising->getByPage('Saúde', 'id', 'asc', '1', '2');
         $this->load->view('public/news/health/view', $data);
     }
 
@@ -69,10 +70,11 @@ class Health extends CI_Controller {
         if (empty($id)) {            
             redirect(base_url('news/health'));
         } else {
-            $data['worldNewsMenu'] = $this->Model_News->getNewsCategory('Mundo', 'id', 'desc', '3', '0');
-            $data['techNewsMenu'] = $this->Model_News->getNewsCategory('Tecnologia', 'id', 'desc', '3', '0');
             $data['new'] = $this->Model_News->_selectByID($id);
             $data['older_news'] = $this->Model_News->_getNewRand('6', '0');
+            $data['columnists'] = $this->Model_Columnists->getColumnists('id', 'desc', '1', '0');
+            $data['adsW1140H87'] = $this->Model_Advertising->getByPage('Saúde', 'id', 'asc', '1', '0');
+            $data['adsW263H293'] = $this->Model_Advertising->getByPage('Saúde', 'id', 'asc', '1', '1');
             $this->load->view('public/news/health/details', $data);
         }
         

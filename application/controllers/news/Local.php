@@ -5,8 +5,27 @@ class Local extends CI_Controller {
     
     public function __construct() {
         parent::__construct();
+        date_default_timezone_set("Brazil/East");
         $this->load->model('public/Model_News');
         $this->load->model('public/Model_Columnists');
+        $this->load->model('public/Model_Advertising');
+        $data = $this->Model_News->_selectAllPending();
+        if (empty($data)):
+        //
+        else:
+            $n = new ArrayIterator($data);
+            $dateActual = date("Y-m-d H:i:s", time());      
+            while ($n->valid()) :
+                if ($dateActual >= $n->current()->new_agend_date_post) :
+                    $arrData = array(                
+                        "id" => $n->current()->id,
+                        "new_status" => 'published'
+                    );                
+                    $this->Model_Home->publishPost($arrData['id'], $arrData);       
+                endif;             
+                $n->next();
+            endwhile;            
+        endif;       
     }
 
     public function index() {
@@ -58,18 +77,22 @@ class Local extends CI_Controller {
         $offset = $this->uri->segment(4, 0);
 
         $data['news'] = $this->Model_News->getNewsCategory('Local','id', 'desc', $config['per_page'], $offset);
-
         $data['columnists'] = $this->Model_Columnists->getColumnists('id', 'desc', '1', '0');
-
+        $data['adsW1140H87'] = $this->Model_Advertising->getByPage('Local', 'id', 'asc', '1', '0');
+        $data['adsW263H293'] = $this->Model_Advertising->getByPage('Local', 'id', 'asc', '1', '1');
+        $data['adsW263H293_2'] = $this->Model_Advertising->getByPage('Local', 'id', 'asc', '1', '2');
         $this->load->view('public/news/local/view', $data);
     }
 
     public function details($id = NULL) {        
-        if (empty($id)) {            
+        if (empty($id)) {
             redirect(base_url('news/local'));
         } else {
             $data['new'] = $this->Model_News->_selectByID($id);
             $data['older_news'] = $this->Model_News->_getNewRand('6', '0');
+            $data['columnists'] = $this->Model_Columnists->getColumnists('id', 'desc', '1', '0');
+            $data['adsW1140H87'] = $this->Model_Advertising->getByPage('Local', 'id', 'asc', '1', '0');
+            $data['adsW263H293'] = $this->Model_Advertising->getByPage('Local', 'id', 'asc', '1', '1');
             $this->load->view('public/news/local/details', $data);
         }
     }   

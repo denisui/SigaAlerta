@@ -33,7 +33,8 @@
 	endwhile;
 	?>
 	<?php $this->load->view('public/include/styles.php'); ?>
-	<link href="<?php echo base_url(); ?>assets/public/css/parallax-background.css" rel="stylesheet">
+	<link href="<?php echo base_url(); ?>assets/public/css/parallax-background.css"
+	 rel="stylesheet">
 
 	<!--[if lt IE 9]>
 	    <script src="js/html5shiv.js"></script>
@@ -44,6 +45,7 @@
 	<link rel="apple-touch-icon-precomposed" sizes="114x114" href="<?php echo base_url();  ?>assets/public/images/ico/apple-touch-icon-114-precomposed.png">
 	<link rel="apple-touch-icon-precomposed" sizes="72x72" href="<?php echo base_url();  ?>assets/public/images/ico/apple-touch-icon-72-precomposed.png">
 	<link rel="apple-touch-icon-precomposed" href="<?php echo base_url();  ?>assets/public/images/ico/apple-touch-icon-57-precomposed.png">
+
 	<!-- SHARE THIS -->
 	<script type='text/javascript' src='//platform-api.sharethis.com/js/sharethis.js#property=5b733a7d339acb0011591237&product=inline-share-buttons' async='async'></script>
 </head>
@@ -59,12 +61,37 @@
 			<div class="row">
 				<div class="col-sm-12">
 					<div class="widget" style="margin-bottom: 0;">
+						<?php 
+						if (empty($adsW1140H87)) :
+						?>
 						<div class="add">
-							<a href="#">
-								<img class="img-responsive" src="<?php echo base_url(); ?>assets/public/images/post/add/add2.jpg"
-								 alt="" />
-							</a>
+							<img class="img-responsive" src="https://via.placeholder.com/1140x87" alt="">
 						</div>
+						<?php
+							else:
+								$ads = new ArrayIterator($adsW1140H87);
+								while ($ads->valid()) :
+									$today = date("Y-m-d");
+									$dateFinish = $ads->current()->ads_date_finish;
+									if (($dateFinish <= $today) || ($dateFinish === '0000-00-00')) :
+								?>
+								<div class="add">
+									<a href="#">
+										<img class="img-responsive center-block" src="<?php echo base_url(); ?>assets/public/images/advertising/<?php echo $ads->current()->ads_img; ?>" width="1140" height="87" alt="<?php echo $ads->current()->ads_title; ?>" />
+									</a>
+								</div>
+								<?php
+									else :
+								?>
+								<div class="add">
+									<img class="img-responsive" src="https://via.placeholder.com/1140x87" alt="">
+								</div>
+								<?php
+									endif;
+									$ads->next();
+								endwhile;
+							endif;
+						?>
 					</div>
 					<!--/#widget-->
 				</div>
@@ -136,14 +163,14 @@
 												<div class="post medium-post">
 													<div class="entry-header">
 														<div class="entry-thumbnail">
-															<a href="<?php echo base_url(); ?>classified/car/details/<?php echo $c->current()->id; ?>/<?php echo $this->general->normalizeURL($c->current()->cla_name); ?>">
+															<a href="<?php echo base_url(); ?>classified/immobile/details/<?php echo $c->current()->id; ?>/<?php echo $this->general->normalizeURL($c->current()->cla_name); ?>">
 																<img class="img-responsive h-150" src="<?php echo base_url(); ?>assets/public/images/classified/<?php echo $c->current()->cla_img; ?>" alt="" />
 															</a>
 														</div>
 													</div>
 													<div class="post-content">														
 														<h2 class="entry-title">
-															<a href="<?php echo base_url(); ?>classified/car/details/<?php echo $c->current()->id; ?>/<?php echo $this->general->normalizeURL($c->current()->cla_name); ?>">
+															<a href="<?php echo base_url(); ?>classified/immobile/details/<?php echo $c->current()->id; ?>/<?php echo $this->general->normalizeURL($c->current()->cla_name); ?>">
 																<?php echo $c->current()->cla_name; ?>
 															</a>
 														</h2>
@@ -170,18 +197,47 @@
 					<div class="col-md-3 col-sm-4">
 						<div id="sitebar">
 							<div class="widget">
+								<?php 
+								if (empty($adsW263H293)) :
+								?>
 								<div class="add">
-									<a href="#">
-										<img class="img-responsive" src="<?php echo base_url(); ?>assets/public/images/post/add/add6.jpg"
-										 alt="" />
-									</a>
+									<img class="img-responsive" src="https://via.placeholder.com/263x293" alt="">
 								</div>
+								<?php
+									else:
+										$ads = new ArrayIterator($adsW263H293);
+										while ($ads->valid()) :
+											$today = date("Y-m-d");
+											$dateFinish = $ads->current()->ads_date_finish;
+											if (($dateFinish <= $today) || ($dateFinish === '0000-00-00')) :
+										?>
+										<div class="add">
+											<a href="#">
+												<img class="img-responsive center-block" src="<?php echo base_url(); ?>assets/public/images/advertising/<?php echo $ads->current()->ads_img; ?>" width="263" height="293" alt="<?php echo $ads->current()->ads_title; ?>" />
+											</a>
+										</div>
+										<?php
+											else :
+										?>
+										<div class="add">
+											<img class="img-responsive" src="https://via.placeholder.com/263x293" alt="">
+										</div>
+										<?php
+											endif;
+											$ads->next();
+										endwhile;
+									endif;
+								?>	
 							</div>
 							<!--/#widget-->
+
+							<?php $this->load->view('public/include/widget/sidebar-colums-eduardo'); ?>
+
 							<div class="widget weather-widget">
 								<div id="weather-widget"></div>
 							</div>
 							<!--/#widget-->
+
 						</div>
 						<!--/#sitebar-->
 					</div>

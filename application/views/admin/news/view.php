@@ -52,6 +52,7 @@
                                                 <th>Cod.</th>
                                                 <th style="width: 25%;">Título</th>
                                                 <th style="width: 25%;">Categoria</th>
+                                                <th style="width: 25%;">Status</th>
                                                 <th>Imagem</th>
                                                 <th>Ação</th>
                                             </tr>
@@ -73,6 +74,16 @@
                                                 </td>
                                                 <td>
                                                     <?php echo $n->current()->new_category; ?>
+                                                </td>
+                                                <td>
+                                                    <?php 
+                                                        $status = $n->current()->new_status; 
+                                                        if ($status === 'published') :
+                                                            echo 'Publicado';
+                                                        else :     
+                                                            echo 'Pendente';
+                                                        endif;
+                                                    ?>
                                                 </td>
                                                 <td>
                                                     <img src="<?php echo base_url() ?>assets/public/images/news/<?php echo $n->current()->new_img; ?>" width="100" height="100">

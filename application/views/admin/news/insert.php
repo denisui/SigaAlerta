@@ -82,17 +82,13 @@
                                                     </select>
                                                 </div>
                                             </div>
-                                            <!--<div class="col-md-6">
+                                            <div class="col-md-6">
                                                 <div class="form-group">
-                                                    <label>Destaque?</label>
+                                                    <label>Agendar data de Postagem</label>
                                                     <br>
-                                                    <select name="cmbFeatured" class="form-control select2" style="width: 100%;" required>
-                                                        <option selected disabled>Selecione...</option>
-                                                        <option>Sim</option>
-                                                        <option>Não</option>
-                                                    </select>
+                                                    <input type="text" name="edtDate" class="form-control input-date" placeholder="Opcional" maxlength="100">
                                                 </div>
-                                            </div>-->
+                                            </div>
                                             <div class="col-md-12">
                                                 <div class="form-group">
                                                     <label>Descricao da Postagem</label>
@@ -154,6 +150,17 @@
                     maxFilesNum: 1,
                     showUpload: false
                 });    
+
+                $('.input-date').datetimepicker({                    
+                    lang: 'pt-BR',
+                    formatTime:'H:i',
+                    formatDate:'d/m/Y',
+                    format: 'd/m/Y H:i',
+                    //defaultDate:'8.12.1986', // it's my birthday
+                    defaultDate:'+03.01.1970', // it's my birthday
+                    defaultTime:'01:00',
+                    timepickerScrollbar:true
+                });
 
                 //Initialize Select2 Elements
                 $('.select2').select2();

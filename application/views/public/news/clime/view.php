@@ -8,10 +8,10 @@
 	<meta name="author" content="">
 
 	<!-- view social media -->
-	<meta property='og:title' content="Sigalerta" />
-	<meta property='og:description' content='' />
-	<meta property='og:url' content="" />
-	<meta property='og:image' content="" />
+	<meta property='og:title' content="Sigalerta | O portal nº 1 em notícias" />
+	<meta property='og:description' content='Últimas notícias de economia, política, carros, emprego, educação, ciência, saúde, cultura do Brasil e do mundo.' />
+	<meta property='og:url' content="<?php echo base_url(); ?>news/clime" />
+	<meta property='og:image' content="<?php echo base_url(); ?>assets/public/images/screen.jpg" />
 	<meta property="og:image:width" content="800">
 	<meta property="og:image:height" content="600">
 	<meta property='og:type' content='website' />
@@ -48,12 +48,37 @@
 			<div class="row">
 				<div class="col-sm-12">
 					<div class="widget" style="margin-bottom: 0;">
+						<?php 
+						if (empty($adsW1140H87)) :
+						?>
 						<div class="add">
-							<a href="#">
-								<img class="img-responsive" src="<?php echo base_url(); ?>assets/public/images/post/add/add2.jpg"
-								 alt="" />
-							</a>
+							<img class="img-responsive" src="https://via.placeholder.com/1140x87" alt="">
 						</div>
+						<?php
+							else:
+								$ads = new ArrayIterator($adsW1140H87);
+								while ($ads->valid()) :
+									$today = date("Y-m-d");
+									$dateFinish = $ads->current()->ads_date_finish;
+									if (($dateFinish <= $today) || ($dateFinish === '0000-00-00')) :
+								?>
+								<div class="add">
+									<a href="#">
+										<img class="img-responsive center-block" src="<?php echo base_url(); ?>assets/public/images/advertising/<?php echo $ads->current()->ads_img; ?>" width="1140" height="87" alt="<?php echo $ads->current()->ads_title; ?>" />
+									</a>
+								</div>
+								<?php
+									else :
+								?>
+								<div class="add">
+									<img class="img-responsive" src="https://via.placeholder.com/1140x87" alt="">
+								</div>
+								<?php
+									endif;
+									$ads->next();
+								endwhile;
+							endif;
+						?>						
 					</div>
 					<!--/#widget-->
 				</div>
@@ -73,44 +98,22 @@
 					<div class="col-sm-9">
 						<div id="site-content" class="site-content">
 							<div class="row">
-								<div class="col-md-12">
-									<!--<a class="weatherwidget-io" href="https://forecast7.com/pt/42d36n71d06/boston/" data-label_1="Boston" data-label_2="WEATHER" data-theme="original" >Boston WEATHER</a>
-									<script>
-									!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src='https://weatherwidget.io/js/widget.min.js';fjs.parentNode.insertBefore(js,fjs);}}(document,'script','weatherwidget-io-js');
-									</script>
-									<div class="widget weather-widget">
-										<div id="weather-widget"></div>
-									</div>
-									/#widget-->
-									<!--Accuweather-->
-									<a href="https://www.accuweather.com/en/us/new-york-ny/10007/weather-forecast/349727" class="aw-widget-legal">
-										<!-- By accessing and/or using this code snippet, you agree to AccuWeather’s terms and conditions (in English) which can be found at https://www.accuweather.com/en/free-weather-widgets/terms and AccuWeather’s Privacy Statement (in English) which can be found at https://www.accuweather.com/en/privacy.-->
-									</a>
-									<div id="awtd1535474903200" class="aw-widget-36hour"  data-locationkey="" data-unit="c" data-language="pt-pt" data-useip="true" data-uid="awtd1535474903200" data-editlocation="true"></div>
-									<script type="text/javascript" src="https://oap.accuweather.com/launch.js"></script>
-								</div>
-
-								<div class="col-sm-12 gap-30">
-									<img class="img-responsive" src="<?php echo base_url(); ?>assets/public/images/post/google-add.jpg" alt="" style="width: 100%;" />
-								</div>
-
 								<?php 
-                                if (empty($news)) :
-                                ?>
-								<h4 class="text-center">Nenhuma notícia encontrada</h4>
+								if (empty($news)) :								
+								?>
+									<h4 class="text-center">Nenhuma notícia encontrada</h4>
 								<?php
-                                    else :
-                                    $n = new ArrayIterator($news);
-                                    while ($n->valid()):
-                                ?>
+									else :
+									$n = new ArrayIterator($news);
+									while ($n->valid()):
+								?>
 								<!-- col-sm-4 -->
 								<div class="col-sm-4" data-mh="group-name">
 									<div class="post medium-post">
 										<div class="entry-header">
 											<div class="entry-thumbnail">
 												<a href="<?php echo base_url(); ?>news/clime/details/<?php echo $n->current()->id; ?>/<?php echo $this->general->normalizeURL($n->current()->new_title); ?>">
-													<img class="img-responsive h-150" src="<?php echo base_url(); ?>assets/public/images/news/<?php echo $n->current()->new_img ?>"
-													 alt="" />
+													<img class="img-responsive h-150" src="<?php echo base_url(); ?>assets/public/images/news/<?php echo $n->current()->new_img ?>" alt="" />
 												</a>
 											</div>
 										</div>
@@ -120,16 +123,14 @@
 													<li class="publish-date">
 														<i class="fa fa-calendar"></i>
 														<?php
-                                                            $date = explode('-', $n->current()->new_date_time);
-                                                            echo $date[1]. ' / '. $date[2] .' / '.$date[0];
-                                                        ?>
+															$date = explode('-',$n->current()->new_date_time);
+															echo $date[1]. ' / '. $date[2] .' / '.$date[0];																	
+														?>
 													</li>
 												</ul>
 											</div>
 											<h2 class="entry-title">
-												<a href="<?php echo base_url(); ?>news/clime/details/<?php echo $n->current()->id; ?>/<?php echo $this->general->normalizeURL($n->current()->new_title); ?>">
-													<?php echo $n->current()->new_title ?>
-												</a>
+												<a href="<?php echo base_url(); ?>news/clime/details/<?php echo $n->current()->id; ?>/<?php echo $this->general->normalizeURL($n->current()->new_title); ?>"><?php echo $n->current()->new_title ?></a>
 											</h2>
 										</div>
 									</div>
@@ -137,70 +138,107 @@
 								</div>
 								<!-- /.col-sm-4 -->
 								<?php
-                                $n->next();
-                                endwhile;
-                            endif;
-                            ?>
+								$n->next();
+								endwhile;
+							endif;
+							?>
 							</div>
 							<!--/.section -->
 						</div>
-						<!--/#site-content-->
+						<!--/#site-content-->						
 
-
-
-						<div class="pagination-wrapper">
+						<div class="pagination-wrapper">						
 							<?php 
                                 if (!empty($news)) {
                                     echo $pagination;
                                 }
-                            ?>
+							?>
 						</div>
 					</div>
 					<!--/.col-sm-9 -->
 
 					<div class="col-md-3 col-sm-4">
 						<div id="sitebar">
-							<div class="widget follow-us">
-								<h1 class="section-title title">Mídias Sociais</h1>
-								<ul class="list-inline social-icons">
-									<li>
-										<a href="#">
-											<i class="fa fa-facebook"></i>
-										</a>
-									</li>
-									<li>
-										<a href="#">
-											<i class="fa fa-twitter"></i>
-										</a>
-									</li>
-									<li>
-										<a href="#">
-											<i class="fa fa-google-plus"></i>
-										</a>
-									</li>
-									<li>
-										<a href="#">
-											<i class="fa fa-linkedin"></i>
-										</a>
-									</li>
-									<li>
-										<a href="#">
-											<i class="fa fa-youtube"></i>
-										</a>
-									</li>
-								</ul>
-							</div>
+							<?php $this->load->view('public/include/widget/social-media'); ?>
 							<!--/#widget-->
 
 							<div class="widget">
+								<?php 
+								if (empty($adsW263H293)) :
+								?>
 								<div class="add">
-									<a href="#">
-										<img class="img-responsive" src="<?php echo base_url(); ?>assets/public/images/post/add/add3.jpg"
-										 alt="" />
-									</a>
+									<img class="img-responsive" src="https://via.placeholder.com/263x293" alt="">
 								</div>
+								<?php
+									else:
+										$ads = new ArrayIterator($adsW263H293);
+										while ($ads->valid()) :
+											$today = date("Y-m-d");
+											$dateFinish = $ads->current()->ads_date_finish;
+											if (($dateFinish <= $today) || ($dateFinish === '0000-00-00')) :
+										?>
+										<div class="add">
+											<a href="#">
+												<img class="img-responsive center-block" src="<?php echo base_url(); ?>assets/public/images/advertising/<?php echo $ads->current()->ads_img; ?>" width="263" height="293" alt="<?php echo $ads->current()->ads_title; ?>" />
+											</a>
+										</div>
+										<?php
+											else :
+										?>
+										<div class="add">
+											<img class="img-responsive" src="https://via.placeholder.com/263x293" alt="">
+										</div>
+										<?php
+											endif;
+											$ads->next();
+										endwhile;
+									endif;
+								?>	
 							</div>
 							<!--/#widget-->
+
+							<?php $this->load->view('public/include/widget/sidebar-colums-eduardo'); ?>
+
+							<div class="widget">
+								<?php 
+								if (empty($adsW263H293_2)) :
+								?>
+								<div class="add">
+									<img class="img-responsive" src="https://via.placeholder.com/263x293" alt="">
+								</div>
+								<?php
+									else:
+										$ads = new ArrayIterator($adsW263H293_2);
+										while ($ads->valid()) :
+											$today = date("Y-m-d");
+											$dateFinish = $ads->current()->ads_date_finish;
+											if (($dateFinish <= $today) || ($dateFinish === '0000-00-00')) :
+										?>
+										<div class="add">
+											<a href="#">
+												<img class="img-responsive center-block" src="<?php echo base_url(); ?>assets/public/images/advertising/<?php echo $ads->current()->ads_img; ?>" width="263" height="293" alt="<?php echo $ads->current()->ads_title; ?>" />
+											</a>
+										</div>
+										<?php
+											else :
+										?>
+										<div class="add">
+											<img class="img-responsive" src="https://via.placeholder.com/263x293" alt="">
+										</div>
+										<?php
+											endif;
+											$ads->next();
+										endwhile;
+									endif;
+								?>
+							</div>
+							<!--/#widget-->
+
+							<div class="widget weather-widget">
+								<div id="weather-widget"></div>
+							</div>
+							<!--/#widget-->
+
 						</div>
 						<!--/#sitebar-->
 					</div>
@@ -217,7 +255,7 @@
 	<?php $this->load->view("public/include/footer"); ?>
 
 	<!--/#scripts-->
-	<?php $this->load->view('public/include/scripts'); ?>
+	<?php $this->load->view('public/include/scripts'); ?>		
 </body>
 
 </html>

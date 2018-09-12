@@ -9,6 +9,8 @@ class Advertising extends CI_Controller {
     public $page;
     public $size;
     public $img;
+    public $dateInitial;    
+    public $dateFinish;
     public $_return;
     public $_arrData;
 
@@ -59,6 +61,8 @@ class Advertising extends CI_Controller {
         $this->title = $this->input->post("edtTitle");
         $this->page = $this->input->post("cmbPage");
         $this->size = $this->input->post("cmbSize");
+        $this->dateInitial = $this->input->post("edtDateInitial");
+        $this->dateFinish = $this->input->post("edtDateFinish");
         $this->img = $this->input->post("image");
                 
         /**
@@ -99,8 +103,10 @@ class Advertising extends CI_Controller {
             $this->_arrData = array(
                 "ads_title" => $this->title,
                 "ads_page" => $this->page,
-                "ads_size" => $this->size,
-                "ads_img" => $this->img
+                "ads_size" => $this->size,                
+                "ads_img" => $this->img,
+                "ads_date_initial" => $this->dateInitial,
+                "ads_date_finish" => $this->dateFinish
             );
 
             //echo "<pre>";
@@ -142,6 +148,8 @@ class Advertising extends CI_Controller {
         $this->title = $this->input->post("edtTitle");
         $this->page = $this->input->post("cmbPage");
         $this->size = $this->input->post("cmbSize");  
+        $this->dateInitial = $this->input->post("edtDateInitial");
+        $this->dateFinish = $this->input->post("edtDateFinish");
         $this->img = $this->input->post("image");
 
         /**
@@ -183,7 +191,9 @@ class Advertising extends CI_Controller {
                 "ads_title" => $this->title,
                 "ads_page" => $this->page,
                 "ads_size" => $this->size,
-                "ads_img" => $this->img 
+                "ads_img" => $this->img,
+                "ads_date_initial" => $this->dateInitial,
+                "ads_date_finish" => $this->dateFinish
             );
 
             $this->_return = $this->Model_Advertising->_update($this->id, $this->_arrData);
@@ -197,6 +207,8 @@ class Advertising extends CI_Controller {
                 "ads_title" => $this->title,
                 "ads_page" => $this->page,
                 "ads_size" => $this->size,
+                "ads_date_initial" => $this->dateInitial,
+                "ads_date_finish" => $this->dateFinish
             );
 
             $this->_return = $this->Model_Advertising->_update($this->id, $this->_arrData);

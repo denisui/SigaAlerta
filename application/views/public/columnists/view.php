@@ -8,15 +8,15 @@
 	<meta name="author" content="">
 
 	<!-- view social media -->
-	<meta property='og:title' content="Sigalerta" />
+	<meta property='og:title' content="Sigalerta | O portal nº 1 em notícias" />
 	<meta property='og:description' content='' />
-	<meta property='og:url' content="" />
-	<meta property='og:image' content="" />
+	<meta property='og:url' content="<?php echo base_url(); ?>columnists/eduardo" />
+	<meta property='og:image' content="<?php echo base_url(); ?>assets/public/images/screen.jpg" />
 	<meta property="og:image:width" content="800">
 	<meta property="og:image:height" content="600">
 	<meta property='og:type' content='website' />
 	<meta property='og:site_name' content='Sigalerta' />
-
+	
 	<!-- Configurações para celular -->
 	<meta name="apple-mobile-web-app-status-bar-style" content="black" />
 	<meta name="GOOGLEBOT" content="index follow" />

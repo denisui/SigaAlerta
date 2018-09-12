@@ -1,19 +1,16 @@
 <?php
 defined('BASEPATH') or exit('No direct script access allowed');
 
-class World extends CI_Controller
-{
-    public function __construct()
-    {
+class World extends CI_Controller {
+
+    public function __construct() {
         parent::__construct();
         $this->load->model('public/Model_News');
         $this->load->model('public/Model_Columnists');
+        $this->load->model('public/Model_Advertising');
     }
 
-    public function index()
-    {
-        $data['worldNewsMenu'] = $this->Model_News->getNewsCategory('Mundo', 'id', 'desc', '3', '0');
-        $data['techNewsMenu'] = $this->Model_News->getNewsCategory('Tecnologia', 'id', 'desc', '3', '0');
+    public function index() {
 
         /** Recebe o numero de linhas */
         $this->row = $this->Model_News->countAll();
@@ -63,7 +60,9 @@ class World extends CI_Controller
 
         $data['news'] = $this->Model_News->getNewsCategory('Mundo', 'id', 'desc', $config['per_page'], $offset);
         $data['columnists'] = $this->Model_Columnists->getColumnists('id', 'desc', '1', '0');
-
+        $data['adsW1140H87'] = $this->Model_Advertising->getByPage('Mundo', 'id', 'asc', '1', '0');
+        $data['adsW263H293'] = $this->Model_Advertising->getByPage('Mundo', 'id', 'asc', '1', '1');
+        $data['adsW263H293_2'] = $this->Model_Advertising->getByPage('Mundo', 'id', 'asc', '1', '2');
         $this->load->view('public/news/world/view', $data);
     }
 
@@ -72,10 +71,11 @@ class World extends CI_Controller
         if (empty($id)) {
             redirect(base_url('news/world'));
         } else {
-            $data['worldNewsMenu'] = $this->Model_News->getNewsCategory('Mundo', 'id', 'desc', '3', '0');
-            $data['techNewsMenu'] = $this->Model_News->getNewsCategory('Tecnologia', 'id', 'desc', '3', '0');
             $data['new'] = $this->Model_News->_selectByID($id);
             $data['older_news'] = $this->Model_News->_getNewRand('6', '0');
+            $data['columnists'] = $this->Model_Columnists->getColumnists('id', 'desc', '1', '0');
+            $data['adsW1140H87'] = $this->Model_Advertising->getByPage('Mundo', 'id', 'asc', '1', '0');
+            $data['adsW263H293'] = $this->Model_Advertising->getByPage('Mundo', 'id', 'asc', '1', '1');
             $this->load->view('public/news/world/details', $data);
         }
     }
