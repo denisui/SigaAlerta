@@ -235,7 +235,7 @@ $("#frm-news-insert").validator().on('submit', function(e) {
             cache: false,
             processData: false,
             //async: false, //blocks window close
-            beforeSend: function() {
+            beforeSend: function(data) {
                 $.blockUI({
                     message: '<h3>processando...</h3>',
                     css: {
@@ -248,6 +248,7 @@ $("#frm-news-insert").validator().on('submit', function(e) {
                         color: '#fff'
                     }
                 });
+                console.log(data);
             },
             success: function(data) {
                 if (data === 'TRUE') {

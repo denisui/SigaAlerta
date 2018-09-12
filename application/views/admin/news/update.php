@@ -150,8 +150,9 @@
                     lang: 'pt-BR',
                     formatTime:'H:i',
                     formatDate:'d/m/Y',
+                    format: 'Y-m-d H:i',
                     //defaultDate:'8.12.1986', // it's my birthday
-                    defaultDate:'+03.01.1970', // it's my birthday
+                    //defaultDate:'+03.01.1970', // it's my birthday
                     defaultTime:'01:00',
                     timepickerScrollbar:true
                 });

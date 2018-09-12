@@ -47,9 +47,8 @@ class General {
         return $str;
     }
 
-    public function formatDateMysql($str) {
-        $date = strtotime($str);
-        $newformat = date('Y-m-d', $date);
-        return $newformat;
+    public function sql_to_datetime($str) {
+        $date = date('Y-m-d H:i:s', strtotime($str));
+        return $date;
     }
 }
