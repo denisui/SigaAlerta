@@ -50,6 +50,28 @@ $db['homologation'] = array(
 
 $db['production'] = array(
     'dsn'	=> '',
+    'hostname' => '50.62.176.146',
+    'username' => 'sigalerta',
+    'password' => 'MhD1ac4k1Dsitdi',
+    'database' => 'sigalerta',
+    'dbdriver' => 'mysqli',
+    'dbprefix' => '',
+    'pconnect' => false,
+    'db_debug' => (ENVIRONMENT !== 'production'),
+    'cache_on' => false,
+    'cachedir' => '',
+    'char_set' => 'utf8',
+    'dbcollat' => 'utf8_general_ci',
+    'swap_pre' => '',
+    'encrypt' => false,
+    'compress' => false,
+    'stricton' => false,
+    'failover' => array(),
+    'save_queries' => true
+);
+
+$db['production_gm_server'] = array(
+    'dsn'	=> '',
     'hostname' => 'mysql.sigalerta.com',
     'username' => 'sigalerta',
     'password' => 'a1b2c309',

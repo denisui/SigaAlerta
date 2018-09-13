@@ -56,7 +56,7 @@
                             $n = new ArrayIterator($sliNews);
                             while ($n->valid()):
                         ?>					
-					<div class="col-sm-12">						
+					<div class="col-sm-12">
 						<div class="col-sm-6 box-title-news">
 							<h2 class="entry-title">
 								<a href="<?php echo base_url(); ?>news/local/details/<?php echo $n->current()->id; ?>/<?php echo $this->general->normalizeURL($n->current()->new_title); ?>"

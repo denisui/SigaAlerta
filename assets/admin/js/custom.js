@@ -4,8 +4,8 @@
  * Last change:
  -----------------------------------------*/
 
-//BASEURL = 'https://www.sigalerta.com/';
-BASEURL = 'http://localhost:8080/SigaAlerta/';
+BASEURL = 'https://www.sigalerta.com/';
+//BASEURL = 'http://localhost:8080/SigaAlerta/';
 //BASEURL = 'https://simonsautobody.com/homologation/sigalerta/';
 
 /**
@@ -82,9 +82,6 @@ $("#frm-user-insert").validator().on('submit', function(e) {
             type: "POST",
             url: BASEURL + 'admin/user/setInsert',
             data: dados,
-            contentType: false,
-            cache: false,
-            processData: false,
             beforeSend: function() {
                 $.blockUI({
                     message: '<h3>processando...</h3>',
@@ -137,10 +134,6 @@ $('#frm-user-edit').validator().on('submit', function(e) {
             type: "POST",
             url: BASEURL + 'admin/user/setUpdate',
             data: dados,
-            contentType: false,
-            cache: false,
-            processData: false,
-            //async: false, //blocks window close
             beforeSend: function() {
                 $.blockUI({
                     message: '<h3>processando...</h3>',
@@ -156,16 +149,16 @@ $('#frm-user-edit').validator().on('submit', function(e) {
                 });
             },
             success: function(data) {
-                console.log(data);
+                //console.log(data);
                 if (data === 'TRUE') {
                     $.unblockUI();
-                    swal("", "Registros cadastrados com sucesso!", "success");
+                    swal("", "Registros atualizados com sucesso!", "success");
                     setTimeout(function() {
                         $(location).attr('href', BASEURL + 'admin/user');
                     }, 3000);
                 } else if (data === 'FALSE') {
                     $.unblockUI();
-                    swal("", "Erro ao cadastrar!", "warning");
+                    swal("", "Erro ao atualizados!", "warning");
                 }
             },
             error: function(data) {

@@ -10,6 +10,7 @@ class User extends CI_Controller {
     public $email;
     public $login;
     public $pass;
+    public $level;
     public $_arrData;
     public $_result;
     
@@ -65,12 +66,14 @@ class User extends CI_Controller {
         $this->name = $this->input->post("edtName");
         $this->email = $this->input->post("edtEmail");
         $this->login = $this->input->post("edtLogin");
-        $this->pass = $this->input->post("edtPass");
+        $this->pass = base64_encode($this->input->post("edtPass"));
+        $this->level = $this->input->post("cmbLevel");
         $this->_arrData = array(
             "user_name" => $this->name,
             "user_email" => $this->email,
             "user_login" => $this->login,
-            "user_pass" => $this->pass
+            "user_pass" => $this->pass,
+            "user_level" => $this->level
         );
 
         $this->_return = $this->Model_User->_insert($this->_arrData);
@@ -85,44 +88,38 @@ class User extends CI_Controller {
     /*
      * executa a alteraçao dos dados
      */
-    public function setUpdate() {    
+    public function setUpdate() { 
+        $this->id = $this->input->post('edtID');   
         $this->name = $this->input->post('edtName');
         $this->email = $this->input->post('edtEmail');
         $this->login = $this->input->post('edtLogin');
-        $this->pass = base64_encode($this->input->post('edtPass'));
-        $this->_arrData = array(
-            "user_name" => $this->name,
-            "user_email" => $this->email,
-            "user_login" => $this->login,
-            "user_pass" => $this->pass
-        );       
+        $this->pass = base64_encode($this->input->post('edtPass')); 
+        $this->level = $this->input->post("cmbLevel");       
         
-       /* if (empty($this->pass)) :
+       if (empty($this->pass)) :
             $this->_arrData = array(
                 "user_name" => $this->name,
                 "user_email" => $this->email,
-                "user_login" => $this->login
+                "user_login" => $this->login,
+                "user_level" => $this->level
             );
         else :
             $this->_arrData = array(
                 "user_name" => $this->name,
                 "user_email" => $this->email,
                 "user_login" => $this->login,
-                "user_pass" =>  $this->pass
+                "user_pass" =>  $this->pass,
+                "user_level" => $this->level
             );
-        endif;*/
+        endif;
 
-        //$this->_return = $this->Model_User->_update($this->id, $this->_arrData);
+        $this->_return = $this->Model_User->_update($this->id, $this->_arrData);
 
-        echo "<pre>";
-        print_r($this->_arrData);
-        echo "</pre>";
-
-        /*if ($this->_return) :
+        if ($this->_return) :
             echo 'TRUE';
         else :
             echo 'FALSE';
-        endif;*/
+        endif;
     }
 
     /*

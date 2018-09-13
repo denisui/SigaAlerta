@@ -45,7 +45,7 @@
                                     <table id="example1" class="table table-bordered table-striped">
                                         <thead>
                                             <tr>
-                                                <th width="20%">Código</th>
+                                                <th width="8%">Código</th>
                                                 <th>Nome</th>
                                                 <th>Login</th>
                                                 <th>Ação</th>

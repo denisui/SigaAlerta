@@ -41,7 +41,7 @@
                                                 <div class="msg"></div>
                                             </div>
                                             <form id="frm-user-edit"> 
-                                                <div class="col-md-6">
+                                                <div class="col-md-12">
                                                     <div class="form-group">
                                                         <label>Nome</label>
                                                         <input type="text" name="edtName" class="form-control" value="<?php echo $u->current()->user_name; ?>" maxlength="100" required>
@@ -68,7 +68,17 @@
                                                         </div>
                                                         <input type="password" name="edtPass" class="form-control" id="inputPass" placeholder="Digite uma senha com o máx 10 caractéres" maxlength="10">
                                                     </div>
-                                                </div>                  
+                                                </div>     
+                                                <div class="col-md-6">
+                                                <div class="form-group">
+                                                    <label>Nível</label>
+                                                    <select name="cmbLevel" class="form-control select2" id="cmb-level" require>
+                                                        <option value="">Selecione...</option>
+                                                        <option value="2">Básico</option>
+                                                        <option value="1">Administrador</option>                                                        
+                                                    </select>
+                                                </div>
+                                            </div>               
                                                 <div class="col-md-12">
                                                     <button type="submit" class="btn bg-green pull-right">Atualizar <i class="fa fa-save"></i></button>
                                                 </div>
@@ -94,6 +104,7 @@
             <script>
                 $(function () {
                     $(".mnmn-config").addClass("active");
+                    $("#cmb-level").val("<?php echo $u->current()->user_level; ?>");
                 });
             </script>
             <?php

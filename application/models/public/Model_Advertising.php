@@ -49,7 +49,7 @@ class Model_Advertising extends CI_Model {
      * @param boolean $limit
      * @param boolean $offset
      */
-    public function getByPage($page, $sort = 'id', $order = 'desc', $limit = NULL, $start = NULL) {
+    public function getByPage($page, $sort = 'id', $order = 'desc', $size, $limit = NULL, $start = NULL) {
         $this->db->from($this->table);        
         if ($limit != '' && $start != '') {
             $this->db->limit($limit, $start);
@@ -58,6 +58,7 @@ class Model_Advertising extends CI_Model {
         if ($page != '') {
             $this->db->where('ads_page', $page);
         }
+        $this->db->where('ads_size', $size);
         $this->query = $this->db->get();
         if ($this->query->num_rows() > 0) {
             return $this->query->result();

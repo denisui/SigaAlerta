@@ -61,12 +61,11 @@ class Home extends CI_Controller {
         $data['morePopular'] = $this->Model_Home->getNewRand('4', '0');
         $data['columnists'] = $this->Model_Home->getColumnists('id', 'desc', '1', '0');
         /*ADVERTISING*/
-        $data['adsW263H588'] = $this->Model_Advertising->getByPage('Home', 'id', 'asc', '1', '0');
-        $data['adsW1140H87'] = $this->Model_Advertising->getByPage('Home', 'id', 'asc', '1', '1');
-        $data['adsW555H88'] = $this->Model_Advertising->getByPage('Home', 'id', 'asc', '1', '2');
-        $data['adsW263H293'] = $this->Model_Advertising->getByPage('Home', 'id', 'asc', '1', '3');
-        $data['adsW263H293_2'] = $this->Model_Advertising->getByPage('Home', 'id', 'asc', '1', '4');
-
+        $data['adsW263H588'] = $this->Model_Advertising->getByPage('Home', 'id', 'desc', '263x588', '1', '0');
+        $data['adsW1140H87'] = $this->Model_Advertising->getByPage('Home', 'id', 'desc', '1140x87', '1', '0');
+        $data['adsW555H88'] = $this->Model_Advertising->getByPage('Home', 'id', 'desc', '555x88', '1', '0');
+        $data['adsW263H293'] = $this->Model_Advertising->getByPage('Home', 'id', 'desc', '263x293', '1', '0');
+        $data['adsW263H293_2'] = $this->Model_Advertising->getByPage('Home', 'id', 'desc', '263x293', '1', '0');
         $this->load->view('public/home', $data);
     }
 }

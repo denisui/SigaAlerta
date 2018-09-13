@@ -35,7 +35,7 @@
                                 <div class="box-body">
                                     <div class="row">                                        
                                         <form id="frm-user-insert" method="post">
-                                            <div class="col-md-6">
+                                            <div class="col-md-12">
                                                 <div class="form-group">
                                                     <label>Nome</label>
                                                     <input type="text" name="edtName" class="form-control input-focus" maxlength="100" required>
@@ -57,6 +57,16 @@
                                                 <div class="form-group">
                                                     <label>Senha</label>
                                                     <input type="password" name="edtPass" class="form-control" placeholder="Digite uma senha com o máx 10 caractéres" maxlength="10" required>
+                                                </div>
+                                            </div>                  
+                                            <div class="col-md-6">
+                                                <div class="form-group">
+                                                    <label>Nível</label>
+                                                    <select name="cmbLevel" class="form-control select2" require>
+                                                        <option value="">Selecione...</option>
+                                                        <option value="2">Básico</option>
+                                                        <option value="1">Administrador</option>                                                        
+                                                    </select>
                                                 </div>
                                             </div>                  
                                             <div class="col-md-12">
@@ -84,6 +94,9 @@
         <script>
             $(function () {
                 $(".mnmn-config").addClass("active");
+
+                //Initialize Select2 Elements
+                $('.select2').select2();
             });
         </script>
     </body>
