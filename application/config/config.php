@@ -24,7 +24,7 @@ defined('BASEPATH') or exit('No direct script access allowed');
 |
 */
 $config['base_url'] = 'http://localhost:8080/SigaAlerta/';
-//$config['base_url'] = 'https://www.sigalerta.com/';
+//$config['base_url'] = 'http://www.sigalerta.com/';
 
 /*
 |--------------------------------------------------------------------------

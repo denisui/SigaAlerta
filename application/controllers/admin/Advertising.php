@@ -9,6 +9,7 @@ class Advertising extends CI_Controller {
     public $page;
     public $size;
     public $img;
+    public $url;
     public $dateInitial;    
     public $dateFinish;
     public $_return;
@@ -64,6 +65,7 @@ class Advertising extends CI_Controller {
         $this->dateInitial = $this->input->post("edtDateInitial");
         $this->dateFinish = $this->input->post("edtDateFinish");
         $this->img = $this->input->post("image");
+        $this->url = $this->input->post("edtUrl");
                 
         /**
          * UPLOAD IMAGEM
@@ -71,8 +73,8 @@ class Advertising extends CI_Controller {
         if (!empty($_FILES['image']['name'])) {
 
             // Pasta onde o arquivo vai ser salvo
-            //$_UP['pasta'] = $_SERVER['DOCUMENT_ROOT'] . '/assets/public/images/advertising/';
-            $_UP['pasta'] = $_SERVER['DOCUMENT_ROOT'] . '/SigaAlerta/assets/public/images/advertising/';
+            $_UP['pasta'] = $_SERVER['DOCUMENT_ROOT'] . '/assets/public/images/advertising/';
+            //$_UP['pasta'] = $_SERVER['DOCUMENT_ROOT'] . '/SigaAlerta/assets/public/images/advertising/';
             //$_UP['pasta'] = $_SERVER['DOCUMENT_ROOT'] . '/homologation/sigalerta/assets/public/images/advertising/';
 
             // Renomeia o arquivo? (Se true, o arquivo será salvo como .jpg e um nome único)
@@ -106,7 +108,8 @@ class Advertising extends CI_Controller {
                 "ads_size" => $this->size,                
                 "ads_img" => $this->img,
                 "ads_date_initial" => $this->dateInitial,
-                "ads_date_finish" => $this->dateFinish
+                "ads_date_finish" => $this->dateFinish,
+                "ads_link" => $this->url
             );
 
             //echo "<pre>";
@@ -123,7 +126,10 @@ class Advertising extends CI_Controller {
             $this->_arrData = array(
                 "ads_title" => $this->title,
                 "ads_page" => $this->page,
-                "ads_size" => $this->size
+                "ads_size" => $this->size,                
+                "ads_date_initial" => $this->dateInitial,
+                "ads_date_finish" => $this->dateFinish,
+                "ads_link" => $this->url
             );
 
             /*echo "<pre>";
@@ -151,6 +157,7 @@ class Advertising extends CI_Controller {
         $this->dateInitial = $this->input->post("edtDateInitial");
         $this->dateFinish = $this->input->post("edtDateFinish");
         $this->img = $this->input->post("image");
+        $this->url = $this->input->post("edtUrl");
 
         /**
          * UPLOAD IMAGEM
@@ -158,8 +165,8 @@ class Advertising extends CI_Controller {
         if (!empty($_FILES['image']['name'])) {
 
             // Pasta onde o arquivo vai ser salvo
-            //$_UP['pasta'] = $_SERVER['DOCUMENT_ROOT'] . '/assets/public/images/advertising/';
-            $_UP['pasta'] = $_SERVER['DOCUMENT_ROOT'] . '/SigaAlerta/assets/public/images/advertising/';
+            $_UP['pasta'] = $_SERVER['DOCUMENT_ROOT'] . '/assets/public/images/advertising/';
+            //$_UP['pasta'] = $_SERVER['DOCUMENT_ROOT'] . '/SigaAlerta/assets/public/images/advertising/';
             //$_UP['pasta'] = $_SERVER['DOCUMENT_ROOT'] . '/homologation/sigalerta/assets/public/images/advertising/';
 
             // Renomeia o arquivo? (Se true, o arquivo será salvo como .jpg e um nome único)
@@ -193,7 +200,8 @@ class Advertising extends CI_Controller {
                 "ads_size" => $this->size,
                 "ads_img" => $this->img,
                 "ads_date_initial" => $this->dateInitial,
-                "ads_date_finish" => $this->dateFinish
+                "ads_date_finish" => $this->dateFinish,
+                "ads_link" => $this->url
             );
 
             $this->_return = $this->Model_Advertising->_update($this->id, $this->_arrData);
@@ -208,7 +216,8 @@ class Advertising extends CI_Controller {
                 "ads_page" => $this->page,
                 "ads_size" => $this->size,
                 "ads_date_initial" => $this->dateInitial,
-                "ads_date_finish" => $this->dateFinish
+                "ads_date_finish" => $this->dateFinish,
+                "ads_link" => $this->url
             );
 
             $this->_return = $this->Model_Advertising->_update($this->id, $this->_arrData);

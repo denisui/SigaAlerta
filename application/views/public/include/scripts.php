@@ -14,7 +14,7 @@
 	<script src="<?php echo base_url(); ?>assets/public/js/custom.js"></script>
 	<script src="<?php echo base_url(); ?>assets/public/js/imgcentering.min.js"></script>
 	<script src="https://www.googletagmanager.com/gtag/js?id=UA-125392228-2"></script>
-	<!-- Global site tag (gtag.js) - Google Analytics -->
+	<!-- Global site tag (gtag.js) - Google Analytics --
 	<script async src="https://www.googletagmanager.com/gtag/js?id=UA-123833152-1"></script>
 	<script>
 		window.dataLayer = window.dataLayer || [];
@@ -22,4 +22,4 @@
 		gtag('js', new Date());
 
 		gtag('config', 'UA-123833152-1');
-	</script>
+	</script>-->

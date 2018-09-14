@@ -447,13 +447,26 @@
                             $ads = new ArrayIterator($adsW263H588);
                             while ($ads->valid()) :
                                 $today = date("Y-m-d");
-                                $dateFinish = $ads->current()->ads_date_finish;
+								$dateFinish = $ads->current()->ads_date_finish;
+								$link = $ads->current()->ads_link;
                                 if (($dateFinish <= $today) || ($dateFinish === '0000-00-00')) :
                             ?>								
-								<div class="add featured-add">
+								<div class="add featured-add">									
+									<?php 
+										if (!empty($link)) :
+									?>
+									<a href="<?php echo $ads->current()->ads_link ?>" target="_blank">
+										<img class="img-responsive center-block" src="<?php echo base_url(); ?>assets/public/images/advertising/<?php echo $ads->current()->ads_img; ?>" width="263" height="588" alt="<?php echo $ads->current()->ads_title; ?>" />
+									</a>
+									<?php 
+										else :											
+									?>
 									<a href="#">
 										<img class="img-responsive center-block" src="<?php echo base_url(); ?>assets/public/images/advertising/<?php echo $ads->current()->ads_img; ?>" width="263" height="588" alt="<?php echo $ads->current()->ads_title; ?>" />
 									</a>
+									<?php 
+										endif;
+									?>
 								</div>
 							<?php	
                                 else :
@@ -484,14 +497,27 @@
                     else:
                         $ads = new ArrayIterator($adsW1140H87);
                         while ($ads->valid()) :
-                 	        $today = date("Y-m-d");
+							$today = date("Y-m-d");
+							$link = $ads->current()->ads_link;
                             $dateFinish = $ads->current()->ads_date_finish;
                             if (($dateFinish <= $today) || ($dateFinish === '0000-00-00')) :
                         ?>								
 						<div class="add featured-add">
+							<?php 
+							if (!empty($link)) :
+							?>
+							<a href="<?php echo $ads->current()->ads_link ?>" target="_blank">
+								<img class="img-responsive center-block" src="<?php echo base_url(); ?>assets/public/images/advertising/<?php echo $ads->current()->ads_img; ?>" width="1140" height="87" alt="<?php echo $ads->current()->ads_title; ?>" />
+							</a>
+							<?php 
+							 else :
+							?>
 							<a href="#">
 								<img class="img-responsive center-block" src="<?php echo base_url(); ?>assets/public/images/advertising/<?php echo $ads->current()->ads_img; ?>" width="1140" height="87" alt="<?php echo $ads->current()->ads_title; ?>" />
 							</a>
+							<?php 
+							endif;
+							?>
 						</div>
 						<?php
                             else :
@@ -504,7 +530,7 @@
                     	    $ads->next();
                         endwhile;
                 	endif;
-                ?>			
+                ?>
 			</div>
 			<!--/.section-->
 

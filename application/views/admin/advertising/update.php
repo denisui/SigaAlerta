@@ -52,7 +52,7 @@
                                                     <input type="hidden" name="edtID" value="<?php echo $a->current()->id; ?>">
                                                 </div>
                                             </div>                      
-                                            <div class="col-md-6">
+                                            <div class="col-md-4">
                                                 <div class="form-group">
                                                     <label>Página de exibição</label>
                                                     <br>
@@ -87,7 +87,7 @@
                                                     </select>
                                                 </div>
                                             </div>  
-                                            <div class="col-md-6">
+                                            <div class="col-md-4">
                                                 <div class="form-group">
                                                     <label>Tipo</label>
                                                     <br>
@@ -99,6 +99,13 @@
                                                     </select>
                                                 </div>
                                             </div>
+                                            <div class="col-md-4">
+                                                <div class="form-group">
+                                                    <label>URL</label>
+                                                    <br>
+                                                    <input type="text" name="edtUrl" class="form-control" value="<?php echo $a->current()->ads_link; ?>" placeholder="Opcional" maxlength="200">
+                                                </div>
+                                            </div>  
                                             <div class="col-md-12">
                                             <h4>Agendamento</h4>
                                             <small>Informe a data de início e término que o anúncio será visualizado!</small>

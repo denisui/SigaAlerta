@@ -50,7 +50,7 @@ $db['homologation'] = array(
 
 $db['production'] = array(
     'dsn'	=> '',
-    'hostname' => '50.62.176.146',
+    'hostname' => '107.180.40.113',
     'username' => 'sigalerta',
     'password' => 'MhD1ac4k1Dsitdi',
     'database' => 'sigalerta',

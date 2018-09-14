@@ -4,8 +4,8 @@
  * Last change:
  -----------------------------------------*/
 
-BASEURL = 'https://www.sigalerta.com/';
-//BASEURL = 'http://localhost:8080/SigaAlerta/';
+//BASEURL = 'http://www.sigalerta.com/';
+BASEURL = 'http://localhost:8080/SigaAlerta/';
 //BASEURL = 'https://simonsautobody.com/homologation/sigalerta/';
 
 /**

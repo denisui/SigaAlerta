@@ -49,7 +49,7 @@
                                                 <input type="text" name="edtTitle" class="form-control" maxlength="200" placeholder="Ex: Banner" required>
                                             </div>
                                         </div>
-                                        <div class="col-md-6">
+                                        <div class="col-md-4">
                                             <div class="form-group">
                                                 <label>Página de exibição</label>
                                                 <br>
@@ -84,7 +84,7 @@
                                                 </select>
                                             </div>
                                         </div>
-                                        <div class="col-md-6">
+                                        <div class="col-md-4">
                                             <div class="form-group">
                                                 <label>Tipo</label>
                                                 <br>
@@ -96,7 +96,14 @@
                                                     <option value="263x588">Vertical (263x588)</option>
                                                 </select>
                                             </div>
-                                        </div>          
+                                        </div>   
+                                        <div class="col-md-4">
+                                            <div class="form-group">
+                                                <label>URL</label>
+                                                <br>
+                                                <input type="text" name="edtUrl" class="form-control" placeholder="Opcional" maxlength="200">
+                                            </div>
+                                        </div>   
                                         <div class="col-md-12">
                                             <h4>Agendamento</h4>
                                             <small>Informe a data de início e término que o anúncio será visualizado!</small>
