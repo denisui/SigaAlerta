@@ -46,6 +46,32 @@
 		<?php $this->load->view('public/include/menu.php'); ?>
 
 		<div class="container">
+			<div id="breaking-news">
+				<span>Breaking News</span>
+				<div class="breaking-news-scroll">
+					<ul>
+						<?php 
+                        if (empty($breakingNews)) :
+                        //
+                        else :
+                        $n = new ArrayIterator($breakingNews);
+                        while ($n->valid()):
+                        ?>
+						<li><i class="fa fa-angle-double-right"></i>
+							<a href="<?php echo base_url(); ?>news/local/details/<?php echo $n->current()->id; ?>/<?php echo $this->general->normalizeURL($n->current()->new_title); ?>">
+								<?php echo $n->current()->new_title; ?>
+							</a>
+						</li>
+						<?php
+                            $n->next();
+                            endwhile;
+                        endif;
+                        ?>
+					</ul>
+				</div>
+			</div>
+			<!--#breaking-news-->
+
 			<div class="row">
 				<!-- Slideshow -->
 				<div id="home-slider">
@@ -55,7 +81,7 @@
                         else :
                             $n = new ArrayIterator($sliNews);
                             while ($n->valid()):
-                        ?>					
+                        ?>
 					<div class="col-sm-12">
 						<div class="col-sm-6 box-title-news">
 							<h2 class="entry-title">
@@ -99,28 +125,28 @@
 								</div>
 							</div>
 							<!--/post-->
-						</div>											
-					</div>	
+						</div>
+					</div>
 					<?php
                         $n->next();
                             endwhile;
                         endif
-                    ?>					
+                    ?>
 					<?php
                         if (empty($sliColumnists)):
                             //
                         else :
                             $n = new ArrayIterator($sliColumnists);
                             while ($n->valid()):
-                        ?>					
-					<div class="col-sm-12">						
+                        ?>
+					<div class="col-sm-12">
 						<div class="col-sm-6 box-title-news">
 							<h2 class="entry-title">
 								<a href="<?php echo base_url(); ?>columnists/eduardo/details/<?php echo $n->current()->id; ?>/<?php echo $this->general->normalizeURL($n->current()->col_title); ?>"
 								 style="font-size: 40px;">
 									<p class="title-news">
 										<?php echo $n->current()->col_title; ?>
-									</p>									
+									</p>
 								</a>
 							</h2>
 						</div>
@@ -153,18 +179,18 @@
 								</div>
 							</div>
 							<!--/post-->
-						</div>											
-					</div>	
+						</div>
+					</div>
 					<?php
                         $n->next();
                             endwhile;
                         endif
-                    ?>					
+                    ?>
 				</div>
 				<!-- Slideshow -->
 			</div>
 		</div>
-		
+
 		<div class="container">
 			<div class="row">
 				<div class="col-md-12">
@@ -439,42 +465,44 @@
 						<?php 
                         if (empty($adsW263H588)) :
                         ?>
-							<div class="add featured-add">
-								<img class="img-responsive" src="https://via.placeholder.com/263x588" alt="">
-							</div>
+						<div class="add featured-add">
+							<img class="img-responsive" src="https://via.placeholder.com/263x588" alt="">
+						</div>
 						<?php
                          else:
                             $ads = new ArrayIterator($adsW263H588);
                             while ($ads->valid()) :
                                 $today = date("Y-m-d");
-								$dateFinish = $ads->current()->ads_date_finish;
-								$link = $ads->current()->ads_link;
+                                $dateFinish = $ads->current()->ads_date_finish;
+                                $link = $ads->current()->ads_link;
                                 if (($dateFinish <= $today) || ($dateFinish === '0000-00-00')) :
-                            ?>								
-								<div class="add featured-add">									
-									<?php 
-										if (!empty($link)) :
-									?>
-									<a href="<?php echo $ads->current()->ads_link ?>" target="_blank">
-										<img class="img-responsive center-block" src="<?php echo base_url(); ?>assets/public/images/advertising/<?php echo $ads->current()->ads_img; ?>" width="263" height="588" alt="<?php echo $ads->current()->ads_title; ?>" />
-									</a>
-									<?php 
-										else :											
-									?>
-									<a href="#">
-										<img class="img-responsive center-block" src="<?php echo base_url(); ?>assets/public/images/advertising/<?php echo $ads->current()->ads_img; ?>" width="263" height="588" alt="<?php echo $ads->current()->ads_title; ?>" />
-									</a>
-									<?php 
-										endif;
-									?>
-								</div>
-							<?php	
+                            ?>
+						<div class="add featured-add">
+							<?php 
+                                        if (!empty($link)) :
+                                    ?>
+							<a href="<?php echo $ads->current()->ads_link ?>" target="_blank">
+								<img class="img-responsive center-block" src="<?php echo base_url(); ?>assets/public/images/advertising/<?php echo $ads->current()->ads_img; ?>"
+								 width="263" height="588" alt="<?php echo $ads->current()->ads_title; ?>" />
+							</a>
+							<?php 
+                                        else :
+                                    ?>
+							<a href="#">
+								<img class="img-responsive center-block" src="<?php echo base_url(); ?>assets/public/images/advertising/<?php echo $ads->current()->ads_img; ?>"
+								 width="263" height="588" alt="<?php echo $ads->current()->ads_title; ?>" />
+							</a>
+							<?php 
+                                        endif;
+                                    ?>
+						</div>
+						<?php	
                                 else :
                                     ?>
-									<div class="add featured-add">
-										<img class="img-responsive" src="https://via.placeholder.com/263x588" alt="">
-									</div>									
-									<?php	
+						<div class="add featured-add">
+							<img class="img-responsive" src="https://via.placeholder.com/263x588" alt="">
+						</div>
+						<?php	
                                 endif;
                                 $ads->next();
                             endwhile;
@@ -487,7 +515,7 @@
 			<!--/.section-->
 
 			<div class="section add inner-add">
-			<?php 
+				<?php 
                 if (empty($adsW1140H87)) :
                 ?>
 				<div class="add featured-add">
@@ -497,39 +525,41 @@
                     else:
                         $ads = new ArrayIterator($adsW1140H87);
                         while ($ads->valid()) :
-							$today = date("Y-m-d");
-							$link = $ads->current()->ads_link;
+                            $today = date("Y-m-d");
+                            $link = $ads->current()->ads_link;
                             $dateFinish = $ads->current()->ads_date_finish;
                             if (($dateFinish <= $today) || ($dateFinish === '0000-00-00')) :
-                        ?>								
-						<div class="add featured-add">
-							<?php 
-							if (!empty($link)) :
-							?>
-							<a href="<?php echo $ads->current()->ads_link ?>" target="_blank">
-								<img class="img-responsive center-block" src="<?php echo base_url(); ?>assets/public/images/advertising/<?php echo $ads->current()->ads_img; ?>" width="1140" height="87" alt="<?php echo $ads->current()->ads_title; ?>" />
-							</a>
-							<?php 
-							 else :
-							?>
-							<a href="#">
-								<img class="img-responsive center-block" src="<?php echo base_url(); ?>assets/public/images/advertising/<?php echo $ads->current()->ads_img; ?>" width="1140" height="87" alt="<?php echo $ads->current()->ads_title; ?>" />
-							</a>
-							<?php 
-							endif;
-							?>
-						</div>
-						<?php
+                        ?>
+				<div class="add featured-add">
+					<?php 
+                            if (!empty($link)) :
+                            ?>
+					<a href="<?php echo $ads->current()->ads_link ?>" target="_blank">
+						<img class="img-responsive center-block" src="<?php echo base_url(); ?>assets/public/images/advertising/<?php echo $ads->current()->ads_img; ?>"
+						 width="1140" height="87" alt="<?php echo $ads->current()->ads_title; ?>" />
+					</a>
+					<?php 
+                             else :
+                            ?>
+					<a href="#">
+						<img class="img-responsive center-block" src="<?php echo base_url(); ?>assets/public/images/advertising/<?php echo $ads->current()->ads_img; ?>"
+						 width="1140" height="87" alt="<?php echo $ads->current()->ads_title; ?>" />
+					</a>
+					<?php 
+                            endif;
+                            ?>
+				</div>
+				<?php
                             else :
                         ?>
-						<div class="add featured-add">
-							<img class="img-responsive" src="https://via.placeholder.com/1140x87" alt="">
-						</div>
-						<?php
+				<div class="add featured-add">
+					<img class="img-responsive" src="https://via.placeholder.com/1140x87" alt="">
+				</div>
+				<?php
                             endif;
-                    	    $ads->next();
+                            $ads->next();
                         endwhile;
-                	endif;
+                    endif;
                 ?>
 			</div>
 			<!--/.section-->
@@ -786,37 +816,38 @@
 										<!--/technology-news-->
 
 										<div class="section add inner-add">
-										<?php 
-											if (empty($adsW555H88)) :
-											?>
+											<?php 
+                                            if (empty($adsW555H88)) :
+                                            ?>
 											<div class="add featured-add">
 												<img class="img-responsive" src="https://via.placeholder.com/555x88" alt="">
 											</div>
 											<?php
-												else:
-													$ads = new ArrayIterator($adsW555H88);
-													while ($ads->valid()) :
-														$today = date("Y-m-d");
-														$dateFinish = $ads->current()->ads_date_finish;
-														if (($dateFinish <= $today) || ($dateFinish === '0000-00-00')) :
-													?>								
-													<div class="add featured-add">
-														<a href="#">
-															<img class="img-responsive center-block" src="<?php echo base_url(); ?>assets/public/images/advertising/<?php echo $ads->current()->ads_img; ?>" width="555" height="88" alt="<?php echo $ads->current()->ads_title; ?>" />
-														</a>
-													</div>
-													<?php
-														else :
-													?>
-													<div class="add featured-add">
-														<img class="img-responsive" src="https://via.placeholder.com/555x88" alt="">
-													</div>
-													<?php
-														endif;
-														$ads->next();
-													endwhile;
-												endif;
-											?>			
+                                                else:
+                                                    $ads = new ArrayIterator($adsW555H88);
+                                                    while ($ads->valid()) :
+                                                        $today = date("Y-m-d");
+                                                        $dateFinish = $ads->current()->ads_date_finish;
+                                                        if (($dateFinish <= $today) || ($dateFinish === '0000-00-00')) :
+                                                    ?>
+											<div class="add featured-add">
+												<a href="#">
+													<img class="img-responsive center-block" src="<?php echo base_url(); ?>assets/public/images/advertising/<?php echo $ads->current()->ads_img; ?>"
+													 width="555" height="88" alt="<?php echo $ads->current()->ads_title; ?>" />
+												</a>
+											</div>
+											<?php
+                                                        else :
+                                                    ?>
+											<div class="add featured-add">
+												<img class="img-responsive" src="https://via.placeholder.com/555x88" alt="">
+											</div>
+											<?php
+                                                        endif;
+                                                        $ads->next();
+                                                    endwhile;
+                                                endif;
+                                            ?>
 										</div>
 										<!--/.section add-->
 									</div>
@@ -878,252 +909,254 @@
 
 										<div class="section">
 											<?php 
-											if (empty($adsW263H293)) :
-											?>
+                                            if (empty($adsW263H293)) :
+                                            ?>
 											<div class="add inner-add">
 												<img class="img-responsive" src="https://via.placeholder.com/263x293" alt="">
 											</div>
 											<?php
-												else:
-													$ads = new ArrayIterator($adsW263H293);
-													while ($ads->valid()) :
-														$today = date("Y-m-d");
-														$dateFinish = $ads->current()->ads_date_finish;
-														if (($dateFinish <= $today) || ($dateFinish === '0000-00-00')) :
-													?>								
-													<div class="add inner-add">
-														<a href="#">
-															<img class="img-responsive center-block" src="<?php echo base_url(); ?>assets/public/images/advertising/<?php echo $ads->current()->ads_img; ?>" width="263" height="293" alt="<?php echo $ads->current()->ads_title; ?>" />
-														</a>
-													</div>
-													<?php
-														else :
-													?>
-													<div class="add inner-add">
-														<img class="img-responsive" src="https://via.placeholder.com/263x293" alt="">
-													</div>
-													<?php
-														endif;
-														$ads->next();
-													endwhile;
-												endif;
-											?>
+                                                else:
+                                                    $ads = new ArrayIterator($adsW263H293);
+                                                    while ($ads->valid()) :
+                                                        $today = date("Y-m-d");
+                                                        $dateFinish = $ads->current()->ads_date_finish;
+                                                        if (($dateFinish <= $today) || ($dateFinish === '0000-00-00')) :
+                                                    ?>
+											<div class="add inner-add">
+												<a href="#">
+													<img class="img-responsive center-block" src="<?php echo base_url(); ?>assets/public/images/advertising/<?php echo $ads->current()->ads_img; ?>"
+													 width="263" height="293" alt="<?php echo $ads->current()->ads_title; ?>" />
+												</a>
+											</div>
+											<?php
+                                                        else :
+                                                    ?>
+											<div class="add inner-add">
+												<img class="img-responsive" src="https://via.placeholder.com/263x293" alt="">
+											</div>
+											<?php
+                                                        endif;
+                                                        $ads->next();
+                                                    endwhile;
+                                                endif;
+                                            ?>
 										</div>
-							</div>
-							<!--/.middle-content-->
-						</div>
-					</div>
-				</div>
-				<!--/#site-content-->
-			</div>
-			<div class="col-md-3 col-sm-4">
-				<div id="sitebar">
-					<?php $this->load->view("public/include/widget/social-media"); ?>
-					<!--/#widget-->
-
-					<?php $this->load->view('public/include/widget/sidebar-colums-eduardo');?>
-
-					<div class="widget">
-					<?php 
-						if (empty($adsW263H293_2)) :
-					?>
-						<div class="add">
-							<img class="img-responsive" src="https://via.placeholder.com/263x293" alt="">
-						</div>
-					<?php
-						else:
-							$ads = new ArrayIterator($adsW263H293_2);
-							while ($ads->valid()) :
-							$today = date("Y-m-d");
-							$dateFinish = $ads->current()->ads_date_finish;
-							if (($dateFinish <= $today) || ($dateFinish === '0000-00-00')) :
-						?>								
-							<div class="add">
-								<a href="#">
-									<img class="img-responsive center-block" src="<?php echo base_url(); ?>assets/public/images/advertising/<?php echo $ads->current()->ads_img; ?>" width="263" height="293" alt="<?php echo $ads->current()->ads_title; ?>" />
-								</a>
-							</div>
-						<?php
-							else :
-						?>
-							<div class="add">
-								<img class="img-responsive" src="https://via.placeholder.com/263x293" alt="">
-							</div>
-						<?php
-							endif;
-								$ads->next();
-							endwhile;
-						endif;
-						?>
-					</div>
-					<!--/#widget-->
-
-					<div class="widget weather-widget">
-						<div id="weather-widget"></div>
-					</div>					
-				</div>
-				<!--/#sitebar-->
-			</div>
-
-			<div class="col-sm-6">
-				<div class="section lifestyle-section">
-					<h1 class="section-title">Serviços</h1>
-					<div class="cat-menu">
-						<a href="#">Ver Todos</a>
-					</div>
-					<div class="row">
-						<div class="col-md-12">
-							<div class="post medium-post">
-								<div class="entry-header">
-									<div class="entry-thumbnail">
-										<img class="img-responsive" src="https://via.placeholder.com/555x350" alt="" />
 									</div>
+									<!--/.middle-content-->
 								</div>
 							</div>
 						</div>
-						<?php 
+						<!--/#site-content-->
+					</div>
+					<div class="col-md-3 col-sm-4">
+						<div id="sitebar">
+							<?php $this->load->view("public/include/widget/social-media"); ?>
+							<!--/#widget-->
+
+							<?php $this->load->view('public/include/widget/sidebar-colums-eduardo');?>
+
+							<div class="widget">
+								<?php 
+                        if (empty($adsW263H293_2)) :
+                    ?>
+								<div class="add">
+									<img class="img-responsive" src="https://via.placeholder.com/263x293" alt="">
+								</div>
+								<?php
+                        else:
+                            $ads = new ArrayIterator($adsW263H293_2);
+                            while ($ads->valid()) :
+                            $today = date("Y-m-d");
+                            $dateFinish = $ads->current()->ads_date_finish;
+                            if (($dateFinish <= $today) || ($dateFinish === '0000-00-00')) :
+                        ?>
+								<div class="add">
+									<a href="#">
+										<img class="img-responsive center-block" src="<?php echo base_url(); ?>assets/public/images/advertising/<?php echo $ads->current()->ads_img; ?>"
+										 width="263" height="293" alt="<?php echo $ads->current()->ads_title; ?>" />
+									</a>
+								</div>
+								<?php
+                            else :
+                        ?>
+								<div class="add">
+									<img class="img-responsive" src="https://via.placeholder.com/263x293" alt="">
+								</div>
+								<?php
+                            endif;
+                                $ads->next();
+                            endwhile;
+                        endif;
+                        ?>
+							</div>
+							<!--/#widget-->
+
+							<div class="widget weather-widget">
+								<div id="weather-widget"></div>
+							</div>
+						</div>
+						<!--/#sitebar-->
+					</div>
+
+					<div class="col-sm-6">
+						<div class="section lifestyle-section">
+							<h1 class="section-title">Serviços</h1>
+							<div class="cat-menu">
+								<a href="#">Ver Todos</a>
+							</div>
+							<div class="row">
+								<div class="col-md-12">
+									<div class="post medium-post">
+										<div class="entry-header">
+											<div class="entry-thumbnail">
+												<img class="img-responsive" src="https://via.placeholder.com/555x350" alt="" />
+											</div>
+										</div>
+									</div>
+								</div>
+								<?php 
                             if (empty($service)) :
                                 //
                             else :
                                 $s = new ArrayIterator($service);
                             while ($s->valid()) :
                         ?>
-						<div class="col-md-6">
-							<div class="post medium-post">
-								<div class="entry-header">
-									<div class="entry-thumbnail">
-										<a href="<?php echo base_url(); ?>services/<?php echo $s->current()->sc_url; ?>/details/<?php echo $s->current()->id_service; ?>/<?php echo $this->general->normalizeURL($s->current()->serv_name); ?>">
-											<img class="img-responsive" src="<?php echo base_url(); ?>assets/public/images/services/<?php echo $s->current()->serv_img; ?>"
-											 alt="" />
-										</a>
+								<div class="col-md-6">
+									<div class="post medium-post">
+										<div class="entry-header">
+											<div class="entry-thumbnail">
+												<a href="<?php echo base_url(); ?>services/<?php echo $s->current()->sc_url; ?>/details/<?php echo $s->current()->id_service; ?>/<?php echo $this->general->normalizeURL($s->current()->serv_name); ?>">
+													<img class="img-responsive" src="<?php echo base_url(); ?>assets/public/images/services/<?php echo $s->current()->serv_img; ?>"
+													 alt="" />
+												</a>
+											</div>
+										</div>
+										<div class="post-content">
+											<h2 class="entry-title">
+												<a href="<?php echo base_url(); ?>services/<?php echo $s->current()->sc_url; ?>/details/<?php echo $s->current()->id_service; ?>/<?php echo $this->general->normalizeURL($s->current()->serv_name); ?>">
+													<?php echo $s->current()->serv_name; ?>
+												</a>
+											</h2>
+										</div>
 									</div>
+									<!--/post-->
 								</div>
-								<div class="post-content">
-									<h2 class="entry-title">
-										<a href="<?php echo base_url(); ?>services/<?php echo $s->current()->sc_url; ?>/details/<?php echo $s->current()->id_service; ?>/<?php echo $this->general->normalizeURL($s->current()->serv_name); ?>">
-											<?php echo $s->current()->serv_name; ?>
-										</a>
-									</h2>
-								</div>
-							</div>
-							<!--/post-->
-						</div>
-						<?php
+								<?php
                             $s->next();
                             endwhile;
                         endif;
                         ?>
+							</div>
+							<!--/.services -->
+						</div>
 					</div>
-					<!--/.services -->
-				</div>
-			</div>
 
-			<div class="col-sm-6">
-				<!--/photo-gallery-->
-				<div class="section health-section">
-					<h1 class="section-title">Saúde</h1>
-					<div class="cat-menu">
-						<a href="<?php echo base_url(); ?>news/health">Ver Todas</a>
-					</div>
-					<div class="health-feature">
-						<?php 
+					<div class="col-sm-6">
+						<!--/photo-gallery-->
+						<div class="section health-section">
+							<h1 class="section-title">Saúde</h1>
+							<div class="cat-menu">
+								<a href="<?php echo base_url(); ?>news/health">Ver Todas</a>
+							</div>
+							<div class="health-feature">
+								<?php 
                             if (empty($lastHealt)) :
                                 //
                             else :
                                 $n = new ArrayIterator($lastHealt);
                                 while ($n->valid()) :
                         ?>
-						<div class="post">
-							<div class="entry-header">
-								<div class="entry-thumbnail">
-									<a href="<?php echo base_url(); ?>news/health/details/<?php echo $n->current()->id; ?>/<?php echo $this->general->normalizeURL($n->current()->new_title); ?>">
-										<img class="img-responsive h-159" src="<?php echo base_url(); ?>assets/public/images/news/<?php echo $n->current()->new_img; ?>"
-										 alt="<?php echo $n->current()->new_title; ?>" />
-									</a>
-								</div>
-							</div>
-							<div class="post-content">
-								<div class="entry-meta">
-									<ul class="list-inline">
-										<li class="publish-date">
-											<i class="fa fa-calendar"></i>
-											<?php
+								<div class="post">
+									<div class="entry-header">
+										<div class="entry-thumbnail">
+											<a href="<?php echo base_url(); ?>news/health/details/<?php echo $n->current()->id; ?>/<?php echo $this->general->normalizeURL($n->current()->new_title); ?>">
+												<img class="img-responsive h-159" src="<?php echo base_url(); ?>assets/public/images/news/<?php echo $n->current()->new_img; ?>"
+												 alt="<?php echo $n->current()->new_title; ?>" />
+											</a>
+										</div>
+									</div>
+									<div class="post-content">
+										<div class="entry-meta">
+											<ul class="list-inline">
+												<li class="publish-date">
+													<i class="fa fa-calendar"></i>
+													<?php
                                                 $date = explode('-', $n->current()->new_date_time);
                                                 echo $date[1]. ' / '. $date[2] .' / '.$date[0];
                                             ?>
-										</li>
-									</ul>
+												</li>
+											</ul>
+										</div>
+										<h2 class="entry-title">
+											<a href="<?php echo base_url(); ?>news/health/details/<?php echo $n->current()->id; ?>/<?php echo $this->general->normalizeURL($n->current()->new_title); ?>">
+												<?php echo $n->current()->new_title; ?>
+											</a>
+										</h2>
+									</div>
 								</div>
-								<h2 class="entry-title">
-									<a href="<?php echo base_url(); ?>news/health/details/<?php echo $n->current()->id; ?>/<?php echo $this->general->normalizeURL($n->current()->new_title); ?>">
-										<?php echo $n->current()->new_title; ?>
-									</a>
-								</h2>
-							</div>
-						</div>
-						<!--/post-->
-						<?php 
+								<!--/post-->
+								<?php 
                             $n->next();
                             endwhile;
                         endif;
                         ?>
-					</div>
-					<div class="row">
-						<?php 
+							</div>
+							<div class="row">
+								<?php 
                             if (empty($lastHealt2)) :
                                 //
                             else :
                                 $n = new ArrayIterator($lastHealt2);
                             while ($n->valid()) :
                         ?>
-						<div class="col-sm-12 col-md-6">
-							<div class="post small-post">
-								<div class="entry-header">
-									<div class="entry-thumbnail">
-										<a href="<?php echo base_url(); ?>news/health/details/<?php echo $n->current()->id; ?>/<?php echo $this->general->normalizeURL($n->current()->new_title); ?>">
-											<img class="img-responsive h-95" src="<?php echo base_url(); ?>assets/public/images/news/<?php echo $n->current()->new_img; ?>"
-											 alt="<?php echo $n->current()->new_title; ?>" />
-										</a>
-									</div>
-								</div>
-								<div class="post-content">
-									<div class="entry-meta">
-										<ul class="list-inline">
-											<li class="publish-date">
-												<i class="fa fa-calendar"></i>
-												<?php
+								<div class="col-sm-12 col-md-6">
+									<div class="post small-post">
+										<div class="entry-header">
+											<div class="entry-thumbnail">
+												<a href="<?php echo base_url(); ?>news/health/details/<?php echo $n->current()->id; ?>/<?php echo $this->general->normalizeURL($n->current()->new_title); ?>">
+													<img class="img-responsive h-95" src="<?php echo base_url(); ?>assets/public/images/news/<?php echo $n->current()->new_img; ?>"
+													 alt="<?php echo $n->current()->new_title; ?>" />
+												</a>
+											</div>
+										</div>
+										<div class="post-content">
+											<div class="entry-meta">
+												<ul class="list-inline">
+													<li class="publish-date">
+														<i class="fa fa-calendar"></i>
+														<?php
                                                     $date = explode('-', $n->current()->new_date_time);
                                                     echo $date[1]. ' / '. $date[2] .' / '.$date[0];
                                                 ?>
-											</li>
-										</ul>
+													</li>
+												</ul>
+											</div>
+											<h2 class="entry-title">
+												<a href="<?php echo base_url(); ?>news/health/details/<?php echo $n->current()->id; ?>/<?php echo $this->general->normalizeURL($n->current()->new_title); ?>">
+													<?php echo $n->current()->new_title; ?>
+												</a>
+											</h2>
+										</div>
 									</div>
-									<h2 class="entry-title">
-										<a href="<?php echo base_url(); ?>news/health/details/<?php echo $n->current()->id; ?>/<?php echo $this->general->normalizeURL($n->current()->new_title); ?>">
-											<?php echo $n->current()->new_title; ?>
-										</a>
-									</h2>
+									<!--/post-->
 								</div>
-							</div>
-							<!--/post-->
-						</div>
-						<?php 
+								<?php 
                             $n->next();
                             endwhile;
                         endif;
                         ?>
+							</div>
+						</div>
+						<!--/.health-section -->
 					</div>
+
 				</div>
-				<!--/.health-section -->
 			</div>
-
+			<!--/.section-->
 		</div>
-	</div>
-	<!--/.section-->
-	</div>
-	<!--/.container-->
+		<!--/.container-->
 
-	<?php $this->load->view("public/include/pre-footer"); ?>
+		<?php $this->load->view("public/include/pre-footer"); ?>
 
 	</div>
 	<!--/#main-wrapper-->

@@ -1,12 +1,12 @@
 /*--------------------------------------
  * Author:       Luiz Fernando Venturelli
  * Created:      28/01/2016
- * Last change:
  -----------------------------------------*/
 
-//BASEURL = 'http://www.sigalerta.com/';
-BASEURL = 'http://localhost:8080/SigaAlerta/';
-//BASEURL = 'https://simonsautobody.com/homologation/sigalerta/';
+//Production
+//BASEURL = window.location.origin + '/';
+//Localhost
+BASEURL = window.location.origin + '/SigaAlerta/';
 
 /**
  * GENERAL
@@ -47,12 +47,12 @@ $('#frm-login').validator().on('submit', function(e) {
             url: BASEURL + 'admin/login/check_login',
             data: dados,
             beforeSend: function() {
-                $("#btn-submit-login").html('Carregando...' + ' <img src="assets/admin/img/gif/ajax-loader.gif">');
+                $("#btn-submit-login").html('Carregando...' + ' <img src="/assets/admin/img/gif/ajax-loader.gif">');
             },
             success: function(data) {
                 // console.log(data);
                 if (data === 'TRUE') {
-                    $(location).attr('href', 'admin/dashboard');
+                    $(location).attr('href',  BASEURL + 'admin/dashboard');
                 } else if (data === 'FALSE') {
                     msg('Login ou Senha inválidos!', 'erro');
                     $("#btn-submit-login").html('Entrar');

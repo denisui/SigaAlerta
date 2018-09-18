@@ -1,4 +1,8 @@
 $(document).ready(function() {
+    setTimeout(function() {
+		$(location).attr('href', '');
+	}, 500000);
+
     /*  var isNS = (navigator.appName == "Netscape") ? 1 : 0;
         var EnableRightClick = 0;
         if (isNS) document.captureEvents(Event.MOUSEDOWN || Event.MOUSEUP);

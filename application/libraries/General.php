@@ -1,15 +1,17 @@
 <?php
 
-defined('BASEPATH') OR exit('No direct script access allowed');
+defined('BASEPATH') or exit('No direct script access allowed');
 
-class General {
+class General
+{
     /*
      * Remove Accents
      * Remove os acentos das strings
      * @param $string
      */
 
-    public function remove_accents($string) {
+    public function remove_accents($string)
+    {
         return preg_replace(array("/(á|à|ã|â|ä)/", "/(Á|À|Ã|Â|Ä)/", "/(é|è|ê|ë)/", "/(É|È|Ê|Ë)/", "/(í|ì|î|ï)/", "/(Í|Ì|Î|Ï)/", "/(ó|ò|õ|ô|ö)/", "/(Ó|Ò|Õ|Ô|Ö)/", "/(ú|ù|û|ü)/", "/(Ú|Ù|Û|Ü)/", "/(ñ)/", "/(Ñ)/", "/(ç)/", "/(Ç)/"), explode(" ", "a A e E i I o O u U n N c C"), $string);
     }
 
@@ -24,31 +26,57 @@ class General {
      *
      */
 
-    public function convert_coin($xCoin = "EN", $xDecimal = 2, $xValue) {
+    public function convert_coin($xCoin = "EN", $xDecimal = 2, $xValue)
+    {
         $xValue = preg_replace('/[^0-9]/', '', $xValue); // Deixa apenas números
         $xNewValue = substr($xValue, 0, -$xDecimal); // Separando número para adição do ponto separador de decimais
         $xNewValue = ($xDecimal > 0) ? $xNewValue . "." . substr($xValue, strlen($xNewValue), strlen($xValue)) : $xValue;
-        return $xCoin == "EN" ? number_format($xNewValue, $xDecimal, '.', '') : ($xCoin == "BR" ? number_format($xNewValue, $xDecimal, ',', '.') : NULL);
+        return $xCoin == "EN" ? number_format($xNewValue, $xDecimal, '.', '') : ($xCoin == "BR" ? number_format($xNewValue, $xDecimal, ',', '.') : null);
     }
 
     /*
      * Normaliza a URL
      */
 
-    public function normalizeURL($str) {
+    public function normalizeURL($str)
+    {
         $str = strtolower(utf8_decode($str));
         $i = 1;
         $str = strtr($str, utf8_decode('àáâãäåæçèéêëìíîïñòóôõöøùúûýýÿ'), 'aaaaaaaceeeeiiiinoooooouuuyyy');
         $str = preg_replace("/([^a-z0-9])/", '-', utf8_encode($str));
-        while ($i > 0)
+        while ($i > 0) {
             $str = str_replace('--', '-', $str, $i);
-        if (substr($str, -1) == '-')
+        }
+        if (substr($str, -1) == '-') {
             $str = substr($str, 0, -1);
+        }
         return $str;
     }
 
-    public function sql_to_datetime($str) {
+    public function sql_to_datetime($str)
+    {
         $date = date('Y-m-d H:i:s', strtotime($str));
         return $date;
+    }
+
+    /**
+     * Suppose, you are browsing in your localhost
+     */
+    public function getBaseUrl()
+    {
+        // output: /myproject/index.php
+        $currentPath = $_SERVER['PHP_SELF'];
+
+        // output: Array ( [dirname] => /myproject [basename] => index.php [extension] => php [filename] => index )
+        $pathInfo = pathinfo($currentPath);
+
+        // output: localhost
+        $hostName = $_SERVER['HTTP_HOST'];
+
+        // output: http://
+        $protocol = strtolower(substr($_SERVER["SERVER_PROTOCOL"], 0, 5))=='https://'?'https://':'http://';
+
+        // return: http://localhost/myproject/
+        return $protocol.$hostName.$pathInfo['dirname']."/";
     }
 }
